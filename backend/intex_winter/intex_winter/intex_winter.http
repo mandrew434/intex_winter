@@ -1,0 +1,6 @@
+@intex_winter_HostAddress = http://localhost:5101
+
+GET {{intex_winter_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
