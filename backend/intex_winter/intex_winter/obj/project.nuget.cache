@@ -2,7 +2,7 @@
   "version": 2,
   "dgSpecHash": "2DtrNSZEQzA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\intex_winter.csproj",
+  "projectFilePath": "C:\\Users\\caden\\OneDrive\\JRCORE2025\\INTEX\\intex_winter\\backend\\intex_winter\\intex_winter\\intex_winter.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mandr\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\mandr\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
@@ -153,5 +153,12 @@
     "C:\\Users\\mandr\\.nuget\\packages\\system.threading.tasks.dataflow\\7.0.0\\system.threading.tasks.dataflow.7.0.0.nupkg.sha512",
     "C:\\Users\\mandr\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\caden\\OneDrive\\JRCORE2025\\INTEX\\intex_winter\\backend\\intex_winter\\intex_winter\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
