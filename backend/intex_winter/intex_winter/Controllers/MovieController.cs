@@ -3,6 +3,6 @@
     public class MovieController
     {
 
-    // Add [Authorize] to force authentication
+    // Add [Authorize] to force authentication to get to other pages
     }
 }
