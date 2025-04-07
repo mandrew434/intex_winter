@@ -1,23 +1,61 @@
+/* App.css for CineNiche */
+
+/* ------------------------------------------------------
+   Color Variables (CineNiche Palette)
+--------------------------------------------------------- */
+:root {
+  --color-background: #1C1C1C;       /* Dark Slate */
+  --color-text: #FFFFFF;             /* White */
+  --color-secondary-text: #AAAAAA;   /* Gray Smoke */
+  --color-primary-accent: #E85D75;   /* Vintage Blush */
+  --color-secondary-accent: #F9A602; /* Sunbeam */
+  --color-highlight: #22B8CF;        /* Teal Glow */
+}
+
+/* ------------------------------------------------------
+   Global Styles
+--------------------------------------------------------- */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* ------------------------------------------------------
+   Root Container
+--------------------------------------------------------- */
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
+/* ------------------------------------------------------
+   Logo Styles
+--------------------------------------------------------- */
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em var(--color-secondary-accent));
 }
 
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em var(--color-highlight));
+}
+
+/* ------------------------------------------------------
+   Keyframes for Logo Spin
+--------------------------------------------------------- */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -27,16 +65,26 @@
   }
 }
 
+/* Animate logo spin based on media preference */
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
 }
 
+/* ------------------------------------------------------
+   Card Styles
+--------------------------------------------------------- */
 .card {
   padding: 2em;
+  background-color: #2A2A2A; /* Slightly lighter than the main background */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* ------------------------------------------------------
+   Misc Text Styles
+--------------------------------------------------------- */
 .read-the-docs {
-  color: #888;
+  color: var(--color-secondary-text);
 }

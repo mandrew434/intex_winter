@@ -49,13 +49,6 @@ function LoginPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
-    //   const response = await fetch(loginUrl, {
-    //     method: 'POST',
-    //     mode: 'cors',
-    //     credentials: 'include',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ email, password }),
-    // });
 
       // Ensure we only parse JSON if there is content
       let data = null;
