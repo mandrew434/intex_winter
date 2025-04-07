@@ -16,9 +16,39 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("IdentityConnection")));
 
 builder.Services.AddAuthorization();
-builder.Services.AddIdentityApiEndpoints<IdentityUser>()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
 
+//Password customization
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // Customize your password requirements here
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 12;           
+    options.Password.RequireNonAlphanumeric = false; 
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequiredUniqueChars = 1;
+});
+
+//Identity Builder to allow roles
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+// ALlows for role creation without the email confirmation
+builder.Services.AddSingleton<IEmailSender<IdentityUser>, NoOpEmailSender<IdentityUser>>();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SameSite = SameSiteMode.None; // change after adding https for production
+    options.Cookie.Name = ".AspNetCore.Identity.Application";
+    options.LoginPath = "/login";
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+});
+
+
+
+// Configure CORS policy
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend",
