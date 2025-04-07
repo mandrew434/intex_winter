@@ -1,31 +1,50 @@
-body {
-    background: #007bff;
-    background: linear-gradient(to right, #0062e6, #33aeff);
+:root {
+    --color-background: #1C1C1C;       /* Dark Slate */
+    --color-secondary: #2A2A2A;        /* Slightly lighter for gradients */
+    --color-text: #FFFFFF;             /* White */
+    --color-primary-accent: #E85D75;   /* Vintage Blush (used for primary buttons & errors) */
+    --color-secondary-accent: #F9A602; /* Sunbeam (used for secondary actions) */
+    --color-highlight: #22B8CF;        /* Teal Glow */
   }
   
+  /* Updated Global Background using a subtle dark gradient */
+  body {
+    background: var(--color-background); /* fallback */
+    background: linear-gradient(to right, var(--color-background), var(--color-secondary));
+  }
+  
+  /* Buttons */
   .btn-login {
     font-size: 0.9rem;
     letter-spacing: 0.05rem;
     padding: 0.75rem 1rem;
+    background-color: var(--color-primary-accent);
+    color: var(--color-text);
+    border: none;
+    cursor: pointer;
   }
   
   .btn-google {
-    color: white !important;
-    background-color: #ea4335 !important;
+    color: var(--color-text) !important;
+    background-color: var(--color-primary-accent) !important; /* Unified with our scheme */
   }
   
   .btn-facebook {
-    color: white !important;
-    background-color: #3b5998 !important;
+    color: var(--color-text) !important;
+    background-color: var(--color-secondary-accent) !important; /* Uses secondary accent */
   }
   
+  /* Card Body */
   .card-body {
     min-width: 400px;
+    /* Optionally, you could add a slight background on the card body if needed */
   }
   
+  /* Error messages styled with the primary accent */
   .error {
-    color: red;
+    color: var(--color-primary-accent);
     font-weight: bold;
     text-align: center;
     margin-top: 10px;
   }
+  
