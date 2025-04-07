@@ -21,12 +21,12 @@ builder.Services.AddAuthorization();
 builder.Services.Configure<IdentityOptions>(options =>
 {
     // Customize your password requirements here
-    options.Password.RequireDigit = true;
+    options.Password.RequireDigit = false;
     options.Password.RequiredLength = 12;           
     options.Password.RequireNonAlphanumeric = false; 
-    options.Password.RequireUppercase = true;
-    options.Password.RequireLowercase = true;
-    options.Password.RequiredUniqueChars = 1;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequiredUniqueChars = 0;
 });
 
 //Identity Builder to allow roles
@@ -72,9 +72,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors("AllowFrontend");
+
+
 
 //app.UseAuthentication();
 //app.UseAuthorization();
+
+
 
 app.MapControllers();
 
