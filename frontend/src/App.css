@@ -4,12 +4,12 @@
    Color Variables (CineNiche Palette)
 --------------------------------------------------------- */
 :root {
-  --color-background: #1C1C1C;       /* Dark Slate */
-  --color-text: #FFFFFF;             /* White */
-  --color-secondary-text: #AAAAAA;   /* Gray Smoke */
-  --color-primary-accent: #E85D75;   /* Vintage Blush */
-  --color-secondary-accent: #F9A602; /* Sunbeam */
-  --color-highlight: #22B8CF;        /* Teal Glow */
+  --color-background: #2c2022; /* Dark Slate */
+    --color-secondary: #3b2e30; /* Slightly lighter for gradients */
+    --color-text: #ffedd5; /* Creamy White */
+    --color-primary-accent: #f25268; /* Vintage Blush */
+    --color-secondary-accent: #e7b942; /* Sunbeam */
+    --color-highlight: #88c2b1; /* Teal Glow */
 }
 
 /* ------------------------------------------------------
