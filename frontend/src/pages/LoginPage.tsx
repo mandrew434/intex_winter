@@ -10,6 +10,7 @@ function LoginPage() {
   const [error, setError] = useState<string>('');
   const navigate = useNavigate();
 
+
   // Callback once Google authentication returns a response.
   const handleGoogleResponse = async (response: any) => {
     const idToken = response.credential;
@@ -53,7 +54,7 @@ function LoginPage() {
       const google = (window as any).google;
       if (google && google.accounts) {
         google.accounts.id.initialize({
-          client_id: '867384440302-d2l840tc41n3nd5ctsagfai1pd6sklsn.apps.googleusercontent.com',
+          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
           callback: handleGoogleResponse,
         });
         // Render the Google Sign-In button in a designated container.
