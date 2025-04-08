@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 public class ContentFilteringController : ControllerBase
 {
     // These values could come from configuration instead of hard-coding.
-    private const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=intexstorage2025;AccountKey=aVD8GUL59WjkUBm9FCb/VZI2gQyeB9pl5yiNnsewzHpwEtF7W3tcY5O66YZ+6sh0r6tcprQYXc6i+AStQXiFPQ==;EndpointSuffix=core.windows.net";
+    private const string ConnectionString = "ConnectionStringFromAzure";
     private const string ContainerName = "intexcontainer";
     private const string BlobName = "ContentFilter.csv";
 
