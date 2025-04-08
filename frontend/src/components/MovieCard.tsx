@@ -32,7 +32,10 @@ interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   // ***** CHANGED: Format the title to remove colons *****
-  const formattedTitle = movie.title
+  console.log('Pre Normal:', movie.title);
+  const normalizedTitle = movie.title.normalize('NFC');
+  console.log('Post Normal:', normalizedTitle);
+  const formattedTitle = normalizedTitle
     .replace(/:/g, '')
     .replace(/&/g, '')
     .replace(/!/g, '')
@@ -43,6 +46,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
     .replace(/"/g, '')
     .replace(/,/g, '')
     .replace(/\./g, '')
+    .replace(/é/g, 'e')
     .replace(/'/g, '');
   console.log('Formatted Title:', formattedTitle); // Debugging line
 
