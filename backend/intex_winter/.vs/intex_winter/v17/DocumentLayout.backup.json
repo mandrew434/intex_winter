@@ -33,7 +33,7 @@
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 1,
+      "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
@@ -107,35 +107,9 @@
               "WhenOpened": "2025-04-07T18:29:31.402Z"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "intex_winter\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "intex_winter\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T18:40:41.398Z"
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "intex_winter\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Properties\\launchSettings.json",
-              "RelativeToolTip": "intex_winter\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-07T20:14:39.143Z"
-            }
-          ]
-        },
-        {
-          "DockedHeight": 93,
-          "SelectedChildIndex": -1,
-          "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:52:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
@@ -147,6 +121,18 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:12:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:13:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             }
           ]
         }
