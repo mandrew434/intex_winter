@@ -8,6 +8,7 @@ const Header: React.FC = () => {
           className="flex items-center text-sm px-4 py-2 rounded-md hover:bg-gray-100 transition"
           type="button"
         >
+            
           <span className="mr-2">👤</span>
           Profile
         </button>
