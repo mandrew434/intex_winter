@@ -1,4 +1,3 @@
-// SplashImage.tsx
 import React, { useState, useEffect } from 'react';
 import { Movie } from '../types/Movie';
 
@@ -47,8 +46,9 @@ const SplashImage: React.FC<SplashImageProps> = ({
   const currentMovie = selectedMovies[currentIndex];
 
   // Use movie.posterUrl if available; otherwise, use a fallback placeholder image.
-  const backgroundImage =
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmk6_aF93IuKJgww9H3E1yWzLTNv-bnbUcnA&s';
+  const formattedTitle = currentMovie.title.replace(/:/g, '');
+  console.log('Formatted Title:', formattedTitle); // Debugging line
+  const backgroundImage = `./MovieImagesFolder/MoviePosters/${formattedTitle}.jpg`;
 
   return (
     <div
