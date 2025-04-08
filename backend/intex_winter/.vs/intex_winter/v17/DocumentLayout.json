@@ -1,7 +1,15 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\caden\\OneDrive\\JRCORE2025\\INTEX\\intex_winter\\backend\\intex_winter\\",
+  "WorkspaceRootPath": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\",
   "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|c:\\users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|solutionrelative:intex_winter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|c:\\users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|solutionrelative:intex_winter\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
     {
       "AbsoluteMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|c:\\users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|solutionrelative:intex_winter\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -9,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|c:\\users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|solutionrelative:intex_winter\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|c:\\users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|solutionrelative:intex_winter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|c:\\users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\data\\noopemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,15 +34,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "intex_winter\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "intex_winter\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T19:10:00.856Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Program.cs",
+              "RelativeDocumentMoniker": "intex_winter\\Program.cs",
+              "ToolTip": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Program.cs",
+              "RelativeToolTip": "intex_winter\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T18:28:05.768Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "MovieController.cs",
               "DocumentMoniker": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Controllers\\MovieController.cs",
               "RelativeDocumentMoniker": "intex_winter\\Controllers\\MovieController.cs",
@@ -52,19 +90,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Program.cs",
-              "RelativeDocumentMoniker": "intex_winter\\Program.cs",
-              "ToolTip": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Program.cs",
-              "RelativeToolTip": "intex_winter\\Program.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABoAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T18:28:05.768Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "RoleController.cs",
               "DocumentMoniker": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Controllers\\RoleController.cs",
               "RelativeDocumentMoniker": "intex_winter\\Controllers\\RoleController.cs",
@@ -77,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "NoOpEmailSender.cs",
               "DocumentMoniker": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Data\\NoOpEmailSender.cs",
               "RelativeDocumentMoniker": "intex_winter\\Data\\NoOpEmailSender.cs",
@@ -85,27 +110,21 @@
               "RelativeToolTip": "intex_winter\\Data\\NoOpEmailSender.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T21:15:21.422Z"
+              "WhenOpened": "2025-04-07T21:15:21.422Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\appsettings.json",
               "RelativeDocumentMoniker": "intex_winter\\appsettings.json",
               "ToolTip": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\appsettings.json",
               "RelativeToolTip": "intex_winter\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-07T18:29:31.402Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "WhenOpened": "2025-04-07T18:29:31.402Z",
+              "EditorCaption": ""
             }
           ]
         }

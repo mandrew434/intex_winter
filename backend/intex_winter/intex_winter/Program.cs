@@ -1,7 +1,9 @@
 using System.Security.Claims;
 using intex_winter.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Google;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +20,17 @@ builder.Services.AddDbContext<MoviesContext>(options =>
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("IdentityConnection")));
 
-builder.Services.AddAuthorization();
+// Configure Google authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    // Since you are not using the Google middleware to trigger a redirect-based flow,
+    // you can leave the challenge scheme as the cookie scheme or simply remove it.
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+})
+.AddCookie();
+
 
 //Password customization
 builder.Services.Configure<IdentityOptions>(options =>
@@ -49,8 +61,6 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
 });
 
-
-
 // Configure CORS policy
 builder.Services.AddCors(options =>
 {
@@ -77,12 +87,8 @@ app.UseHttpsRedirection();
 
 app.UseCors("AllowFrontend");
 
-
-
-//app.UseAuthentication();
-//app.UseAuthorization();
-
-
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

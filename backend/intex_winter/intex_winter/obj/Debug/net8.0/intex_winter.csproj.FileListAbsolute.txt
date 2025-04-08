@@ -802,3 +802,9 @@ C:\Users\mandr\source\repos\intex_winter\backend\intex_winter\intex_winter\obj\D
 C:\Users\mandr\source\repos\intex_winter\backend\intex_winter\intex_winter\obj\Debug\net8.0\intex_winter.pdb
 C:\Users\mandr\source\repos\intex_winter\backend\intex_winter\intex_winter\obj\Debug\net8.0\intex_winter.genruntimeconfig.cache
 C:\Users\mandr\source\repos\intex_winter\backend\intex_winter\intex_winter\obj\Debug\net8.0\ref\intex_winter.dll
+C:\Users\mandr\source\repos\intex_winter\backend\intex_winter\intex_winter\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\mandr\source\repos\intex_winter\backend\intex_winter\intex_winter\bin\Debug\net8.0\Google.Apis.dll
+C:\Users\mandr\source\repos\intex_winter\backend\intex_winter\intex_winter\bin\Debug\net8.0\Google.Apis.Auth.dll
+C:\Users\mandr\source\repos\intex_winter\backend\intex_winter\intex_winter\bin\Debug\net8.0\Google.Apis.Core.dll
+C:\Users\mandr\source\repos\intex_winter\backend\intex_winter\intex_winter\bin\Debug\net8.0\System.Management.dll
+C:\Users\mandr\source\repos\intex_winter\backend\intex_winter\intex_winter\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
