@@ -20,7 +20,7 @@ export interface Movie {
   comediesInternationalMovies: number;
   comediesRomanticMovies: number;
   crimeTvShowsDocuseries: number;
-  documentaries: 1;
+  documentaries: number;
   documentariesInternationalMovies: number;
   docuseries: number;
   dramas: number;
