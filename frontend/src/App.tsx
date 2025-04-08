@@ -1,11 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import './App.css'
-import LoginPage from './pages/LoginPage'
-import HomePage from './pages/HomePage'
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
-import MoviesPage from './pages/MoviesPage'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
+import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import MoviesPage from './pages/MoviesPage';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
         <Footer />
       </Router>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
