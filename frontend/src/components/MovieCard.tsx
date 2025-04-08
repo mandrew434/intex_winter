@@ -38,6 +38,11 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
     .replace(/!/g, '')
     .replace(/&/g, '')
     .replace(/-/g, '')
+    .replace(/\(/g, '')
+    .replace(/\)/g, '')
+    .replace(/"/g, '')
+    .replace(/,/g, '')
+    .replace(/\./g, '')
     .replace(/'/g, '');
   console.log('Formatted Title:', formattedTitle); // Debugging line
 
