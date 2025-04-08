@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using intex_winter.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container
 builder.Services.AddControllers();
@@ -14,10 +16,29 @@ builder.Services.AddDbContext<MoviesContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MoviesConnection")));
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("IdentityConnection")));
+
+builder.Services.AddDbContext<RecommendersDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("RecommendersConnection")));
+
+
+
+// Configure Google authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    // Since you are not using the Google middleware to trigger a redirect-based flow,
+    // you can leave the challenge scheme as the cookie scheme or simply remove it.
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+})
+.AddCookie();
+
+
 // Identity with API endpoints and roles
 builder.Services.AddIdentityApiEndpoints<IdentityUser>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddAuthorization();
+
 // Optional: Use a custom claims factory (if you want to add roles, email, etc.)
 builder.Services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, CustomUserClaimsPrincipalFactory>();
 // Password customization
