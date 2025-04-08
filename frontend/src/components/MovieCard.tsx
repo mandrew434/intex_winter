@@ -12,12 +12,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
       className="movie-card m-2"
       style={{ flex: '0 0 auto', width: '150px', cursor: 'pointer' }}
     >
-      <img
-        src={movie.posterUrl}
-        alt={movie.title}
-        className="img-fluid"
-      />
+      {/* <img src={movie.posterUrl} alt={movie.title} className="img-fluid" /> */}
       <p className="mt-2 text-center">{movie.title}</p>
+      <p className="mt-2 text-center">{movie.type}</p>
     </div>
   );
 };
