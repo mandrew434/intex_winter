@@ -21,6 +21,11 @@ builder.Services.AddDbContext<MoviesContext>(options =>
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("IdentityConnection")));
 
+builder.Services.AddDbContext<RecommendersDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("RecommendersConnection")));
+
+
+
 // Configure Google authentication
 builder.Services.AddAuthentication(options =>
 {
