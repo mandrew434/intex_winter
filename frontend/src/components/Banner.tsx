@@ -23,7 +23,7 @@ const Banner: React.FC<BannerProps> = ({ movie }) => {
       <div className="banner-content" style={{ maxWidth: '600px' }}>
         <h1>{movie.title}</h1>
         <p>{movie.overview}</p>
-        <button className="btn btn-primary">Watch Now</button>
+        <button className="btn btn-secondary">Watch Now</button>
       </div>
     </div>
   );

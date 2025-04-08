@@ -42,8 +42,8 @@ const MoviesPage: React.FC = () => {
     <div className="movies-page">
       {featuredMovie && <Banner movie={featuredMovie} />}
       <div className="container">
-        <MovieCarousel title="Trending Now" movies={trendingMovies} />
-        <MovieCarousel title="New Releases" movies={newReleases} />
+        <MovieCarousel title="Top Rated" movies={trendingMovies} />
+        <MovieCarousel title="Find Your Next Favorite" movies={newReleases} />
         <MovieCarousel title="Top Rated" movies={topRated} />
       </div>
     </div>
