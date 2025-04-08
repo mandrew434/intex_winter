@@ -17,7 +17,7 @@ const MovieCarousel: React.FC<MovieCarouselProps> = ({ title, movies }) => {
         style={{ gap: '10px', paddingBottom: '10px' }}
       >
         {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+          <MovieCard key={movie.showId} movie={movie} />
         ))}
       </div>
     </section>
