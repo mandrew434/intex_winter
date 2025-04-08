@@ -5,9 +5,14 @@ namespace intex_winter.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CollaborativeFilteringController(RecommendersDbContext temp) : ControllerBase
+public class CollaborativeFilteringController : ControllerBase
 {
-    private RecommendersDbContext _context = temp;
+    private RecommendersDbContext _context;
+    
+    public CollaborativeFilteringController(RecommendersDbContext temp)
+    {
+        _context = temp;
+    }
 
     [HttpGet]
     public IActionResult GetAllMovies(string selectedShow)
