@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Banner from '../components/Banner';
 import MovieCarousel from '../components/MovieCarousel';
 import { Movie } from '../types/Movie';
+import AuthorizeView, { AuthorizedUser } from '../components/AuthorizeView';
+import Logout from '../components/Logout';
 
 const MoviesPage: React.FC = () => {
   const [featuredMovie, setFeaturedMovie] = useState<Movie | null>(null);
@@ -39,14 +41,21 @@ const MoviesPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="movies-page">
-      {featuredMovie && <Banner movie={featuredMovie} />}
-      <div className="container">
-        <MovieCarousel title="Top Rated" movies={trendingMovies} />
-        <MovieCarousel title="Find Your Next Favorite" movies={newReleases} />
-        <MovieCarousel title="Top Rated" movies={topRated} />
-      </div>
-    </div>
+    <AuthorizeView>
+      <span>
+        <Logout>
+          Logout <AuthorizedUser value="email" />
+        </Logout>
+      </span>
+        <div className="movies-page">
+          {featuredMovie && <Banner movie={featuredMovie} />}
+          <div className="container">
+            <MovieCarousel title="Top Rated" movies={trendingMovies} />
+            <MovieCarousel title="Find Your Next Favorite" movies={newReleases} />
+            <MovieCarousel title="Top Rated" movies={topRated} />
+          </div>
+        </div>
+    </AuthorizeView>
   );
 };
 

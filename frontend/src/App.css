@@ -1,5 +1,5 @@
 /* App.css for CineNiche */
-
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&display=swap');
 /* ------------------------------------------------------
    Color Variables (CineNiche Palette)
 --------------------------------------------------------- */
@@ -137,4 +137,16 @@ body {
   font-weight: bold;
   text-align: center;
   margin-top: 10px;
+}
+
+.logout {
+  color: #fff;
+  font-size: large;
+  font-weight: bold;
+}
+
+.RKHeader {
+  font-family: 'Boldonse', system-ui;
+  font-weight: 200;
+  font-style: normal;
 }
