@@ -82,8 +82,7 @@
               "RelativeToolTip": "intex_winter\\Services\\CustomerUserClaimsPrincipalFactory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T16:10:30.435Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T16:10:30.435Z"
             },
             {
               "$type": "Document",
@@ -93,7 +92,7 @@
               "RelativeDocumentMoniker": "intex_winter\\Program.cs",
               "ToolTip": "C:\\Users\\caden\\OneDrive\\JRCORE2025\\INTEX\\intex_winter\\backend\\intex_winter\\intex_winter\\Program.cs",
               "RelativeToolTip": "intex_winter\\Program.cs",
-              "ViewState": "AgIAAMYAAAAAAAAAAAAAAM8AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAAAIoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-08T15:58:22.092Z",
               "EditorCaption": ""
@@ -120,8 +119,7 @@
               "RelativeToolTip": "intex_winter\\Controllers\\MovieController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T21:10:35.602Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T21:10:35.602Z"
             },
             {
               "$type": "Document",
@@ -133,8 +131,7 @@
               "RelativeToolTip": "intex_winter\\Controllers\\RoleController.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAowEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T18:28:05.768Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T18:28:05.768Z"
             }
           ]
         }

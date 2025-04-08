@@ -4,6 +4,7 @@ using intex_winter.Data;
 
 [ApiController]
 [Route("api/[controller]")]
+// [Authorize]
 public class MovieController : ControllerBase
 {
     private readonly MoviesContext _context;

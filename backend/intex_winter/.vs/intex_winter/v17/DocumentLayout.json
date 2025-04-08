@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\caden\\OneDrive\\JRCORE2025\\INTEX\\intex_winter\\backend\\intex_winter\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|c:\\users\\caden\\onedrive\\jrcore2025\\intex\\intex_winter\\backend\\intex_winter\\intex_winter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|solutionrelative:intex_winter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|c:\\users\\caden\\onedrive\\jrcore2025\\intex\\intex_winter\\backend\\intex_winter\\intex_winter\\services\\customeruserclaimsprincipalfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|solutionrelative:intex_winter\\services\\customeruserclaimsprincipalfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|c:\\users\\caden\\onedrive\\jrcore2025\\intex\\intex_winter\\backend\\intex_winter\\intex_winter\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|solutionrelative:intex_winter\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|c:\\users\\caden\\onedrive\\jrcore2025\\intex\\intex_winter\\backend\\intex_winter\\intex_winter\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|solutionrelative:intex_winter\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|c:\\users\\caden\\onedrive\\jrcore2025\\intex\\intex_winter\\backend\\intex_winter\\intex_winter\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|solutionrelative:intex_winter\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|c:\\users\\caden\\onedrive\\jrcore2025\\intex\\intex_winter\\backend\\intex_winter\\intex_winter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|solutionrelative:intex_winter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|c:\\users\\caden\\onedrive\\jrcore2025\\intex\\intex_winter\\backend\\intex_winter\\intex_winter\\services\\customeruserclaimsprincipalfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|solutionrelative:intex_winter\\services\\customeruserclaimsprincipalfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8CAD40A0-2A80-4523-BE0A-7A8949B4E838}|intex_winter\\intex_winter.csproj|c:\\users\\caden\\onedrive\\jrcore2025\\intex\\intex_winter\\backend\\intex_winter\\intex_winter\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,7 +74,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "CustomerUserClaimsPrincipalFactory.cs",
               "DocumentMoniker": "C:\\Users\\caden\\OneDrive\\JRCORE2025\\INTEX\\intex_winter\\backend\\intex_winter\\intex_winter\\Services\\CustomerUserClaimsPrincipalFactory.cs",
               "RelativeDocumentMoniker": "intex_winter\\Services\\CustomerUserClaimsPrincipalFactory.cs",
@@ -86,7 +86,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\caden\\OneDrive\\JRCORE2025\\INTEX\\intex_winter\\backend\\intex_winter\\intex_winter\\Program.cs",
               "RelativeDocumentMoniker": "intex_winter\\Program.cs",
@@ -111,27 +111,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "MovieController.cs",
               "DocumentMoniker": "C:\\Users\\caden\\OneDrive\\JRCORE2025\\INTEX\\intex_winter\\backend\\intex_winter\\intex_winter\\Controllers\\MovieController.cs",
               "RelativeDocumentMoniker": "intex_winter\\Controllers\\MovieController.cs",
               "ToolTip": "C:\\Users\\caden\\OneDrive\\JRCORE2025\\INTEX\\intex_winter\\backend\\intex_winter\\intex_winter\\Controllers\\MovieController.cs",
               "RelativeToolTip": "intex_winter\\Controllers\\MovieController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T21:10:35.602Z"
+              "WhenOpened": "2025-04-07T21:10:35.602Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "RoleController.cs",
               "DocumentMoniker": "C:\\Users\\caden\\OneDrive\\JRCORE2025\\INTEX\\intex_winter\\backend\\intex_winter\\intex_winter\\Controllers\\RoleController.cs",
               "RelativeDocumentMoniker": "intex_winter\\Controllers\\RoleController.cs",
               "ToolTip": "C:\\Users\\caden\\OneDrive\\JRCORE2025\\INTEX\\intex_winter\\backend\\intex_winter\\intex_winter\\Controllers\\RoleController.cs",
               "RelativeToolTip": "intex_winter\\Controllers\\RoleController.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAowEgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T18:28:05.768Z"
+              "WhenOpened": "2025-04-07T18:28:05.768Z",
+              "EditorCaption": ""
             }
           ]
         }
