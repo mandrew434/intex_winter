@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import RegisterPage from './pages/RegisterPage';
 import AdminPage from './pages/AdminPage';
 import AllMoviesPage from './pages/AllMoviesPage';
+import MovieDetailsPage from './pages/MovieDetailsPage';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/movies" element={<MoviesPage />} />
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/allMovies" element={<AllMoviesPage />} />
+            <Route path="/moviedetails/:showId" element={<MovieDetailsPage />} />
           </Routes>
         </main>
 
