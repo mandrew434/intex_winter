@@ -7,6 +7,7 @@ import MoviesPage from './pages/MoviesPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import RegisterPage from './pages/RegisterPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
@@ -16,8 +17,7 @@ function App() {
 
         <main className="max-w-screen-xl mx-auto px-4">
           <Routes>
-            {/* <Route path="/" element={<HomePage />} /> */}
-            <Route path="/" element={<MoviesPage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/privacy" element={<PrivacyPolicyPage />} />
