@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import GenreFilter, { GenreGroup } from '../components/GenreFilter';
 import MovieList from '../components/MovieList';
@@ -10,6 +11,7 @@ const AllMoviesPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState<string>('');
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+  const navigate = useNavigate();
 
   // Define eight main genre groups by combining similar fields.
   const mainGenres: GenreGroup[] = [
@@ -104,8 +106,23 @@ const AllMoviesPage: React.FC = () => {
     return <div className="container mt-4">Error: {error}</div>;
   }
 
+    // Handler to navigate back to the previous page
+    const handleBack = () => {
+        navigate('/movies');
+    // Optionally, force scroll to top if needed:
+    // window.scrollTo(0, 0);
+    };
+
   return (
     <div className="container mt-4">
+              {/* Back Button fixed to the top left corner */}
+      <button
+        className="btn btn-secondary"
+        onClick={handleBack}
+        style={{ position: 'fixed', top: '20px', left: '20px', zIndex: 1000 }}
+      >
+        &larr; Back
+      </button>
       <h1>All Movies</h1>
       <div className="row">
         {/* Left column: Genre Filter */}
