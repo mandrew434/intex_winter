@@ -23,7 +23,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
     .replace(/\./g, '')
     .replace(/é/g, 'e')
     .replace(/'/g, '');
-  console.log('Formatted Title:', formattedTitle); // Debugging line
+  // console.log('Formatted Title:', formattedTitle); // Debugging line
 
   // ***** CHANGED: Build the image path using the formatted title *****
   const backgroundImage = `./MovieImagesFolder/MoviePosters/${formattedTitle}.jpg`;
