@@ -8,8 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="806d370e-2d94-44b2-b2b4-6c27a84d8977" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Controllers/CollaborativeFilteringController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/CollaborativeFilteringController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.intex_winter.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.intex_winter.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/intex_winter.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/intex_winter.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744063974678</updated>
       <workItem from="1744063976051" duration="566000" />
-      <workItem from="1744133259344" duration="9952000" />
+      <workItem from="1744133259344" duration="12245000" />
     </task>
     <servers />
   </component>
