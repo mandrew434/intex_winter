@@ -21,6 +21,33 @@ public class MovieController : ControllerBase
         var movies = await _context.MoviesTitles.ToListAsync();
         return Ok(movies);
     }
+
+    // GET: api/Movie/details/{showId}
+    [HttpGet("moviedetails/{showId}")]
+    public async Task<IActionResult> GetMovieDetails(string showId)
+    {
+        // Validate the provided showId if necessary.
+        if (string.IsNullOrEmpty(showId))
+        {
+            return BadRequest("Invalid movie id");
+        }
+
+        // Query the MoviesTitles table using the provided showId.
+        // Assumes your Movie model contains properties: type, title, director, cast,
+        // country, releaseYear, rating, duration, and description.
+        var movie = await _context.MoviesTitles.FirstOrDefaultAsync(m => m.ShowId == showId);
+
+        if (movie == null)
+        {
+            // Return a 404 status code with an explanation if the movie is not found.
+            return NotFound($"Movie with id {showId} was not found.");
+        }
+
+        // Return the movie details as a JSON response.
+        return Ok(movie);
+    }
+
+
     [HttpPost("AddMovie")]
     public IActionResult AddMovie([FromBody] MoviesTitle newMovie)
     {
