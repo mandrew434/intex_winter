@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import RegisterPage from './pages/RegisterPage';
 import AdminPage from './pages/AdminPage';
+import AllMoviesPage from './pages/AllMoviesPage';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/privacy" element={<PrivacyPolicyPage />} />
             <Route path="/movies" element={<MoviesPage />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/allMovies" element={<AllMoviesPage />} />
           </Routes>
         </main>
 

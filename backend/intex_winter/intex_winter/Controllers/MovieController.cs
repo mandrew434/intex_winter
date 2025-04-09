@@ -21,6 +21,26 @@ public class MovieController : ControllerBase
         var movies = await _context.MoviesTitles.Take(100).ToListAsync();
         return Ok(movies);
     }
+    //[HttpGet("all")]
+    //public async Task<IActionResult> GetAllMovies([FromQuery] int page = 1, [FromQuery] int pageSize = 50)
+    //{
+    //    // Ensure a valid page number
+    //    if (page < 1) page = 1;
+
+    //    // Calculate how many records to skip based on the current page.
+    //    var skip = (page - 1) * pageSize;
+
+    //    // Retrieve only the desired page of movies
+    //    var movies = await _context.MoviesTitles
+    //        .Skip(skip)
+    //        .Take(pageSize)
+    //        .ToListAsync();
+
+    //    return Ok(movies);
+    //}
+
+
+
 
     [HttpPost("AddMovie")]
     public IActionResult AddMovie([FromBody] MoviesTitle newMovie)
