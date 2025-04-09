@@ -73,7 +73,7 @@ const MovieDetailsPage: React.FC = () => {
       .replace(/\./g, '')
       .replace(/é/g, 'e')
       .replace(/'/g, '');
-    const backgroundImage = `./MovieImagesFolder/MoviePosters/${formattedTitle}.jpg`;
+    const backgroundImage = `/MovieImagesFolder/MoviePosters/${formattedTitle}.jpg`;
 
 
     return (
