@@ -536,3 +536,4 @@ C:\Users\caden\OneDrive\JRCORE2025\INTEX\intex_winter\backend\intex_winter\intex
 C:\Users\caden\OneDrive\JRCORE2025\INTEX\intex_winter\backend\intex_winter\intex_winter\obj\Debug\net8.0\intex_winter.pdb
 C:\Users\caden\OneDrive\JRCORE2025\INTEX\intex_winter\backend\intex_winter\intex_winter\obj\Debug\net8.0\intex_winter.genruntimeconfig.cache
 C:\Users\caden\OneDrive\JRCORE2025\INTEX\intex_winter\backend\intex_winter\intex_winter\obj\Debug\net8.0\ref\intex_winter.dll
+C:\Users\caden\OneDrive\JRCORE2025\INTEX\intex_winter\backend\intex_winter\intex_winter\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
