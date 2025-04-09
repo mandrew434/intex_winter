@@ -18,7 +18,7 @@ public class MovieController : ControllerBase
     public async Task<IActionResult> GetAllMovies()
     {
         // right now it is just returning 50 to not plug up the server
-        var movies = await _context.MoviesTitles.Take(50).ToListAsync();
+        var movies = await _context.MoviesTitles.Take(100).ToListAsync();
         return Ok(movies);
     }
 

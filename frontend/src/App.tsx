@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import RegisterPage from './pages/RegisterPage';
 import AdminPage from './pages/AdminPage';
 
+
 function App() {
   return (
     <div className="min-h-screen pt-20 pb-20 bg-[#2e1e1c] text-white">
@@ -17,8 +18,7 @@ function App() {
 
         <main className="max-w-screen-xl mx-auto px-4">
           <Routes>
-            {/* <Route path="/" element={<HomePage />} /> */}
-            <Route path="/" element={<MoviesPage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/privacy" element={<PrivacyPolicyPage />} />

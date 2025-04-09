@@ -5,6 +5,7 @@ import MovieCarousel from '../components/MovieCarousel';
 import { Movie } from '../types/Movie';
 import AuthorizeView, { AuthorizedUser } from '../components/AuthorizeView';
 import Logout from '../components/Logout';
+import SplashImage from '../components/SplashImage';
 
 const MoviesPage: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -20,6 +21,7 @@ const MoviesPage: React.FC = () => {
   }, []);
 
   return (
+    <>
     <AuthorizeView>
       <span>
         <Logout>
@@ -29,12 +31,15 @@ const MoviesPage: React.FC = () => {
 
       <div className="movies-page">
         <div className="container">
+          <SplashImage movies={movies} rotationInterval={5000} />
+
           <MovieCarousel title="Top Rated" movies={movies} />
           <MovieCarousel title="Find Your Next Favorite" movies={movies} />
           <MovieCarousel title="Top Rated" movies={movies} />
         </div>
       </div>
-    </AuthorizeView>
+      </AuthorizeView>
+      </>
   );
 };
 
