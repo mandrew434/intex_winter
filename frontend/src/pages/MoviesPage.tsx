@@ -21,6 +21,7 @@ const MoviesPage: React.FC = () => {
   }, []);
 
   return (
+    <>
     <AuthorizeView>
       <span>
         <Logout>
@@ -37,7 +38,8 @@ const MoviesPage: React.FC = () => {
           <MovieCarousel title="Top Rated" movies={movies} />
         </div>
       </div>
-    </AuthorizeView>
+      </AuthorizeView>
+      </>
   );
 };
 
