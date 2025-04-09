@@ -24,15 +24,15 @@ builder.Services.AddIdentityApiEndpoints<IdentityUser>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 // Configure Google authentication
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    // Since you are not using the Google middleware to trigger a redirect-based flow,
-    // you can leave the challenge scheme as the cookie scheme or simply remove it.
-    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-})
-.AddCookie();
+// builder.Services.AddAuthentication(options =>
+// {
+//     options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+//     options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+//     // Since you are not using the Google middleware to trigger a redirect-based flow,
+//     // you can leave the challenge scheme as the cookie scheme or simply remove it.
+//     options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+// })
+// .AddCookie();
 
 // Password customization
 builder.Services.Configure<IdentityOptions>(options =>
