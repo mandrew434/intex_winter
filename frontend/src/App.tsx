@@ -7,6 +7,7 @@ import MoviesPage from './pages/MoviesPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import RegisterPage from './pages/RegisterPage';
+import AdminPage from './pages/AdminPage';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/privacy" element={<PrivacyPolicyPage />} />
             <Route path="/movies" element={<MoviesPage />} />
+            <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </main>
 
