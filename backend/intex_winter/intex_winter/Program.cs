@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using System.Text.Json;
 using intex_winter.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +8,10 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(opts =>
+        opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+    );
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // Add both application data and identity data contexts
@@ -17,6 +21,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("IdentityConnection")));
 builder.Services.AddDbContext<RecommendersDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("RecommendersConnection")));
+builder.Services.AddDbContext<CollaborativeDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("CollaborativeConnection")));
 
 builder.Services.AddAuthorization();
 
