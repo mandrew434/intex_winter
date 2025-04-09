@@ -10,6 +10,7 @@ import RegisterPage from './pages/RegisterPage';
 import AdminPage from './pages/AdminPage';
 import AllMoviesPage from './pages/AllMoviesPage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
+import AddMoviePage from './pages/AddMoviePage';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/allMovies" element={<AllMoviesPage />} />
             <Route path="/moviedetails/:showId" element={<MovieDetailsPage />} />
+            <Route path="/admin/add" element={<AddMoviePage />} />
           </Routes>
         </main>
 
