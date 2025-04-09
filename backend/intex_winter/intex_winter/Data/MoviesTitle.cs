@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace intex_winter.Data;
 
+[Table("movies_titles")]
 public partial class MoviesTitle
 {
-    public string? ShowId { get; set; }
+    [Key]
+    public string ShowId { get; set; }
 
     public string? Type { get; set; }
 

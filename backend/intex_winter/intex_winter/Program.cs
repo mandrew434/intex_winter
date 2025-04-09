@@ -1,9 +1,10 @@
 using System.Security.Claims;
 using intex_winter.Data;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using intex_winter.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container
 builder.Services.AddControllers();
@@ -14,12 +15,25 @@ builder.Services.AddDbContext<MoviesContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MoviesConnection")));
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("IdentityConnection")));
-// Identity with API endpoints and roles
+builder.Services.AddDbContext<RecommendersDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("RecommendersConnection")));
+
+builder.Services.AddAuthorization();
+
 builder.Services.AddIdentityApiEndpoints<IdentityUser>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddAuthorization();
-// Optional: Use a custom claims factory (if you want to add roles, email, etc.)
-builder.Services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, CustomUserClaimsPrincipalFactory>();
+
+// Configure Google authentication
+// builder.Services.AddAuthentication(options =>
+// {
+//     options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+//     options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+//     // Since you are not using the Google middleware to trigger a redirect-based flow,
+//     // you can leave the challenge scheme as the cookie scheme or simply remove it.
+//     options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+// })
+// .AddCookie();
+
 // Password customization
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -34,6 +48,9 @@ builder.Services.Configure<IdentityOptions>(options =>
 });
 // Prevent email confirmation requirement
 builder.Services.AddSingleton<IEmailSender<IdentityUser>, NoOpEmailSender<IdentityUser>>();
+// Optional: Use a custom claims factory (if you want to add roles, email, etc.)
+builder.Services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, CustomUserClaimsPrincipalFactory>();
+
 // Cookie settings
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -49,9 +66,11 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy.WithOrigins("http://localhost:3000")
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
+            .AllowCredentials()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+              
+              
     });
 });
 var app = builder.Build();
@@ -64,14 +83,26 @@ if (app.Environment.IsDevelopment())
 // Middleware
 app.UseCors("AllowFrontend");
 app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 app.MapIdentityApi<IdentityUser>();
+
+app.MapGet("/login", () =>
+{
+    return Results.Json(new { message = "Please log in via the proper client flow." });
+});
+
+
 // Logout route
 app.MapPost("/logout", async (HttpContext context, SignInManager<IdentityUser> signInManager) =>
 {
     await signInManager.SignOutAsync();
+
+    // Clear the authentication cookie manually
+    // This is important to ensure the cookie is removed from the client.
     context.Response.Cookies.Delete(".AspNetCore.Identity.Application", new CookieOptions
     {
         HttpOnly = true,
@@ -81,13 +112,16 @@ app.MapPost("/logout", async (HttpContext context, SignInManager<IdentityUser> s
     return Results.Ok(new { message = "Logout successful" });
 }).RequireAuthorization();
 // Ping auth route for checking logged-in status
+// ...existing code...
 app.MapGet("/pingauth", (ClaimsPrincipal user) =>
 {
     if (!user.Identity?.IsAuthenticated ?? false)
     {
         return Results.Unauthorized();
     }
-    var email = user.FindFirstValue(ClaimTypes.Email) ?? "unknown@example.com";
-    return Results.Json(new { email = email });
+
+    var email = user.FindFirstValue(ClaimTypes.Email) ?? "unknown@example.com"; // Ensure it's never null
+    return Results.Json(new { email = email }); // Return as JSON
 }).RequireAuthorization();
+
 app.Run();

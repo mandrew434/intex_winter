@@ -54,7 +54,7 @@ function LoginPage() {
       const google = (window as any).google;
       if (google && google.accounts) {
         google.accounts.id.initialize({
-          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
           callback: handleGoogleResponse,
         });
         // Render the Google Sign-In button in a designated container.
