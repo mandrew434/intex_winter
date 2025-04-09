@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 // Define the Movie interface with the required fields
 interface Movie {
@@ -17,6 +17,7 @@ interface Movie {
 const MovieDetailsPage: React.FC = () => {
   // Extract the "showId" parameter from the URL
   const { showId } = useParams<{ showId: string }>();
+  const navigate = useNavigate();
 
   // Set up state variables for the movie, loading status, and any potential error
   const [movie, setMovie] = useState<Movie | null>(null);
@@ -75,47 +76,62 @@ const MovieDetailsPage: React.FC = () => {
       .replace(/'/g, '');
     const backgroundImage = `/MovieImagesFolder/MoviePosters/${formattedTitle}.jpg`;
 
+   // Handler to navigate back to the previous page
+  const handleBack = () => {
+    navigate(-1);
+    // Optionally, force scroll to top if needed:
+    // window.scrollTo(0, 0);
+  };
 
-    return (
-        <div className="container mt-4">
-          <div className="row">
-            {/* Poster Column */}
-            <div className="col-md-4">
-              <img
-                src={backgroundImage}
-                alt={`Poster for ${movie.title}`}
-                className="img-fluid"
-              />
-            </div>
-            {/* Movie Details Column */}
-            <div className="col-md-8">
-              <h1>{movie.title}</h1>
-              <h4>Directed by: {movie.director}</h4>
-              <p>
-                <strong>Type:</strong> {movie.type}
-              </p>
-              <p>
-                <strong>Cast:</strong> {movie.cast}
-              </p>
-              <p>
-                <strong>Country:</strong> {movie.country}
-              </p>
-              <p>
-                <strong>Release Year:</strong> {movie.releaseYear}
-              </p>
-              <p>
-                <strong>Rating:</strong> {movie.rating}
-              </p>
-              <p>
-                <strong>Duration:</strong> {movie.duration}
-              </p>
-              <p>
-                <strong>Description:</strong> {movie.description}
-              </p>
-            </div>
-          </div>
+  return (
+    <div className="container mt-4">
+      {/* Back Button fixed to the top left corner */}
+      <button
+        className="btn btn-secondary"
+        onClick={handleBack}
+        style={{ position: 'fixed', top: '20px', left: '20px', zIndex: 1000 }}
+      >
+        &larr; Back
+      </button>
+
+      <div className="row">
+        {/* Poster Column */}
+        <div className="col-md-4">
+          <img
+            src={backgroundImage}
+            alt={`Poster for ${movie.title}`}
+            className="img-fluid"
+          />
         </div>
-      );
-    };
-    
-    export default MovieDetailsPage;
+        {/* Movie Details Column */}
+        <div className="col-md-8">
+          <h1>{movie.title}</h1>
+          <h4>Directed by: {movie.director}</h4>
+          <p>
+            <strong>Type:</strong> {movie.type}
+          </p>
+          <p>
+            <strong>Cast:</strong> {movie.cast}
+          </p>
+          <p>
+            <strong>Country:</strong> {movie.country}
+          </p>
+          <p>
+            <strong>Release Year:</strong> {movie.releaseYear}
+          </p>
+          <p>
+            <strong>Rating:</strong> {movie.rating}
+          </p>
+          <p>
+            <strong>Duration:</strong> {movie.duration}
+          </p>
+          <p>
+            <strong>Description:</strong> {movie.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MovieDetailsPage;
