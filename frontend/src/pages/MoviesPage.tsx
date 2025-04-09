@@ -6,9 +6,11 @@ import { Movie } from '../types/Movie';
 import AuthorizeView, { AuthorizedUser } from '../components/AuthorizeView';
 import Logout from '../components/Logout';
 import SplashImage from '../components/SplashImage';
+import { useNavigate } from 'react-router-dom';
 
 const MoviesPage: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -20,9 +22,23 @@ const MoviesPage: React.FC = () => {
     fetchMovies();
   }, []);
 
+    // Handler to navigate back to the previous page
+    const handleBack = () => {
+      navigate('/allmovies');
+    // Optionally, force scroll to top if needed:
+    // window.scrollTo(0, 0);
+    };
+
   return (
     <>
     <AuthorizeView>
+      <button
+        className="btn btn-secondary"
+        onClick={handleBack}
+        style={{ position: 'fixed', top: '20px', right: '20px', zIndex: 1000 }}
+      >
+        Check out All Movies
+      </button>
       <span>
         <Logout>
           Logout <AuthorizedUser value="email" />
