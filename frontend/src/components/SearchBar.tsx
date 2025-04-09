@@ -12,8 +12,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ search, setSearch }) => {
       placeholder="Search movies by title..."
       value={search}
       onChange={(e) => setSearch(e.target.value)}
-      className="form-control mb-3"
-      style={{ maxWidth: '300px' }}
+      className="form-control mb-12"
+      style={{ maxWidth: '1200px' }}
     />
   );
 };

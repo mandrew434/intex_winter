@@ -13,7 +13,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies }) => {
 
   // Reset the visible count when the movie list changes (e.g., due to a new search)
   useEffect(() => {
-    setVisibleCount(10);
+    setVisibleCount(30);
   }, [movies]);
 
   useEffect(() => {
