@@ -74,7 +74,12 @@ const MovieDetailsPage: React.FC = () => {
       .replace(/\./g, '')
       .replace(/é/g, 'e')
       .replace(/'/g, '');
-    const backgroundImage = `/MovieImagesFolder/MoviePosters/${formattedTitle}.jpg`;
+
+
+  const folderName = "Movie Posters";
+  const encodedFolder = encodeURIComponent(folderName); // becomes "Movie%20Posters"
+//   const backgroundImage = `/MovieImagesFolder/MoviePosters/${formattedTitle}.jpg`;
+  const backgroundImage = `https://intexstorage2025.blob.core.windows.net/intexcontainer/${encodedFolder}/${formattedTitle}.jpg`;
 
    // Handler to navigate back to the previous page
   const handleBack = () => {
