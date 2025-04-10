@@ -22,6 +22,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
     .replace(/"/g, '')
     .replace(/,/g, '')
     .replace(/\./g, '')
+    .replace(/\//g, '')
     .replace(/é/g, 'e')
     .replace(/'/g, '');
   // console.log('Formatted Title:', formattedTitle); // Debugging line
@@ -46,8 +47,8 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
       className="movie-card m-2"
       style={{ flex: '0 0 auto', width: '150px', cursor: 'pointer' }}
       onClick={handleClick} // NEW: Makes the card clickable
-      role="button"         // NEW: Accessibility role indicating it's a clickable element
-      tabIndex={0}          // NEW: Allows keyboard navigation (focusable element)
+      role="button" // NEW: Accessibility role indicating it's a clickable element
+      tabIndex={0} // NEW: Allows keyboard navigation (focusable element)
     >
       {/* ***** CHANGED: Display the image using the generated backgroundImage path ***** */}
       <img src={backgroundImage} alt={formattedTitle} className="img-fluid" />
@@ -58,4 +59,3 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
 };
 
 export default MovieCard;
-
