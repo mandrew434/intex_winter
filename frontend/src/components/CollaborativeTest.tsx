@@ -29,6 +29,33 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
       .catch(console.error);
   }, [userId]);
 
+  // Helper function to fetch movies in batches.
+  const fetchMoviesInBatches = async (
+    ids: string[],
+    batchSize = 100
+  ): Promise<Movie[]> => {
+    const movies: Movie[] = [];
+    for (let i = 0; i < ids.length; i += batchSize) {
+      // Get the current batch of IDs.
+      const batch = ids.slice(i, i + batchSize);
+      // Map each ID to a fetch promise.
+      const batchPromises = batch.map((id) =>
+        fetch(`${MOVIE_DETAILS_API_BASE}/${encodeURIComponent(id)}`, {
+          headers: { Accept: 'application/json' },
+        }).then((res) => {
+          if (!res.ok) {
+            throw new Error(`Movie ${id} fetch failed (${res.status})`);
+          }
+          return res.json() as Promise<Movie>;
+        })
+      );
+      // Wait for the current batch of fetches to complete.
+      const batchMovies = await Promise.all(batchPromises);
+      movies.push(...batchMovies);
+    }
+    return movies;
+  };
+
   // Once we have the collaborative recommendations, fetch each movie's details for each genre.
   useEffect(() => {
     if (!collabRec) return;
@@ -71,27 +98,19 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
 
     setLoadingMovies(true);
 
-    // For each genre, extract movie IDs and fetch movie details.
+    // For each genre, extract movie IDs and fetch movie details in batches.
     const fetchPromises = genres.map((genre) => {
-      // Access the genre property dynamically and cast to string[].
       const recsForGenre =
         (collabRec[genre as keyof CollaborativeRec] as string[]) || [];
       if (recsForGenre.length === 0) {
         // If no recommendations for this genre, resolve with an empty array.
         return Promise.resolve({ genre, movies: [] });
       }
-      // Map each movie ID to a fetch promise.
-      const moviePromises = recsForGenre.map((id) =>
-        fetch(`${MOVIE_DETAILS_API_BASE}/${encodeURIComponent(id)}`, {
-          headers: { Accept: 'application/json' },
-        }).then((res) => {
-          if (!res.ok) {
-            throw new Error(`Movie ${id} fetch failed (${res.status})`);
-          }
-          return res.json() as Promise<Movie>;
-        })
-      );
-      return Promise.all(moviePromises).then((movies) => ({ genre, movies }));
+      // Fetch movie details in batches.
+      return fetchMoviesInBatches(recsForGenre, 10).then((movies) => ({
+        genre,
+        movies,
+      }));
     });
 
     Promise.all(fetchPromises)
@@ -127,4 +146,3 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
 };
 
 export default CollaborativeTest;
-//test commit comment
