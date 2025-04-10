@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import ContentRecCarousel from '../components/ContentRecCarousel';
 
 // Define the Movie interface with the required fields, including genres.
 interface Movie {
@@ -215,7 +216,8 @@ const prettyGenreName = (genre: string): string => {
           <p>
             <strong>Description:</strong> {movie.description}
           </p>
-
+          <br />
+          <ContentRecCarousel showId={showId || ''} />
         </div>
       </div>
     </div>
