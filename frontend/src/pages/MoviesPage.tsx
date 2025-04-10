@@ -58,7 +58,7 @@ const MoviesPage: React.FC = () => {
             <MovieCarousel title="Top Rated" movies={movies} />
 
             {/* TEST */}
-            <CollaborativeTest userId={89} />
+            <CollaborativeTest userId={184} />
 
             <MovieCarousel title="Find Your Next Favorite" movies={movies} />
             <MovieCarousel title="Top Rated" movies={movies} />
