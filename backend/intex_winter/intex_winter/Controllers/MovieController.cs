@@ -182,4 +182,48 @@ public class MovieController : ControllerBase
         // Return the movie details as a JSON response.
         return Ok(movie.Title);
     }
+
+    [HttpGet("top-rated")]
+    public async Task<IActionResult> GetTopRatedMovies()
+    {
+        // Materialize the top 200 ratings into a list.
+        var top200 = await _context.MoviesRatings
+            .GroupBy(r => r.ShowId)
+            .Select(g => new
+            {
+                ShowId = g.Key,
+                AverageRating = g.Average(r => r.Rating)
+            })
+            .OrderByDescending(x => x.AverageRating)
+            .Take(200)
+            .ToListAsync();
+
+        // Join the in-memory list with the MoviesTitles table synchronously.
+        var result = top200.Join(
+                _context.MoviesTitles,
+                rating => rating.ShowId,
+                movie => movie.ShowId,
+                (rating, movie) => new
+                {
+                    movie.ShowId,
+                    movie.Type,
+                    movie.Title,
+                    movie.Director,
+                    movie.Cast,
+                    movie.Country,
+                    movie.ReleaseYear,
+                    movie.Rating,    // e.g. "PG‑13", from your Titles table
+                    movie.Duration,
+                    movie.Description,
+                    // ... include all other movie properties as needed
+                    // finally, our computed field:
+                    rating.AverageRating
+                })
+            .ToList();
+
+        return Ok(result);
+    }
+
+
+
 }

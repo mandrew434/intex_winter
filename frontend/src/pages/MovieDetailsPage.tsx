@@ -62,7 +62,7 @@ const MovieDetailsPage: React.FC = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(`https://localhost:5000/api/Movie/moviedetails/${showId}`);
+        const response = await fetch(`https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/moviedetails/${showId}`);
         if (!response.ok) {
           throw new Error('Error fetching movie details');
         }

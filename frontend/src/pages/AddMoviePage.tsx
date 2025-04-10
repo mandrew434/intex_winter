@@ -199,7 +199,7 @@ const GenreSelect: React.FC<{
       }
   
       try {
-        const response = await fetch('https://localhost:5000/api/Movie/AddMovie', {
+        const response = await fetch('https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/Movie/AddMovie', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -210,6 +210,20 @@ const GenreSelect: React.FC<{
         if (!response.ok) {
           throw new Error('Failed to add movie');
         }
+        // const addedMovie: Movie = await response.json();
+        // alert("Movie added successfully!");
+        // // Optionally, reset form fields.
+        // setType('');
+        // setTitle('');
+        // setDirector('');
+        // setCast('');
+        // setCountry('');
+        // setReleaseYear(new Date().getFullYear());
+        // setRating('');
+        // setDuration('');
+        // setDurationMin(0);
+        // setDescription('');
+        // setSelectedGenre('');
         const addedMovie: Movie = await response.json();
         alert("Movie added successfully!");
   

@@ -60,7 +60,7 @@ const AllMoviesPage: React.FC = () => {
 
   // Fetch movies from your API.
   useEffect(() => {
-    fetch('https://localhost:5000/api/Movie/all')
+    fetch('https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/all')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch movies');

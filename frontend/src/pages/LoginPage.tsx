@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
@@ -9,70 +9,6 @@ function LoginPage() {
   // state variable for error messages
   const [error, setError] = useState<string>('');
   const navigate = useNavigate();
-
-
-  // Callback once Google authentication returns a response.
-  const handleGoogleResponse = async (response: any) => {
-    const idToken = response.credential;
-    if (!idToken) {
-      console.error("No credential returned from Google");
-      return;
-    }
-
-    try {
-      // Send the token to your backend API endpoint for validation.
-      const backendResponse = await fetch('https://localhost:5000/api/auth/google', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ idToken }),
-      });
-
-      if (!backendResponse.ok) {
-        const errorInfo = await backendResponse.json();
-        throw new Error(errorInfo.message || 'Google login failed.');
-      }
-
-      const result = await backendResponse.json();
-      console.log("Logged in successfully:", result);
-      // Optionally, store tokens or update authentication context.
-      // Then, navigate to your protected area of the application.
-      navigate('/movies');
-    } catch (error: any) {
-      console.error("Error during Google sign in", error);
-      setError(error.message || 'Error logging in.');
-    }
-  };
-
-  
-
-  // useEffect(() => {
-  //   const script = document.createElement('script');
-  //   script.src = 'https://accounts.google.com/gsi/client';
-  //   script.async = true;
-  //   script.defer = true;
-  //   script.onload = () => {
-  //     const google = (window as any).google;
-  //     if (google && google.accounts) {
-  //       google.accounts.id.initialize({
-  //         client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
-  //         callback: handleGoogleResponse,
-  //       });
-  //       // Render the Google Sign-In button in a designated container.
-  //       google.accounts.id.renderButton(
-  //         document.getElementById('g_id_signin'),
-  //         { theme: 'outline', size: 'large' }
-  //       );
-  //     } else {
-  //       console.error('Google API failed to load.');
-  //     }
-  //   };
-
-  //   document.body.appendChild(script);
-  //   return () => {
-  //     document.body.removeChild(script);
-  //   };
-  // }, []);
-
 
   // handle change events for input fields
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,8 +37,8 @@ function LoginPage() {
     }
 
     const loginUrl = rememberme
-      ? 'https://localhost:5000/login?useCookies=true'
-      : 'https://localhost:5000/login?useSessionCookies=true';
+      ? 'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/login?useCookies=true'
+      : 'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/login?useSessionCookies=true';
 
     try {
       const response = await fetch(loginUrl, {
@@ -192,10 +128,6 @@ function LoginPage() {
                   Register
                 </button>
               </div>
-              <hr className="my-4" />
-                <div className="d-grid mb-2">
-                  <div id="g_id_signin"></div>
-                </div>
             </form>
             {error && <p className="error">{error}</p>}
           </div>

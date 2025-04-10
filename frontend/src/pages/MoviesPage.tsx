@@ -8,6 +8,7 @@ import Logout from '../components/Logout';
 import SplashImage from '../components/SplashImage';
 import { useNavigate } from 'react-router-dom';
 import CollaborativeTest from '../components/CollaborativeTest';
+import TopRatedCaro from '../components/TopRatedCaro';
 
 const MoviesPage: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -15,7 +16,7 @@ const MoviesPage: React.FC = () => {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await fetch(`https://localhost:5000/api/Movie/all`);
+      const response = await fetch(`https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/all`);
       const movieData = await response.json();
       setMovies(movieData);
     };
@@ -55,13 +56,12 @@ const MoviesPage: React.FC = () => {
           <div className="container">
             <SplashImage movies={movies} rotationInterval={5000} />
 
-            <MovieCarousel title="Top Rated" movies={movies} />
+            <TopRatedCaro />
 
             {/* TEST */}
             <CollaborativeTest userId={184} />
 
             <MovieCarousel title="Find Your Next Favorite" movies={movies} />
-            <MovieCarousel title="Top Rated" movies={movies} />
           </div>
         </div>
       </AuthorizeView>

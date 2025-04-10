@@ -65,3 +65,8 @@ dist/
 *.iml
 # If you have any other temporary files or folders, add them here.
 .fake
+
+appsettings.json
+
+Content.db
+ContentRecs.sql

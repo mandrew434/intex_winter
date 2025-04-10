@@ -21,7 +21,7 @@ builder.Services.AddDbContext<MoviesContext>(options =>
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("IdentityConnection")));
 builder.Services.AddDbContext<ContentDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("ContentConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ContentConnection")));
 builder.Services.AddDbContext<CollaborativeDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("CollaborativeConnection")));
 
@@ -68,10 +68,11 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:3000")
+        policy.WithOrigins("http://localhost:3000","https://blue-ocean-0062bc71e.6.azurestaticapps.net","intex-winter.database.windows.net")
             .AllowCredentials()
             .AllowAnyMethod()
             .AllowAnyHeader();
+
 
 
     });
