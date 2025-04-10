@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CollaborativeRec } from '../types/CollaborativeRec';
 import { useNavigate } from 'react-router-dom';
 
