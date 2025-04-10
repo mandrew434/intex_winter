@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import CookieConsent from 'react-cookie-consent';
+import BillboardBackground from '../components/BillboardBackground';
+
 
 function HomePage() {
   const navigate = useNavigate();
@@ -15,6 +17,7 @@ function HomePage() {
 
   return (
     <div
+
       style={{
         /* A vertical display that covers the full viewport height. */
         position: 'relative',
@@ -27,6 +30,8 @@ function HomePage() {
         color: '#fff',
       }}
     >
+      {/* Billboard background goes here, behind everything */}
+      <BillboardBackground />
       {/* Login Button (Fixed in Top Right) */}
       <button
         onClick={handleLogin}
@@ -110,3 +115,4 @@ function HomePage() {
 }
 
 export default HomePage;
+
