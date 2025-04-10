@@ -14,7 +14,7 @@ const AdminMoviesTable: React.FC = () => {
 
   // Fetch movies from the API endpoint.
   useEffect(() => {
-    fetch('https://localhost:5000/api/Movie/all')
+    fetch('https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/all')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch movies');
