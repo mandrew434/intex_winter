@@ -2,13 +2,14 @@
 import React, { useState } from 'react';
 import { ContentRec } from '../types/ContentRec';
 import { Movie } from '../types/Movie';
-import MovieCard from './MovieCard';
+import MovieCarousel from './MovieCarousel';
 
 const REC_API_BASE = 'https://localhost:5000/api/ContentRec';
 const MOVIE_DETAILS = 'https://localhost:5000/api/Movie/moviedetails';
 
 const ContentTest: React.FC = () => {
   const [showId, setShowId] = useState('');
+  const [recData, setRecData] = useState<ContentRec | null>(null);
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -17,28 +18,27 @@ const ContentTest: React.FC = () => {
     if (!showId) return;
     setLoading(true);
     setError(null);
+    setRecData(null);
     setMovies([]);
 
     try {
-      // 1) Fetch your rec list
+      // 1) fetch the rec list
       const recRes = await fetch(
         `${REC_API_BASE}/${encodeURIComponent(showId)}`,
-        {
-          headers: { Accept: 'application/json' },
-        }
+        { headers: { Accept: 'application/json' } }
       );
       if (!recRes.ok) {
         throw new Error(`Rec fetch failed (${recRes.status})`);
       }
-      const recData = (await recRes.json()) as ContentRec;
 
-      // 2) Extract & sort rec IDs
-      const recIds = (Object.entries(recData) as [keyof ContentRec, string][])
-        .filter(([key]) => key.startsWith('rec'))
-        .sort(([a], [b]) => parseInt(a.slice(3), 10) - parseInt(b.slice(3), 10))
-        .map(([, id]) => id);
+      const fetchedRec = (await recRes.json()) as ContentRec;
+      setRecData(fetchedRec);
 
-      // 3) Fetch details for each movie ID in parallel
+      // 2) drop the returned showId and keep only rec1…recN in order
+      const { showId: _, ...onlyRecs } = fetchedRec;
+      const recIds = Object.values(onlyRecs);
+
+      // 3) fetch details for each rec
       const moviePromises = recIds.map((id) =>
         fetch(`${MOVIE_DETAILS}/${encodeURIComponent(id)}`, {
           headers: { Accept: 'application/json' },
@@ -50,7 +50,7 @@ const ContentTest: React.FC = () => {
         })
       );
 
-      // 4) Await them all and set state
+      // 4) wait for them all
       const fetchedMovies = await Promise.all(moviePromises);
       setMovies(fetchedMovies);
     } catch (err: any) {
@@ -79,15 +79,8 @@ const ContentTest: React.FC = () => {
 
       {error && <div style={{ color: 'red' }}>{error}</div>}
 
-      {movies.length > 0 && (
-        <>
-          <h4>Recommendations for “{showId}”</h4>
-          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-            {movies.map((movie) => (
-              <MovieCard key={movie.showId} movie={movie} />
-            ))}
-          </div>
-        </>
+      {recData && movies.length > 0 && (
+        <MovieCarousel title={`You might also like:”`} movies={movies} />
       )}
     </div>
   );
