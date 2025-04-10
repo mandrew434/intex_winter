@@ -10,14 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14fb7a8e-18ed-40fa-a450-b4737c49663b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/intex_winter/Controllers/CollaborativeRecController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intex_winter/Data/CollaborativeDbContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intex_winter/Data/CollaborativeRec.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.intex_winter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.intex_winter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intex_winter/.idea/.idea.intex_winter.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/intex_winter/.idea/.idea.intex_winter.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intex_winter/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/intex_winter/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intex_winter/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/intex_winter/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intex_winter/bin/Debug/net8.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/intex_winter/bin/Debug/net8.0/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intex_winter/Identity.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/intex_winter/Identity.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intex_winter/Identity.sqlite-shm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/intex_winter/Identity.sqlite-wal" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/intex_winter/bin/Debug/net8.0/intex_winter.dll" beforeDir="false" afterPath="$PROJECT_DIR$/intex_winter/bin/Debug/net8.0/intex_winter.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +65,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1744237833058</updated>
-      <workItem from="1744237835631" duration="1469000" />
+      <workItem from="1744237835631" duration="1996000" />
     </task>
     <servers />
   </component>
