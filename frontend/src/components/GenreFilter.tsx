@@ -12,7 +12,11 @@ interface GenreFilterProps {
   onGenreChange: (genreId: string, checked: boolean) => void;
 }
 
-const GenreFilter: React.FC<GenreFilterProps> = ({ genreGroups, selectedGenres, onGenreChange }) => {
+const GenreFilter: React.FC<GenreFilterProps> = ({
+  genreGroups,
+  selectedGenres,
+  onGenreChange,
+}) => {
   return (
     <div>
       <h5 className="mb-3">Filter by Genre</h5>
@@ -35,3 +39,4 @@ const GenreFilter: React.FC<GenreFilterProps> = ({ genreGroups, selectedGenres, 
 };
 
 export default GenreFilter;
+//test commetn
