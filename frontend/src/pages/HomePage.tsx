@@ -43,11 +43,12 @@ function HomePage() {
           fontWeight: 'bold',
           fontSize: '0.9rem',
           border: '1px solid #fff',
-          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          backgroundColor: '#00b894',
           color: '#fff',
           borderRadius: '4px',
           cursor: 'pointer',
           transition: 'background-color 0.3s ease',
+          opacity: 0.99,
         }}
         onMouseOver={(e) => {
           (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'rgba(255,255,255,0.3)';
@@ -71,10 +72,10 @@ function HomePage() {
           padding: '20px',
         }}
       >
-        <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>
-          Welcome to the Home Page
+        <h1 style={{ fontSize: '3rem', marginBottom: '20px', opacity: 0.99 }}>
+          Welcome to CineNiche!
         </h1>
-        <p style={{ fontSize: '1.2rem', maxWidth: '500px', marginBottom: '30px', opacity: 0.9 }}>
+        <p style={{ fontSize: '1.2rem', maxWidth: '500px', marginBottom: '30px', opacity: 0.99 }}>
           Here you can find various resources and information.
         </p>
 
@@ -92,6 +93,7 @@ function HomePage() {
             cursor: 'pointer',
             boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
             transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+            opacity: 0.99,
           }}
           onMouseOver={(e) => {
             (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.05)';
