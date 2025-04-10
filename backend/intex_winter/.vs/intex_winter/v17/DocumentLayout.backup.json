@@ -34,19 +34,62 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "Name": "ST:55:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Program.cs",
+              "RelativeDocumentMoniker": "intex_winter\\Program.cs",
+              "ToolTip": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Program.cs",
+              "RelativeToolTip": "intex_winter\\Program.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwB8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T15:11:51.435Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:11:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RoleController.cs",
+              "DocumentMoniker": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Controllers\\RoleController.cs",
+              "RelativeDocumentMoniker": "intex_winter\\Controllers\\RoleController.cs",
+              "ToolTip": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Controllers\\RoleController.cs",
+              "RelativeToolTip": "intex_winter\\Controllers\\RoleController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAgwEkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T15:58:22.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MovieController.cs",
+              "DocumentMoniker": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Controllers\\MovieController.cs",
+              "RelativeDocumentMoniker": "intex_winter\\Controllers\\MovieController.cs",
+              "ToolTip": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Controllers\\MovieController.cs",
+              "RelativeToolTip": "intex_winter\\Controllers\\MovieController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAgwEwAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T21:10:35.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MoviesTitle.cs",
+              "DocumentMoniker": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Data\\MoviesTitle.cs",
+              "RelativeDocumentMoniker": "intex_winter\\Data\\MoviesTitle.cs",
+              "ToolTip": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\Data\\MoviesTitle.cs",
+              "RelativeToolTip": "intex_winter\\Data\\MoviesTitle.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAmwGEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T22:16:55.028Z"
             },
             {
               "$type": "Bookmark",

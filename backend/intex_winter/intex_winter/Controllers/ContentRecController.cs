@@ -1,4 +1,5 @@
 using intex_winter.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace intex_winter.Controllers;
