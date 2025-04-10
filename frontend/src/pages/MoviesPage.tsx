@@ -7,6 +7,7 @@ import AuthorizeView, { AuthorizedUser } from '../components/AuthorizeView';
 import Logout from '../components/Logout';
 import SplashImage from '../components/SplashImage';
 import { useNavigate } from 'react-router-dom';
+import CollaborativeTest from '../components/CollaborativeTest';
 
 const MoviesPage: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -22,40 +23,49 @@ const MoviesPage: React.FC = () => {
     fetchMovies();
   }, []);
 
-    // Handler to navigate back to the previous page
-    const handleBack = () => {
-      navigate('/allmovies');
+  // Handler to navigate back to the previous page
+  const handleBack = () => {
+    navigate('/allmovies');
     // Optionally, force scroll to top if needed:
     // window.scrollTo(0, 0);
-    };
+  };
 
   return (
     <>
-    <AuthorizeView>
-      <button
-        className="btn btn-secondary"
-        onClick={handleBack}
-        style={{ position: 'fixed', top: '20px', right: '20px', zIndex: 1000 }}
-      >
-        Check out All Movies
-      </button>
-      <span>
-        <Logout>
-          Logout <AuthorizedUser value="email" />
-        </Logout>
-      </span>
+      <AuthorizeView>
+        <button
+          className="btn btn-secondary"
+          onClick={handleBack}
+          style={{
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
+            zIndex: 1000,
+          }}
+        >
+          Check out All Movies
+        </button>
+        <span>
+          <Logout>
+            Logout <AuthorizedUser value="email" />
+          </Logout>
+        </span>
 
-      <div className="movies-page">
-        <div className="container">
-          <SplashImage movies={movies} rotationInterval={5000} />
+        <div className="movies-page">
+          <div className="container">
+            <SplashImage movies={movies} rotationInterval={5000} />
 
-          <MovieCarousel title="Top Rated" movies={movies} />
-          <MovieCarousel title="Find Your Next Favorite" movies={movies} />
-          <MovieCarousel title="Top Rated" movies={movies} />
+            <MovieCarousel title="Top Rated" movies={movies} />
+
+            {/* TEST */}
+            <CollaborativeTest userId={89} />
+
+            <MovieCarousel title="Find Your Next Favorite" movies={movies} />
+            <MovieCarousel title="Top Rated" movies={movies} />
+          </div>
         </div>
-      </div>
       </AuthorizeView>
-      </>
+    </>
   );
 };
 

@@ -3,10 +3,15 @@ import { CollaborativeRec } from '../types/CollaborativeRec';
 import { Movie } from '../types/Movie';
 import MovieCarousel from './MovieCarousel';
 
-const COLLAB_REC_API_BASE = 'https://localhost:5000/api/CollaborativeRecs';
-const MOVIE_DETAILS_API_BASE = 'https://localhost:5000/api/Movie/moviedetails';
+interface CollaborativeTestProps {
+  userId: number;
+}
 
-const CollaborativeTest: React.FC = () => {
+const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
+  const COLLAB_REC_API_BASE = 'https://localhost:5000/api/CollaborativeRecs';
+  const MOVIE_DETAILS_API_BASE =
+    'https://localhost:5000/api/Movie/moviedetails';
+
   // State for the collaborative recommendations.
   const [collabRec, setCollabRec] = useState<CollaborativeRec | null>(null);
   // Instead of a single movies array, store movies grouped by genre.
@@ -15,8 +20,6 @@ const CollaborativeTest: React.FC = () => {
   }>({});
   // State to track loading for fetching movie details.
   const [loadingMovies, setLoadingMovies] = useState(false);
-
-  const userId = 1;
 
   // Fetch collaborative recommendation data on mount.
   useEffect(() => {
@@ -31,7 +34,40 @@ const CollaborativeTest: React.FC = () => {
     if (!collabRec) return;
 
     // Define the genres you want to display.
-    const genres = ['action', 'animeSeriesInternationalTVShows', 'comedies'];
+    const genres = [
+      'action',
+      'adventure',
+      'animeSeriesInternationalTVShows',
+      'britishTVShowsDocuseriesInternationalTVShows',
+      'children',
+      'comedies',
+      'comediesDramasInternationalMovies',
+      'comediesInternationalMovies',
+      'comediesRomanticMovies',
+      'crimeTVShowsDocuseries',
+      'documentaries',
+      'documentariesInternationalMovies',
+      'docuseries',
+      'dramas',
+      'dramasInternationalMovies',
+      'dramasRomanticMovies',
+      'familyMovies',
+      'fantasy',
+      'horrorMovies',
+      'internationalMoviesThrillers',
+      'internationalTVShowsRomanticTVShowsTVDramas',
+      'kidsTV',
+      'languageTVShows',
+      'musicals',
+      'natureTV',
+      'realityTV',
+      'spirituality',
+      'tvAction',
+      'tvComedies',
+      'tvDramas',
+      'talkShowsTVComedies',
+      'thrillers',
+    ];
 
     setLoadingMovies(true);
 
@@ -78,11 +114,12 @@ const CollaborativeTest: React.FC = () => {
   return (
     <div>
       <h2>User {collabRec.userId} Recommendations</h2>
+      <p>-- We think you'll love some of these shows --</p>
       {loadingMovies && <p>Loading movie details…</p>}
       {/* Render a separate MovieCarousel per genre */}
       {Object.entries(moviesByGenre).map(([genre, movies]) => (
         <div key={genre}>
-          <MovieCarousel title={`${genre} Movies`} movies={movies} />
+          <MovieCarousel title={`Suggested ${genre}`} movies={movies} />
         </div>
       ))}
     </div>
