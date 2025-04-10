@@ -30,7 +30,9 @@ const MovieDetailsPage: React.FC = () => {
       try {
         // Make an API call to fetch details for the movie with the provided showId.
         // Adjust the URL endpoint according to your backend routing.
-        const response = await fetch(`https://localhost:5000/api/Movie/moviedetails/${showId}`);
+        const response = await fetch(
+          `https://localhost:5000/api/Movie/moviedetails/${showId}`
+        );
         if (!response.ok) {
           throw new Error('Error fetching movie details');
         }
@@ -59,29 +61,28 @@ const MovieDetailsPage: React.FC = () => {
     return <div className="container mt-4">No movie details found.</div>;
   }
 
-    // **** NEW: Compute the image path exactly like in MovieCard ****
-    const normalizedTitle = movie.title.normalize('NFC');
-    const formattedTitle = normalizedTitle
-      .replace(/:/g, '')
-      .replace(/&/g, '')
-      .replace(/!/g, '')
-      .replace(/&/g, '')
-      .replace(/-/g, '')
-      .replace(/\(/g, '')
-      .replace(/\)/g, '')
-      .replace(/"/g, '')
-      .replace(/,/g, '')
-      .replace(/\./g, '')
-      .replace(/é/g, 'e')
-      .replace(/'/g, '');
+  // **** NEW: Compute the image path exactly like in MovieCard ****
+  const normalizedTitle = movie.title.normalize('NFC');
+  const formattedTitle = normalizedTitle
+    .replace(/:/g, '')
+    .replace(/&/g, '')
+    .replace(/!/g, '')
+    .replace(/&/g, '')
+    .replace(/-/g, '')
+    .replace(/\(/g, '')
+    .replace(/\)/g, '')
+    .replace(/"/g, '')
+    .replace(/,/g, '')
+    .replace(/\./g, '')
+    .replace(/é/g, 'e')
+    .replace(/'/g, '');
 
-
-  const folderName = "Movie Posters";
+  const folderName = 'Movie Posters';
   const encodedFolder = encodeURIComponent(folderName); // becomes "Movie%20Posters"
-//   const backgroundImage = `/MovieImagesFolder/MoviePosters/${formattedTitle}.jpg`;
+  //   const backgroundImage = `/MovieImagesFolder/MoviePosters/${formattedTitle}.jpg`;
   const backgroundImage = `https://intexstorage2025.blob.core.windows.net/intexcontainer/${encodedFolder}/${formattedTitle}.jpg`;
 
-   // Handler to navigate back to the previous page
+  // Handler to navigate back to the previous page
   const handleBack = () => {
     navigate(-1);
     // Optionally, force scroll to top if needed:
