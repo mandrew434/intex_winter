@@ -1,8 +1,7 @@
-import React from 'react';
+// import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import CookieConsent from 'react-cookie-consent';
 import BillboardBackground from '../components/BillboardBackground';
-
 
 function HomePage() {
   const navigate = useNavigate();
@@ -17,7 +16,6 @@ function HomePage() {
 
   return (
     <div
-
       style={{
         /* A vertical display that covers the full viewport height. */
         position: 'relative',
@@ -51,10 +49,12 @@ function HomePage() {
           opacity: 0.99,
         }}
         onMouseOver={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'rgba(255,255,255,0.3)';
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+            'rgba(255,255,255,0.3)';
         }}
         onMouseOut={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'rgba(255,255,255,0.1)';
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+            'rgba(255,255,255,0.1)';
         }}
       >
         Login
@@ -75,7 +75,14 @@ function HomePage() {
         <h1 style={{ fontSize: '3rem', marginBottom: '20px', opacity: 0.99 }}>
           Welcome to CineNiche!
         </h1>
-        <p style={{ fontSize: '1.2rem', maxWidth: '500px', marginBottom: '30px', opacity: 0.99 }}>
+        <p
+          style={{
+            fontSize: '1.2rem',
+            maxWidth: '500px',
+            marginBottom: '30px',
+            opacity: 0.99,
+          }}
+        >
           Here you can find various resources and information.
         </p>
 
@@ -96,12 +103,16 @@ function HomePage() {
             opacity: 0.99,
           }}
           onMouseOver={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.05)';
-            (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 6px 12px rgba(0,0,0,0.3)';
+            (e.currentTarget as HTMLButtonElement).style.transform =
+              'scale(1.05)';
+            (e.currentTarget as HTMLButtonElement).style.boxShadow =
+              '0 6px 12px rgba(0,0,0,0.3)';
           }}
           onMouseOut={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.0)';
-            (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+            (e.currentTarget as HTMLButtonElement).style.transform =
+              'scale(1.0)';
+            (e.currentTarget as HTMLButtonElement).style.boxShadow =
+              '0 4px 10px rgba(0,0,0,0.3)';
           }}
         >
           Sign Up
@@ -117,4 +128,3 @@ function HomePage() {
 }
 
 export default HomePage;
-

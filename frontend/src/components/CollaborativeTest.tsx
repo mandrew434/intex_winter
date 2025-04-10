@@ -1,110 +1,126 @@
-// import { useEffect, useState } from 'react';
-// import { CollaborativeRec } from '../types/CollaborativeRec';
-// import { useNavigate } from 'react-router-dom';
-
-// interface CollaborativeTestProps {
-//   recs: Rec;
-//   handleClick: (item: string) => void;
-// }
-
-// const CollaborativeTest: React.FC<CollaborativeTestProps> = ({
-//   recs,
-//   handleClick,
-// }) => {
-//   const [recs, setRecs] = useState<CollaborativeRec | null>(null);
-//   const userId = 1;
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     fetch(`https://localhost:5000/api/CollaborativeRecs/${userId}`)
-//       .then((res) => res.json())
-//       .then(setRecs)
-//       .catch(console.error);
-//   }, [userId]);
-
-//   if (!recs) return <div>Loading…</div>;
-
-//   const firstAction = recs.action?.[0] ?? '—';
-//   const actionRecs = recs.action || [];
-
-//   console.log('Action Recommendations:', actionRecs);
-
-//   const handleClick = () => {
-//     console.log(
-//       `Navigating to MovieDetailsPage for showId: ${{ firstAction }}`
-//     );
-//     // Navigate to a URL including the movie's showId.
-//     // You should have a corresponding route in your Router, e.g., "/movie-details/:showId"
-//     navigate(`/moviedetails/${firstAction}`);
-//   };
-
-//   return (
-//     // <div>
-//     //   <h2>User {recs.userId} Recommendations</h2>
-//     //   <p>
-//     //     First Action Movie ID: <strong>{firstAction}</strong>
-//     //   </p>
-//     //   {/* … */}
-//     //   <button onClick={handleClick}></button>
-//     // </div>
-//     <div>
-//       <h2>User {recs.userId} Recommendations</h2>
-//       <p>
-//         First Action Movie ID: <strong>{firstAction}</strong>
-//       </p>
-//       {/* Create a button for each action item */}
-//       {actionRecs.map((item, index) => (
-//         <button key={index} onClick={() => handleClick(item)}>
-//           {`Action ${index + 1}: ${item}`}
-//         </button>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default CollaborativeTest;
-
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { CollaborativeRec } from '../types/CollaborativeRec';
+import { Movie } from '../types/Movie';
+import MovieCarousel from './MovieCarousel';
 
-const CollaborativeTest: React.FC = () => {
-  // Rename the state variable to avoid conflict with any prop name.
+interface CollaborativeTestProps {
+  userId: number;
+}
+
+const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
+  const COLLAB_REC_API_BASE = 'https://localhost:5000/api/CollaborativeRecs';
+  const MOVIE_DETAILS_API_BASE =
+    'https://localhost:5000/api/Movie/moviedetails';
+
+  // State for the collaborative recommendations.
   const [collabRec, setCollabRec] = useState<CollaborativeRec | null>(null);
-  const userId = 1;
-  const navigate = useNavigate();
+  // Instead of a single movies array, store movies grouped by genre.
+  const [moviesByGenre, setMoviesByGenre] = useState<{
+    [genre: string]: Movie[];
+  }>({});
+  // State to track loading for fetching movie details.
+  const [loadingMovies, setLoadingMovies] = useState(false);
 
+  // Fetch collaborative recommendation data on mount.
   useEffect(() => {
-    fetch(`https://localhost:5000/api/CollaborativeRecs/${userId}`)
+    fetch(`${COLLAB_REC_API_BASE}/${userId}`)
       .then((res) => res.json())
       .then(setCollabRec)
       .catch(console.error);
   }, [userId]);
 
-  if (!collabRec) return <div>Loading…</div>;
+  // Once we have the collaborative recommendations, fetch each movie's details for each genre.
+  useEffect(() => {
+    if (!collabRec) return;
 
-  // Get the first action or default to '—'
-  const firstAction = collabRec.action?.[0] ?? '—';
-  // Ensure actionRecs is an array
-  const actionRecs = collabRec.action || [];
+    // Define the genres you want to display.
+    const genres = [
+      'action',
+      'adventure',
+      'animeSeriesInternationalTVShows',
+      'britishTVShowsDocuseriesInternationalTVShows',
+      'children',
+      'comedies',
+      'comediesDramasInternationalMovies',
+      'comediesInternationalMovies',
+      'comediesRomanticMovies',
+      'crimeTVShowsDocuseries',
+      'documentaries',
+      'documentariesInternationalMovies',
+      'docuseries',
+      'dramas',
+      'dramasInternationalMovies',
+      'dramasRomanticMovies',
+      'familyMovies',
+      'fantasy',
+      'horrorMovies',
+      'internationalMoviesThrillers',
+      'internationalTVShowsRomanticTVShowsTVDramas',
+      'kidsTV',
+      'languageTVShows',
+      'musicals',
+      'natureTV',
+      'realityTV',
+      'spirituality',
+      'tvAction',
+      'tvComedies',
+      'tvDramas',
+      'talkShowsTVComedies',
+      'thrillers',
+    ];
 
-  // Local click handler that accepts an action item
-  const handleClick = (item: string) => {
-    console.log(`Navigating to MovieDetailsPage for showId: ${item}`);
-    navigate(`/moviedetails/${item}`);
-  };
+    setLoadingMovies(true);
+
+    // For each genre, extract movie IDs and fetch movie details.
+    const fetchPromises = genres.map((genre) => {
+      // Access the genre property dynamically and cast to string[].
+      const recsForGenre =
+        (collabRec[genre as keyof CollaborativeRec] as string[]) || [];
+      if (recsForGenre.length === 0) {
+        // If no recommendations for this genre, resolve with an empty array.
+        return Promise.resolve({ genre, movies: [] });
+      }
+      // Map each movie ID to a fetch promise.
+      const moviePromises = recsForGenre.map((id) =>
+        fetch(`${MOVIE_DETAILS_API_BASE}/${encodeURIComponent(id)}`, {
+          headers: { Accept: 'application/json' },
+        }).then((res) => {
+          if (!res.ok) {
+            throw new Error(`Movie ${id} fetch failed (${res.status})`);
+          }
+          return res.json() as Promise<Movie>;
+        })
+      );
+      return Promise.all(moviePromises).then((movies) => ({ genre, movies }));
+    });
+
+    Promise.all(fetchPromises)
+      .then((results) => {
+        const moviesObj: { [genre: string]: Movie[] } = {};
+        results.forEach(({ genre, movies }) => {
+          moviesObj[genre] = movies;
+        });
+        setMoviesByGenre(moviesObj);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setLoadingMovies(false));
+  }, [collabRec]);
+
+  // Show a loading state if collaborative recommendations haven't been loaded yet.
+  if (!collabRec) {
+    return <div>Loading collaborative recommendations…</div>;
+  }
 
   return (
     <div>
       <h2>User {collabRec.userId} Recommendations</h2>
-      <p>
-        First Action Movie ID: <strong>{firstAction}</strong>
-      </p>
-      {/* Create a button for each action item */}
-      {actionRecs.map((item, index) => (
-        <button key={index} onClick={() => handleClick(item)}>
-          {`Action ${index + 1}: ${item}`}
-        </button>
+      <p>-- We think you'll love some of these shows --</p>
+      {loadingMovies && <p>Loading movie details…</p>}
+      {/* Render a separate MovieCarousel per genre */}
+      {Object.entries(moviesByGenre).map(([genre, movies]) => (
+        <div key={genre}>
+          <MovieCarousel title={`Suggested ${genre}`} movies={movies} />
+        </div>
       ))}
     </div>
   );

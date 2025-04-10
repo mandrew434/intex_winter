@@ -1,10 +1,16 @@
-/* import React, { useEffect, useState } from 'react';
-import { ContentRec } from '../types/ContentRec'; // adjust path as needed
+// src/components/ContentTest.tsx
+import React, { useState } from 'react';
+import { ContentRec } from '../types/ContentRec';
+import { Movie } from '../types/Movie';
+import MovieCarousel from './MovieCarousel';
 
+const REC_API_BASE = 'https://localhost:5000/api/ContentRec';
+const MOVIE_DETAILS = 'https://localhost:5000/api/Movie/moviedetails';
 
 const ContentTest: React.FC = () => {
   const [showId, setShowId] = useState('');
-  const [data, setData] = useState<ContentRec | null>(null);
+  const [recData, setRecData] = useState<ContentRec | null>(null);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -12,114 +18,31 @@ const ContentTest: React.FC = () => {
     if (!showId) return;
     setLoading(true);
     setError(null);
-    setData(null);
-    try {
-      const res = await fetch(
-        `https://localhost:5000/api/ContentRec/${encodeURIComponent(showId)}`
-      );
-      if (!res.ok) throw new Error(`Server responded ${res.status}`);
-      const json = (await res.json()) as ContentRec;
-      setData(json);
-    } catch (err: any) {
-      setError(err.message || 'Unknown error');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Extract and sort all recN entries
-  const recEntries = data
-    ? (Object.entries(data) as [keyof ContentRec, string][])
-        .filter(([key]) => key.startsWith('rec'))
-        .sort(([a], [b]) => {
-          const na = parseInt(a.replace('rec', ''), 10);
-          const nb = parseInt(b.replace('rec', ''), 10);
-          return na - nb;
-        })
-    : [];
-
-  return (
-    <div style={{ maxWidth: 400, margin: '0 auto' }}>
-      <h3>Load Content Recommendations</h3>
-      <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-        <input
-          type="text"
-          placeholder="Enter showId (e.g. s1)"
-          value={showId}
-          onChange={(e) => setShowId(e.target.value)}
-          style={{ flex: 1 }}
-        />
-        <button onClick={handleFetch} disabled={loading || !showId}>
-          {loading ? 'Loading…' : 'Fetch'}
-        </button>
-      </div>
-
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-
-      {data && (
-        <div>
-          <h4>Recommendations for "{data.showId}"</h4>
-          <ul>
-            {recEntries.map(([key, val]) => (
-              <li key={key}>
-                <strong>{key}:</strong> {val}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default ContentTest;
- */
-
-
-
-
-// src/components/ContentTest.tsx
-import React, { useState } from 'react';
-import { ContentRec } from '../types/ContentRec';
-import { Movie } from '../types/Movie';
-import MovieCard from './MovieCard';
-
-const REC_API_BASE    = 'https://localhost:5000/api/ContentRec';
-const MOVIE_DETAILS  = 'https://localhost:5000/api/Movie/moviedetails';
-
-const ContentTest: React.FC = () => {
-  const [showId, setShowId]     = useState('');
-  const [movies, setMovies]     = useState<Movie[]>([]);
-  const [loading, setLoading]   = useState(false);
-  const [error, setError]       = useState<string | null>(null);
-
-  const handleFetch = async () => {
-    if (!showId) return;
-    setLoading(true);
-    setError(null);
+    setRecData(null);
     setMovies([]);
 
     try {
-      // 1) Fetch your rec list
-      const recRes = await fetch(`${REC_API_BASE}/${encodeURIComponent(showId)}`, {
-        headers: { 'Accept': 'application/json' }
-      });
+      // 1) fetch the rec list
+      const recRes = await fetch(
+        `${REC_API_BASE}/${encodeURIComponent(showId)}`,
+        { headers: { Accept: 'application/json' } }
+      );
       if (!recRes.ok) {
         throw new Error(`Rec fetch failed (${recRes.status})`);
       }
-      const recData = (await recRes.json()) as ContentRec;
 
-      // 2) Extract & sort rec IDs
-      const recIds = (Object.entries(recData) as [keyof ContentRec, string][])
-        .filter(([key]) => key.startsWith('rec'))
-        .sort(([a], [b]) => parseInt(a.slice(3), 10) - parseInt(b.slice(3), 10))
-        .map(([, id]) => id);
+      const fetchedRec = (await recRes.json()) as ContentRec;
+      setRecData(fetchedRec);
 
-      // 3) Fetch details for each movie ID in parallel
-      const moviePromises = recIds.map(id =>
+      // 2) drop the returned showId and keep only rec1…recN in order
+      const { showId: _, ...onlyRecs } = fetchedRec;
+      const recIds = Object.values(onlyRecs);
+
+      // 3) fetch details for each rec
+      const moviePromises = recIds.map((id) =>
         fetch(`${MOVIE_DETAILS}/${encodeURIComponent(id)}`, {
-          headers: { 'Accept': 'application/json' }
-        }).then(res => {
+          headers: { Accept: 'application/json' },
+        }).then((res) => {
           if (!res.ok) {
             throw new Error(`Movie ${id} fetch failed (${res.status})`);
           }
@@ -127,10 +50,9 @@ const ContentTest: React.FC = () => {
         })
       );
 
-      // 4) Await them all and set state
+      // 4) wait for them all
       const fetchedMovies = await Promise.all(moviePromises);
       setMovies(fetchedMovies);
-
     } catch (err: any) {
       console.error(err);
       setError(err.message || 'Unknown error');
@@ -147,7 +69,7 @@ const ContentTest: React.FC = () => {
           type="text"
           placeholder="Enter showId (e.g. s1)"
           value={showId}
-          onChange={e => setShowId(e.target.value)}
+          onChange={(e) => setShowId(e.target.value)}
           style={{ flex: 1 }}
         />
         <button onClick={handleFetch} disabled={loading || !showId}>
@@ -157,15 +79,8 @@ const ContentTest: React.FC = () => {
 
       {error && <div style={{ color: 'red' }}>{error}</div>}
 
-      {movies.length > 0 && (
-        <>
-          <h4>Recommendations for “{showId}”</h4>
-          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-            {movies.map(movie => (
-              <MovieCard key={movie.showId} movie={movie} />
-            ))}
-          </div>
-        </>
+      {recData && movies.length > 0 && (
+        <MovieCarousel title={`You might also like:”`} movies={movies} />
       )}
     </div>
   );
