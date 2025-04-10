@@ -6,7 +6,6 @@ namespace intex_winter.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
 public class CollaborativeRecsController : ControllerBase
 {
     private readonly CollaborativeDbContext _db;
