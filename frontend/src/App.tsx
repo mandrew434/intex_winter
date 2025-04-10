@@ -11,7 +11,7 @@ import AdminPage from './pages/AdminPage';
 import AllMoviesPage from './pages/AllMoviesPage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
 import AddMoviePage from './pages/AddMoviePage';
-import ContentTest from './components/ContentTest';
+import TopRatedCaro from './components/TopRatedCaro';
 
 function App() {
   return (
@@ -33,7 +33,7 @@ function App() {
               element={<MovieDetailsPage />}
             />
             <Route path="/admin/add" element={<AddMoviePage />} />
-            <Route path="/contenttest" element={<ContentTest />} />
+            <Route path="/contenttest" element={<TopRatedCaro />} />
           </Routes>
         </main>
 
