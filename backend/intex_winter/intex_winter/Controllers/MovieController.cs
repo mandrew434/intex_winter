@@ -51,9 +51,38 @@ public class MovieController : ControllerBase
     [HttpPost("AddMovie")]
     public IActionResult AddMovie([FromBody] MoviesTitle newMovie)
     {
-        _context.MoviesTitles.Add(newMovie);
-        _context.SaveChanges();
-        return Ok(newMovie);
+        
+            // Retrieve only the ShowId values and then evaluate in memory.
+            var showIds = _context.MoviesTitles
+                .Select(m => m.ShowId)
+                .AsEnumerable(); // Now processing happens on the client.
+
+            // Find the maximum numeric value in the ShowIds.
+            int maxNumericId = showIds
+                .Select(id => int.Parse(id.Substring(1)))
+                .DefaultIfEmpty(8807)  // If no movies exist, the max will be 8807.
+                .Max();
+
+            int newNumericId = maxNumericId + 1;
+
+            // Assign the new ShowId using the pattern, for instance "s8808" if max was "s8807".
+            newMovie.ShowId = "s" + newNumericId;
+            Console.WriteLine(newMovie);
+        try
+        {
+
+            _context.MoviesTitles.Add(newMovie);
+            _context.SaveChanges();
+
+            return Ok(newMovie);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(newMovie);
+            // Handle any exceptions that occur during the process.
+            return BadRequest(new { message = "An error occurred while adding the movie.", error = ex.Message });
+        }
+
     }
 
     [HttpPut("UpdateMovie/{showId}")]

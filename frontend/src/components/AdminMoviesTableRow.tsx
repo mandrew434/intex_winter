@@ -9,79 +9,160 @@ interface AdminMoviesTableRowProps {
   onDelete: (showId: string) => void;
 }
 
+// Define an inline type for genre options.
+interface GenreOption {
+  value: string;
+  label: string;
+}
+
+// Define a constant array for genre options.
+const genreOptions: GenreOption[] = [
+  { value: 'action', label: 'Action' },
+  { value: 'adventure', label: 'Adventure' },
+  { value: 'animeSeriesInternationalTvShows', label: 'Anime Series / International TV Shows' },
+  { value: 'britishTvShowsDocuseriesInternationalTvShows', label: 'British TV Shows / Docuseries / International TV Shows' },
+  { value: 'children', label: 'Children' },
+  { value: 'comedies', label: 'Comedies' },
+  { value: 'comediesDramasInternationalMovies', label: 'Comedies & Dramas International Movies' },
+  { value: 'comediesInternationalMovies', label: 'Comedies International Movies' },
+  { value: 'comediesRomanticMovies', label: 'Comedies Romantic Movies' },
+  { value: 'crimeTvShowsDocuseries', label: 'Crime TV Shows / Docuseries' },
+  { value: 'documentaries', label: 'Documentaries' },
+  { value: 'documentariesInternationalMovies', label: 'Documentaries International Movies' },
+  { value: 'docuseries', label: 'Docuseries' },
+  { value: 'dramas', label: 'Dramas' },
+  { value: 'dramasInternationalMovies', label: 'Dramas International Movies' },
+  { value: 'dramasRomanticMovies', label: 'Dramas Romantic Movies' },
+  { value: 'familyMovies', label: 'Family Movies' },
+  { value: 'fantasy', label: 'Fantasy' },
+  { value: 'horrorMovies', label: 'Horror Movies' },
+  { value: 'internationalMoviesThrillers', label: 'International Movies Thrillers' },
+  { value: 'internationalTvShowsRomanticTvShowsTvDramas', label: 'International TV Shows / Romantic TV Shows / TV Dramas' },
+  { value: 'kidsTv', label: 'Kids TV' },
+  { value: 'languageTvShows', label: 'Language TV Shows' },
+  { value: 'musicals', label: 'Musicals' },
+  { value: 'natureTv', label: 'Nature TV' },
+  { value: 'realityTv', label: 'Reality TV' },
+  { value: 'spirituality', label: 'Spirituality' },
+  { value: 'tvAction', label: 'TV Action' },
+  { value: 'tvComedies', label: 'TV Comedies' },
+  { value: 'tvDramas', label: 'TV Dramas' },
+  { value: 'talkShowsTvComedies', label: 'Talk Shows / TV Comedies' },
+  { value: 'thrillers', label: 'Thrillers' }
+];
+
 const AdminMoviesTableRow: React.FC<AdminMoviesTableRowProps> = ({ movie, onUpdate, onDelete }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [editedTitle, setEditedTitle] = useState<string>(movie.title);
   const [editedDirector, setEditedDirector] = useState<string>(movie.director);
   const [editedReleaseYear, setEditedReleaseYear] = useState<number>(movie.releaseYear);
   const [editedRating, setEditedRating] = useState<string>(movie.rating);
-  const [editedGenreGroups, setEditedGenreGroups] = useState<string[]>([]);
+  
+  // State for the selected genre.
+  const [selectedGenre, setSelectedGenre] = useState<string>("");
 
-  // Initialize genre checkboxes based on movie data.
+  // State for the inline searchable dropdown.
+  const [genreSearchTerm, setGenreSearchTerm] = useState<string>("");
+  const [genreDropdownOpen, setGenreDropdownOpen] = useState<boolean>(false);
+
+  // When the movie changes, initialize selectedGenre from movie data.
+  // For simplicity, we pick the first matching genre from mainGenres.
   useEffect(() => {
-    const initialGroups = mainGenres
-      .filter((group: GenreGroup) =>
-        group.keys.some((key) => Number((movie as any)[key]) === 1)
-      )
-      .map((group: GenreGroup) => group.id);
-    setEditedGenreGroups(initialGroups);
+    const found = mainGenres.find((group: GenreGroup) =>
+      group.keys.some((key) => Number((movie as any)[key]) === 1)
+    );
+    if (found) {
+      setSelectedGenre(found.id);
+    } else {
+      setSelectedGenre("");
+    }
+    // Also clear any previous search term.
+    setGenreSearchTerm("");
+    setGenreDropdownOpen(false);
   }, [movie]);
 
-  const handleToggleGenre = (groupId: string, checked: boolean) => {
-    setEditedGenreGroups((prev) =>
-      checked ? [...prev, groupId] : prev.filter((id) => id !== groupId)
-    );
-  };
-
   const handleSave = () => {
-    // Build an updated movie record.
+    // Build an updated movie record, first resetting all genre flags.
     const updatedMovie: Movie = {
       ...movie,
       title: editedTitle,
       director: editedDirector,
       releaseYear: editedReleaseYear,
       rating: editedRating,
-      // For each main genre group, update each key:
-      action: editedGenreGroups.includes('action-adventure') ? 1 : 0,
-      adventure: editedGenreGroups.includes('action-adventure') ? 1 : 0,
-      tvAction: editedGenreGroups.includes('action-adventure') ? 1 : 0,
-
-      comedies: editedGenreGroups.includes('comedy') ? 1 : 0,
-      comediesDramasInternationalMovies: editedGenreGroups.includes('comedy') ? 1 : 0,
-      comediesInternationalMovies: editedGenreGroups.includes('comedy') ? 1 : 0,
-      comediesRomanticMovies: editedGenreGroups.includes('comedy') ? 1 : 0,
-      tvComedies: editedGenreGroups.includes('comedy') ? 1 : 0,
-      talkShowsTvComedies: editedGenreGroups.includes('comedy') ? 1 : 0,
-
-      dramas: editedGenreGroups.includes('drama') ? 1 : 0,
-      dramasInternationalMovies: editedGenreGroups.includes('drama') ? 1 : 0,
-      dramasRomanticMovies: editedGenreGroups.includes('drama') ? 1 : 0,
-      tvDramas: editedGenreGroups.includes('drama') ? 1 : 0,
-      internationalTvShowsRomanticTvShowsTvDramas: editedGenreGroups.includes('drama') ? 1 : 0,
-
-      documentaries: editedGenreGroups.includes('documentary') ? 1 : 0,
-      documentariesInternationalMovies: editedGenreGroups.includes('documentary') ? 1 : 0,
-      docuseries: editedGenreGroups.includes('documentary') ? 1 : 0,
-      britishTvShowsDocuseriesInternationalTvShows: editedGenreGroups.includes('documentary') ? 1 : 0,
-      crimeTvShowsDocuseries: editedGenreGroups.includes('documentary') ? 1 : 0,
-
-      horrorMovies: editedGenreGroups.includes('horror-thriller') ? 1 : 0,
-      thrillers: editedGenreGroups.includes('horror-thriller') ? 1 : 0,
-      internationalMoviesThrillers: editedGenreGroups.includes('horror-thriller') ? 1 : 0,
-
-      children: editedGenreGroups.includes('family') ? 1 : 0,
-      familyMovies: editedGenreGroups.includes('family') ? 1 : 0,
-      kidsTv: editedGenreGroups.includes('family') ? 1 : 0,
-
-      fantasy: editedGenreGroups.includes('fantasy-musical') ? 1 : 0,
-      musicals: editedGenreGroups.includes('fantasy-musical') ? 1 : 0,
-
-      animeSeriesInternationalTvShows: editedGenreGroups.includes('international') ? 1 : 0,
-      languageTvShows: editedGenreGroups.includes('international') ? 1 : 0,
-      natureTv: editedGenreGroups.includes('international') ? 1 : 0,
-      realityTv: editedGenreGroups.includes('international') ? 1 : 0,
-      spirituality: editedGenreGroups.includes('international') ? 1 : 0,
+      action: 0,
+      adventure: 0,
+      tvAction: 0,
+      comedies: 0,
+      comediesDramasInternationalMovies: 0,
+      comediesInternationalMovies: 0,
+      comediesRomanticMovies: 0,
+      tvComedies: 0,
+      talkShowsTvComedies: 0,
+      dramas: 0,
+      dramasInternationalMovies: 0,
+      dramasRomanticMovies: 0,
+      tvDramas: 0,
+      internationalTvShowsRomanticTvShowsTvDramas: 0,
+      documentaries: 0,
+      documentariesInternationalMovies: 0,
+      docuseries: 0,
+      britishTvShowsDocuseriesInternationalTvShows: 0,
+      crimeTvShowsDocuseries: 0,
+      horrorMovies: 0,
+      thrillers: 0,
+      internationalMoviesThrillers: 0,
+      children: 0,
+      familyMovies: 0,
+      kidsTv: 0,
+      fantasy: 0,
+      musicals: 0,
+      animeSeriesInternationalTvShows: 0,
+      languageTvShows: 0,
+      natureTv: 0,
+      realityTv: 0,
+      spirituality: 0,
     };
+
+    // Map the selectedGenre to the appropriate flags.
+    if (selectedGenre === 'action-adventure') {
+      updatedMovie.action = updatedMovie.adventure = updatedMovie.tvAction = 1;
+    } else if (selectedGenre === 'comedy') {
+      updatedMovie.comedies =
+        updatedMovie.comediesDramasInternationalMovies =
+        updatedMovie.comediesInternationalMovies =
+        updatedMovie.comediesRomanticMovies =
+        updatedMovie.tvComedies =
+        updatedMovie.talkShowsTvComedies = 1;
+    } else if (selectedGenre === 'drama') {
+      updatedMovie.dramas =
+        updatedMovie.dramasInternationalMovies =
+        updatedMovie.dramasRomanticMovies =
+        updatedMovie.tvDramas =
+        updatedMovie.internationalTvShowsRomanticTvShowsTvDramas = 1;
+    } else if (selectedGenre === 'documentary') {
+      updatedMovie.documentaries =
+        updatedMovie.documentariesInternationalMovies =
+        updatedMovie.docuseries =
+        updatedMovie.britishTvShowsDocuseriesInternationalTvShows =
+        updatedMovie.crimeTvShowsDocuseries = 1;
+    } else if (selectedGenre === 'horror-thriller') {
+      updatedMovie.horrorMovies =
+        updatedMovie.thrillers =
+        updatedMovie.internationalMoviesThrillers = 1;
+    } else if (selectedGenre === 'family') {
+      updatedMovie.children =
+        updatedMovie.familyMovies =
+        updatedMovie.kidsTv = 1;
+    } else if (selectedGenre === 'fantasy-musical') {
+      updatedMovie.fantasy =
+        updatedMovie.musicals = 1;
+    } else if (selectedGenre === 'international') {
+      updatedMovie.animeSeriesInternationalTvShows =
+        updatedMovie.languageTvShows =
+        updatedMovie.natureTv =
+        updatedMovie.realityTv =
+        updatedMovie.spirituality = 1;
+    }
     onUpdate(updatedMovie);
     setIsEditing(false);
   };
@@ -92,12 +173,13 @@ const AdminMoviesTableRow: React.FC<AdminMoviesTableRowProps> = ({ movie, onUpda
     setEditedDirector(movie.director);
     setEditedReleaseYear(movie.releaseYear);
     setEditedRating(movie.rating);
-    const initialGroups = mainGenres
-      .filter((group: GenreGroup) =>
-        group.keys.some((key) => Number((movie as any)[key]) === 1)
-      )
-      .map((group: GenreGroup) => group.id);
-    setEditedGenreGroups(initialGroups);
+    // Reset genre selection based on movie data.
+    const found = mainGenres.find((group: GenreGroup) =>
+      group.keys.some((key) => Number((movie as any)[key]) === 1)
+    );
+    setSelectedGenre(found ? found.id : "");
+    setGenreSearchTerm("");
+    setGenreDropdownOpen(false);
   };
 
   return (
@@ -129,21 +211,63 @@ const AdminMoviesTableRow: React.FC<AdminMoviesTableRowProps> = ({ movie, onUpda
               className="form-control"
             />
           </td>
+          {/* Genre searchable dropdown inline */}
           <td>
-            {mainGenres.map((group) => (
-              <div key={group.id} className="form-check">
-                <input
-                  type="checkbox"
-                  id={`${movie.showId}-${group.id}`}
-                  className="form-check-input"
-                  checked={editedGenreGroups.includes(group.id)}
-                  onChange={(e) => handleToggleGenre(group.id, e.target.checked)}
-                />
-                <label className="form-check-label" htmlFor={`${movie.showId}-${group.id}`}>
-                  {group.label}
-                </label>
-              </div>
-            ))}
+            <div className="dropdown" style={{ position: 'relative' }}>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search genre..."
+                value={
+                  genreDropdownOpen
+                    ? genreSearchTerm
+                    : selectedGenre
+                    ? genreOptions.find(o => o.value === selectedGenre)?.label || ''
+                    : ''
+                }
+                onFocus={() => setGenreDropdownOpen(true)}
+                onChange={(e) => {
+                  setGenreSearchTerm(e.target.value);
+                  setGenreDropdownOpen(true);
+                }}
+              />
+              {genreDropdownOpen && (
+                <ul
+                  className="list-group"
+                  style={{
+                    position: 'absolute',
+                    width: '100%',
+                    zIndex: 1000,
+                    maxHeight: '200px',
+                    overflowY: 'auto'
+                  }}
+                >
+                  {genreOptions
+                    .filter(opt =>
+                      opt.label.toLowerCase().includes(genreSearchTerm.toLowerCase())
+                    )
+                    .map(opt => (
+                      <li
+                        key={opt.value}
+                        className="list-group-item list-group-item-action"
+                        onClick={() => {
+                          setSelectedGenre(opt.value);
+                          setGenreDropdownOpen(false);
+                          setGenreSearchTerm(opt.label);
+                        }}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        {opt.label}
+                      </li>
+                    ))}
+                  {genreOptions.filter(opt =>
+                    opt.label.toLowerCase().includes(genreSearchTerm.toLowerCase())
+                  ).length === 0 && (
+                    <li className="list-group-item">No options found</li>
+                  )}
+                </ul>
+              )}
+            </div>
           </td>
           <td>
             <input
