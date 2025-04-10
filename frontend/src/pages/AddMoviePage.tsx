@@ -1,6 +1,7 @@
 // AddMoviePage.tsx
 import React, { useState } from 'react';
 import { Movie } from '../types/Movie';
+import { useNavigate } from 'react-router-dom';
 
 interface GenreOption {
   value: string;
@@ -124,7 +125,8 @@ const GenreSelect: React.FC<{
       </div>
     );
   };
-  
+
+
   const AddMoviePage: React.FC = () => {
     // Form field state.
     const [type, setType] = useState('');
@@ -138,6 +140,8 @@ const GenreSelect: React.FC<{
     const [durationMin, setDurationMin] = useState<number>(0);
     const [description, setDescription] = useState('');
     const [selectedGenre, setSelectedGenre] = useState('');
+  
+    const navigate = useNavigate();
   
     // Handle form submission.
     const handleSubmit = async (e: React.FormEvent) => {
@@ -220,11 +224,30 @@ const GenreSelect: React.FC<{
         // setDurationMin(0);
         // setDescription('');
         // setSelectedGenre('');
+        const addedMovie: Movie = await response.json();
+        alert("Movie added successfully!");
+  
+        // Reset form fields.
+        setType('');
+        setTitle('');
+        setDirector('');
+        setCast('');
+        setCountry('');
+        setReleaseYear(new Date().getFullYear());
+        setRating('');
+        setDuration('');
+        setDurationMin(0);
+        setDescription('');
+        setSelectedGenre('');
+  
+        // Navigate to the admin page.
+        navigate('/admin');
       } catch (error: any) {
         console.error(error);
         alert("Error adding movie: " + error.message);
       }
     };
+  
   
     return (
       <div className="container mt-4">
@@ -326,7 +349,7 @@ const GenreSelect: React.FC<{
               />
             </div>
             <div className="col-md-6 mb-3">
-              <label className="form-label">Duration in Minutes</label>
+              <label className="form-label">Duration Number</label>
               <input
                 type="number"
                 className="form-control"
