@@ -1,4 +1,5 @@
 using intex_winter.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace intex_winter.Controllers;
@@ -6,6 +7,7 @@ namespace intex_winter.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class ContentRecController : ControllerBase
 {
     private readonly ContentDbContext _context;

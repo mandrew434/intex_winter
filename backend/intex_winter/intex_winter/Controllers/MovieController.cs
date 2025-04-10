@@ -50,6 +50,7 @@ public class MovieController : ControllerBase
 
 
     [HttpPost("AddMovie")]
+    [Authorize(Roles = "Admin")]
     public IActionResult AddMovie([FromBody] MoviesTitle newMovie)
     {
         
