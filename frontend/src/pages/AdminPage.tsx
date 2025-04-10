@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 import { Movie } from '../types/Movie';
 import AdminMoviesTableHeader from '../components/AdminMoviesTableHeader';
 import AdminMoviesTableRow from '../components/AdminMoviesTableRow';
+import { updateMovie, deleteMovie } from '../api/MoviesAPI';
 
 const AdminPage: React.FC = () => {
-  // State for movies, loading, error and pagination.
+  // State for movies, loading, error, pagination and search.
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [search, setSearch] = useState<string>(""); // Added search state
   const pageSize = 10;
   const maxPageButtons = 10; // Maximum page buttons to display.
 
@@ -34,21 +36,45 @@ const AdminPage: React.FC = () => {
       });
   }, []);
 
-  // Inline update: update an existing movie.
-  const handleUpdate = (updatedMovie: Movie) => {
-    setMovies((prev) =>
-      prev.map((m) => (m.showId === updatedMovie.showId ? updatedMovie : m))
-    );
+  // Called when an update is made to an existing movie.
+  const handleUpdate = async (updatedMovie: Movie) => {
+    try {
+      const result = await updateMovie(updatedMovie.showId, updatedMovie);
+      // Update local state only if the update was successful
+      setMovies((prev) =>
+        prev.map((m) => (m.showId === result.showId ? result : m))
+      );
+    } catch (error) {
+      console.error('Error updating movie:', error);
+      // Optionally handle the error (e.g., show a message to the user)
+    }
   };
 
-  // Inline delete: remove a movie.
-  const handleDelete = (showId: string) => {
-    setMovies((prev) => prev.filter((m) => m.showId !== showId));
+  // Called when a movie is to be deleted.
+  const handleDelete = async (showId: string) => {
+    try {
+      await deleteMovie(showId);
+      // Update the state to remove the deleted movie.
+      setMovies((prev) => prev.filter((m) => m.showId !== showId));
+    } catch (error) {
+      console.error('Error deleting movie:', error);
+      // Optionally handle the error (e.g., show a message to the user)
+    }
   };
 
-  // Pagination calculations.
-  const totalPages = Math.ceil(movies.length / pageSize);
-  const currentMovies = movies.slice(
+  // Filter movies based on the search input (filter by title).
+  const filteredMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(search.toLowerCase())
+  );
+
+  // Reset current page if the filteredMovies change.
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
+
+  // Pagination calculations using filteredMovies.
+  const totalPages = Math.ceil(filteredMovies.length / pageSize);
+  const currentMovies = filteredMovies.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
   );
@@ -80,26 +106,48 @@ const AdminPage: React.FC = () => {
   return (
     <div className="container mt-4">
       <h1>Admin Movies</h1>
-      
-      {/* Add Movie Button that navigates to AddMoviePage */}
+
+      {/* Add Movie Button */}
       <div className="mb-3">
         <Link to="/admin/add" className="btn btn-success">
           Add Movie
         </Link>
       </div>
+      
+      {/* Search Bar */}
+      <input
+        type="text"
+        placeholder="Search by title..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{
+          marginBottom: "10px",
+          padding: "5px",
+          width: "100%",
+          maxWidth: "300px",
+          border: "1px solid #ccc",
+          borderRadius: "4px",
+        }}
+      />
 
       {/* Movies Table */}
       <table className="table table-striped table-bordered">
         <AdminMoviesTableHeader />
         <tbody>
-          {currentMovies.map((movie) => (
-            <AdminMoviesTableRow
-              key={movie.showId}
-              movie={movie}
-              onUpdate={handleUpdate}
-              onDelete={handleDelete}
-            />
-          ))}
+          {currentMovies.length === 0 ? (
+            <tr>
+              <td colSpan={100}>No matching movies found.</td>
+            </tr>
+          ) : (
+            currentMovies.map((movie) => (
+              <AdminMoviesTableRow
+                key={movie.showId}
+                movie={movie}
+                onUpdate={handleUpdate}
+                onDelete={handleDelete}
+              />
+            ))
+          )}
         </tbody>
       </table>
 

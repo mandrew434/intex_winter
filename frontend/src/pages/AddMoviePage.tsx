@@ -15,11 +15,16 @@ const typeOptions: GenreOption[] = [
 ];
 
 const countryOptions: GenreOption[] = [
-  { value: 'USA', label: 'USA' },
-  { value: 'United Kingdom', label: 'United Kingdom' },
-  { value: 'Canada', label: 'Canada' },
-  { value: 'France', label: 'France' },
-  { value: 'Germany', label: 'Germany' },
+    { value: 'USA', label: 'USA' },
+    { value: 'United Kingdom', label: 'United Kingdom' },
+    { value: 'Canada', label: 'Canada' },
+    { value: 'France', label: 'France' },
+    { value: 'Germany', label: 'Germany' },
+    { value: 'China', label: 'China' },
+    { value: 'India', label: 'India' },
+    { value: 'Japan', label: 'Japan' },
+    { value: 'Italy', label: 'Italy' },
+    { value: 'Spain', label: 'Spain' },
   // Add additional countries as needed…
 ];
   
@@ -190,7 +195,7 @@ const GenreSelect: React.FC<{
       }
   
       try {
-        const response = await fetch('https://localhost:5000/api/Movie/add', {
+        const response = await fetch('https://localhost:5000/api/Movie/AddMovie', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
