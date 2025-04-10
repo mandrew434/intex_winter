@@ -63,7 +63,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:3000","https://blue-ocean-0062bc71e.6.azurestaticapps.net")
+        policy.WithOrigins("http://localhost:3000","https://blue-ocean-0062bc71e.6.azurestaticapps.net","intex-winter.database.windows.net")
             .AllowCredentials()
             .AllowAnyMethod()
             .AllowAnyHeader();
