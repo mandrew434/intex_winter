@@ -51,6 +51,7 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
       );
       // Wait for the current batch of fetches to complete.
       const batchMovies = await Promise.all(batchPromises);
+      console.log(`Batch fetched: ${batchMovies.length} movies`);
       movies.push(...batchMovies);
     }
     return movies;
@@ -133,6 +134,7 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
   return (
     <div>
       <h2>User {collabRec.userId} Recommendations</h2>
+      <p>User {collabRec.userId} - delete later</p>
       <p>-- We think you'll love some of these shows --</p>
       {loadingMovies && <p>Loading movie details…</p>}
       {/* Render a separate MovieCarousel per genre */}
