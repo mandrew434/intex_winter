@@ -45,33 +45,33 @@ function LoginPage() {
 
   
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://accounts.google.com/gsi/client';
-    script.async = true;
-    script.defer = true;
-    script.onload = () => {
-      const google = (window as any).google;
-      if (google && google.accounts) {
-        google.accounts.id.initialize({
-          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
-          callback: handleGoogleResponse,
-        });
-        // Render the Google Sign-In button in a designated container.
-        google.accounts.id.renderButton(
-          document.getElementById('g_id_signin'),
-          { theme: 'outline', size: 'large' }
-        );
-      } else {
-        console.error('Google API failed to load.');
-      }
-    };
+  // useEffect(() => {
+  //   const script = document.createElement('script');
+  //   script.src = 'https://accounts.google.com/gsi/client';
+  //   script.async = true;
+  //   script.defer = true;
+  //   script.onload = () => {
+  //     const google = (window as any).google;
+  //     if (google && google.accounts) {
+  //       google.accounts.id.initialize({
+  //         client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+  //         callback: handleGoogleResponse,
+  //       });
+  //       // Render the Google Sign-In button in a designated container.
+  //       google.accounts.id.renderButton(
+  //         document.getElementById('g_id_signin'),
+  //         { theme: 'outline', size: 'large' }
+  //       );
+  //     } else {
+  //       console.error('Google API failed to load.');
+  //     }
+  //   };
 
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  //   document.body.appendChild(script);
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   };
+  // }, []);
 
 
   // handle change events for input fields
