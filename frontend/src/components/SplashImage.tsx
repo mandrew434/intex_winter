@@ -47,7 +47,7 @@ const SplashImage: React.FC<SplashImageProps> = ({
 
   // Use movie.posterUrl if available; otherwise, use a fallback placeholder image.
   const formattedTitle = currentMovie.title.replace(/:/g, '');
-  console.log('Formatted Title:', formattedTitle); // Debugging line
+  // console.log('Formatted Title:', formattedTitle); // Debugging line
   const backgroundImage = `./MovieImagesFolder/MoviePosters/${formattedTitle}.jpg`;
 
   return (
