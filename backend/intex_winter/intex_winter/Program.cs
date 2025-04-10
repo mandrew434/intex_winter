@@ -14,6 +14,7 @@ builder.Services.AddControllers()
     );
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 // Add both application data and identity data contexts
 builder.Services.AddDbContext<MoviesContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MoviesConnection")));
@@ -26,19 +27,10 @@ builder.Services.AddDbContext<CollaborativeDbContext>(options =>
 
 builder.Services.AddAuthorization();
 
-builder.Services.AddIdentityApiEndpoints<IdentityUser>()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 
-// Configure Google authentication
-// builder.Services.AddAuthentication(options =>
-// {
-//     options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-//     options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-//     // Since you are not using the Google middleware to trigger a redirect-based flow,
-//     // you can leave the challenge scheme as the cookie scheme or simply remove it.
-//     options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-// })
-// .AddCookie();
 
 // Password customization
 builder.Services.Configure<IdentityOptions>(options =>

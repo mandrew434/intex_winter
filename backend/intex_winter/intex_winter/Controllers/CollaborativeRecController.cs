@@ -1,10 +1,12 @@
 using intex_winter.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace intex_winter.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class CollaborativeRecsController : ControllerBase
 {
     private readonly CollaborativeDbContext _db;

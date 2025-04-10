@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using intex_winter.Data;
+using Microsoft.AspNetCore.Authorization;
 
 [ApiController]
 [Route("api/[controller]")]
-// [Authorize]
+[Authorize]
 public class MovieController : ControllerBase
 {
     private readonly MoviesContext _context;
@@ -49,6 +50,7 @@ public class MovieController : ControllerBase
 
 
     [HttpPost("AddMovie")]
+    [Authorize(Roles = "Admin")]
     public IActionResult AddMovie([FromBody] MoviesTitle newMovie)
     {
         
