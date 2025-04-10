@@ -1,117 +1,18 @@
-/* import React, { useState } from 'react';
-import { ContentRec } from '../types/ContentRec';
-import { Movie } from '../types/Movie';
-import MovieCard from './MovieCard';
-
-const REC_API_BASE   = 'https://localhost:5000/api/ContentRec';
-const MOVIE_DETAILS = 'https://localhost:5000/api/Movie/moviedetails';
-
-const ContentTest: React.FC = () => {
-  const [showId, setShowId]     = useState('');
-  const [recData, setRecData]   = useState<ContentRec | null>(null);
-  const [movies, setMovies]     = useState<Movie[]>([]);
-  const [loading, setLoading]   = useState(false);
-  const [error, setError]       = useState<string | null>(null);
-
-  const handleFetch = async () => {
-    if (!showId) return;
-    setLoading(true);
-    setError(null);
-    setRecData(null);
-    setMovies([]);
-
-    try {
-      // 1) fetch the rec list
-      const recRes = await fetch(
-        `${REC_API_BASE}/${encodeURIComponent(showId)}`,
-        { headers: { 'Accept': 'application/json' } }
-      );
-      if (!recRes.ok) {
-        throw new Error(`Rec fetch failed (${recRes.status})`);
-      }
-
-      // use a different name so we don't shadow the state var
-      const fetchedRec = (await recRes.json()) as ContentRec;
-      setRecData(fetchedRec);
-
-      // 2) drop the returned showId and keep only rec1…recN in order
-      const { showId: _, ...onlyRecs } = fetchedRec;
-      const recIds = Object.values(onlyRecs);
-
-      // 3) fetch details for each rec
-      const moviePromises = recIds.map(id =>
-        fetch(`${MOVIE_DETAILS}/${encodeURIComponent(id)}`, {
-          headers: { 'Accept': 'application/json' }
-        }).then(res => {
-          if (!res.ok) {
-            throw new Error(`Movie ${id} fetch failed (${res.status})`);
-          }
-          return res.json() as Promise<Movie>;
-        })
-      );
-
-      // 4) wait for them all
-      const fetchedMovies = await Promise.all(moviePromises);
-      setMovies(fetchedMovies);
-
-    } catch (err: any) {
-      console.error(err);
-      setError(err.message || 'Unknown error');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <div style={{ maxWidth: 900, margin: '0 auto' }}>
-      <h3>Load Content Recommendations</h3>
-      <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-        <input
-          type="text"
-          placeholder="Enter showId (e.g. s1)"
-          value={showId}
-          onChange={e => setShowId(e.target.value)}
-          style={{ flex: 1 }}
-        />
-        <button onClick={handleFetch} disabled={loading || !showId}>
-          {loading ? 'Loading…' : 'Fetch'}
-        </button>
-      </div>
-
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-
-      {recData && (
-        <>
-          <h4>Recommendations for “{recData.showId}”</h4>
-          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-            {movies.map(movie => (
-              <MovieCard key={movie.showId} movie={movie} />
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
-};
-
-export default ContentTest; */
-
-
 // src/components/ContentTest.tsx
 import React, { useState } from 'react';
 import { ContentRec } from '../types/ContentRec';
 import { Movie } from '../types/Movie';
 import MovieCarousel from './MovieCarousel';
 
-const REC_API_BASE   = 'https://localhost:5000/api/ContentRec';
+const REC_API_BASE = 'https://localhost:5000/api/ContentRec';
 const MOVIE_DETAILS = 'https://localhost:5000/api/Movie/moviedetails';
 
 const ContentTest: React.FC = () => {
-  const [showId, setShowId]     = useState('');
-  const [recData, setRecData]   = useState<ContentRec | null>(null);
-  const [movies, setMovies]     = useState<Movie[]>([]);
-  const [loading, setLoading]   = useState(false);
-  const [error, setError]       = useState<string | null>(null);
+  const [showId, setShowId] = useState('');
+  const [recData, setRecData] = useState<ContentRec | null>(null);
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleFetch = async () => {
     if (!showId) return;
@@ -124,7 +25,7 @@ const ContentTest: React.FC = () => {
       // 1) fetch the rec list
       const recRes = await fetch(
         `${REC_API_BASE}/${encodeURIComponent(showId)}`,
-        { headers: { 'Accept': 'application/json' } }
+        { headers: { Accept: 'application/json' } }
       );
       if (!recRes.ok) {
         throw new Error(`Rec fetch failed (${recRes.status})`);
@@ -138,10 +39,10 @@ const ContentTest: React.FC = () => {
       const recIds = Object.values(onlyRecs);
 
       // 3) fetch details for each rec
-      const moviePromises = recIds.map(id =>
+      const moviePromises = recIds.map((id) =>
         fetch(`${MOVIE_DETAILS}/${encodeURIComponent(id)}`, {
-          headers: { 'Accept': 'application/json' }
-        }).then(res => {
+          headers: { Accept: 'application/json' },
+        }).then((res) => {
           if (!res.ok) {
             throw new Error(`Movie ${id} fetch failed (${res.status})`);
           }
@@ -152,7 +53,6 @@ const ContentTest: React.FC = () => {
       // 4) wait for them all
       const fetchedMovies = await Promise.all(moviePromises);
       setMovies(fetchedMovies);
-
     } catch (err: any) {
       console.error(err);
       setError(err.message || 'Unknown error');
@@ -169,7 +69,7 @@ const ContentTest: React.FC = () => {
           type="text"
           placeholder="Enter showId (e.g. s1)"
           value={showId}
-          onChange={e => setShowId(e.target.value)}
+          onChange={(e) => setShowId(e.target.value)}
           style={{ flex: 1 }}
         />
         <button onClick={handleFetch} disabled={loading || !showId}>
@@ -180,10 +80,7 @@ const ContentTest: React.FC = () => {
       {error && <div style={{ color: 'red' }}>{error}</div>}
 
       {recData && movies.length > 0 && (
-        <MovieCarousel
-          title={`You might also like:”`}
-          movies={movies}
-        />
+        <MovieCarousel title={`You might also like:”`} movies={movies} />
       )}
     </div>
   );
