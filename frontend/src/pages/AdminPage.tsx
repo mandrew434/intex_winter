@@ -5,6 +5,8 @@ import { Movie } from '../types/Movie';
 import AdminMoviesTableHeader from '../components/AdminMoviesTableHeader';
 import AdminMoviesTableRow from '../components/AdminMoviesTableRow';
 import { updateMovie, deleteMovie } from '../api/MoviesAPI';
+import AuthorizeView from '../components/AuthorizeView';
+import { useNavigate } from 'react-router-dom';
 
 const AdminPage: React.FC = () => {
   // State for movies, loading, error, pagination and search.
@@ -15,6 +17,7 @@ const AdminPage: React.FC = () => {
   const [search, setSearch] = useState<string>(""); // Added search state
   const pageSize = 10;
   const maxPageButtons = 10; // Maximum page buttons to display.
+  const navigate = useNavigate();
 
   // Fetch movies from your API.
   useEffect(() => {
@@ -50,17 +53,38 @@ const AdminPage: React.FC = () => {
     }
   };
 
-  // Called when a movie is to be deleted.
-  const handleDelete = async (showId: string) => {
+  // // Called when a movie is to be deleted.
+  // const handleDelete = async (showId: string) => {
+  //   try {
+  //     await deleteMovie(showId);
+  //     // Update the state to remove the deleted movie.
+  //     setMovies((prev) => prev.filter((m) => m.showId !== showId));
+  //   } catch (error) {
+  //     console.error('Error deleting movie:', error);
+  //     // Optionally handle the error (e.g., show a message to the user)
+  //   }
+  // };
+
+  
+const handleDelete = async (showId: string) => {
+  // Ask for confirmation from the user.
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this movie? This action cannot be undone."
+  );
+  
+  if (confirmDelete) {
     try {
       await deleteMovie(showId);
-      // Update the state to remove the deleted movie.
+      // Update your state to remove the deleted movie.
       setMovies((prev) => prev.filter((m) => m.showId !== showId));
+      // Redirect the user back to the admin page.
+      navigate('/admin');
     } catch (error) {
       console.error('Error deleting movie:', error);
-      // Optionally handle the error (e.g., show a message to the user)
+      // Optionally add code here to display an error message to the user.
     }
-  };
+  }
+};
 
   // Filter movies based on the search input (filter by title).
   const filteredMovies = movies.filter((movie) =>
@@ -104,6 +128,7 @@ const AdminPage: React.FC = () => {
   }
 
   return (
+    <AuthorizeView>
     <div className="container mt-4">
       <h1>Admin Movies</h1>
 
@@ -188,6 +213,7 @@ const AdminPage: React.FC = () => {
         </ul>
       </nav>
     </div>
+    </AuthorizeView>
   );
 };
 

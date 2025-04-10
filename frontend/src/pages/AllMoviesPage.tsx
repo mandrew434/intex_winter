@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBar';
 import GenreFilter, { GenreGroup } from '../components/GenreFilter';
 import MovieList from '../components/MovieList';
 import { Movie } from '../types/Movie';
+import AuthorizeView from '../components/AuthorizeView';
 
 const AllMoviesPage: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -114,6 +115,7 @@ const AllMoviesPage: React.FC = () => {
     };
 
   return (
+    <AuthorizeView>
     <div className="container mt-4">
               {/* Back Button fixed to the top left corner */}
       <button
@@ -142,6 +144,7 @@ const AllMoviesPage: React.FC = () => {
         </div>
       </div>
     </div>
+    </AuthorizeView>
   );
 };
 

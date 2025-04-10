@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using intex_winter.Data;
+using Microsoft.AspNetCore.Authorization;
 
 [ApiController]
 [Route("api/[controller]")]
-// [Authorize]
+//[Authorize]
 public class MovieController : ControllerBase
 {
     private readonly MoviesContext _context;
