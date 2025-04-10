@@ -76,7 +76,7 @@
               "RelativeDocumentMoniker": "intex_winter\\appsettings.json",
               "ToolTip": "C:\\Users\\mandr\\source\\repos\\intex_winter\\backend\\intex_winter\\intex_winter\\appsettings.json",
               "RelativeToolTip": "intex_winter\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAASAQAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAARAQAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-04-10T16:34:21.95Z",
               "EditorCaption": ""
@@ -91,8 +91,7 @@
               "RelativeToolTip": "intex_winter\\bin\\Debug\\net8.0\\appsettings.json",
               "ViewState": "AgIAAAkAAAAAAAAAAAAmwA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-08T21:50:01.367Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T21:50:01.367Z"
             },
             {
               "$type": "Document",
@@ -104,8 +103,7 @@
               "RelativeToolTip": "intex_winter\\Controllers\\MovieController.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAgwEkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T15:58:22.092Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T15:58:22.092Z"
             },
             {
               "$type": "Document",
@@ -117,8 +115,7 @@
               "RelativeToolTip": "intex_winter\\Data\\MoviesTitle.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAQwB8AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T15:11:51.435Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-10T15:11:51.435Z"
             },
             {
               "$type": "Document",
@@ -130,8 +127,7 @@
               "RelativeToolTip": "intex_winter\\Controllers\\RoleController.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAgwEwAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T21:10:35.602Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T21:10:35.602Z"
             },
             {
               "$type": "Document",
@@ -143,8 +139,7 @@
               "RelativeToolTip": "intex_winter\\Data\\MoviesTitle.cs",
               "ViewState": "AgIAAFwAAAAAAAAAAAAmwF8AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T22:16:55.028Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T22:16:55.028Z"
             },
             {
               "$type": "Document",
@@ -156,8 +151,7 @@
               "RelativeToolTip": "intex_winter\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-07T21:15:21.422Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T21:15:21.422Z"
             },
             {
               "$type": "Document",
@@ -169,8 +163,7 @@
               "RelativeToolTip": "intex_winter\\Controllers\\MovieController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T21:10:35.602Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T21:10:35.602Z"
             },
             {
               "$type": "Document",
@@ -182,8 +175,7 @@
               "RelativeToolTip": "intex_winter\\Controllers\\RoleController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T15:58:22.092Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T15:58:22.092Z"
             }
           ]
         },
