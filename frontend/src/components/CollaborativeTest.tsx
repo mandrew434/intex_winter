@@ -133,7 +133,7 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
 
   return (
     <div>
-      <h2>User {collabRec.userId} Recommendations</h2>
+      <h2>Your Recommendations</h2>
       <p>User {collabRec.userId} - delete later</p>
       <p>-- We think you'll love some of these shows --</p>
       {loadingMovies && <p>Loading movie details…</p>}
