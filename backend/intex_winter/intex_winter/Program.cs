@@ -19,8 +19,8 @@ builder.Services.AddDbContext<MoviesContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MoviesConnection")));
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("IdentityConnection")));
-builder.Services.AddDbContext<RecommendersDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("RecommendersConnection")));
+builder.Services.AddDbContext<ContentDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("ContentConnection")));
 builder.Services.AddDbContext<CollaborativeDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("CollaborativeConnection")));
 

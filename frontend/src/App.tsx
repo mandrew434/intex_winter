@@ -11,6 +11,7 @@ import AdminPage from './pages/AdminPage';
 import AllMoviesPage from './pages/AllMoviesPage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
 import CollaborativeTest from './components/CollaborativeTest';
+import ContentTest from './components/ContentTest';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               element={<MovieDetailsPage />}
             />
             <Route path="/collaborativetest" element={<CollaborativeTest />} />
+            <Route path="/contenttest" element={<ContentTest />} />
           </Routes>
         </main>
 
