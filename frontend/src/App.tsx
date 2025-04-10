@@ -10,6 +10,7 @@ import RegisterPage from './pages/RegisterPage';
 import AdminPage from './pages/AdminPage';
 import AllMoviesPage from './pages/AllMoviesPage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
+import AddMoviePage from './pages/AddMoviePage';
 import CollaborativeTest from './components/CollaborativeTest';
 import ContentTest from './components/ContentTest';
 
@@ -33,6 +34,7 @@ function App() {
               element={<MovieDetailsPage />}
             />
             <Route path="/collaborativetest" element={<CollaborativeTest />} />
+            <Route path="/admin/add" element={<AddMoviePage />} />
             <Route path="/contenttest" element={<ContentTest />} />
           </Routes>
         </main>

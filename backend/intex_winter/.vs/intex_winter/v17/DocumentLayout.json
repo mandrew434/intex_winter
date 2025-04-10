@@ -105,7 +105,7 @@
               "RelativeDocumentMoniker": "intex_winter\\Controllers\\MovieController.cs",
               "ToolTip": "C:\\Users\\caden\\OneDrive\\JRCORE2025\\INTEX\\intex_winter\\backend\\intex_winter\\intex_winter\\Controllers\\MovieController.cs",
               "RelativeToolTip": "intex_winter\\Controllers\\MovieController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAUwDMAAABCAAAAAAAAAA==",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAwwJoAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-07T21:10:35.602Z",
               "EditorCaption": ""
@@ -133,6 +133,16 @@
               "ViewState": "AgIAABQAAAAAAAAAAAAowEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-08T15:58:22.092Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 465,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
             }
           ]
         }

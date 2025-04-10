@@ -29,9 +29,9 @@ public partial class MoviesContext : DbContext
     {
         modelBuilder.Entity<MoviesRating>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("movies_ratings");
+            // Define a primary key (composite key as an example)
+            entity.HasNoKey();
+            entity.ToTable("movies_ratings");
 
             entity.Property(e => e.Rating).HasColumnName("rating");
             entity.Property(e => e.ShowId).HasColumnName("show_id");
@@ -40,9 +40,8 @@ public partial class MoviesContext : DbContext
 
         modelBuilder.Entity<MoviesTitle>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("movies_titles");
+            entity.HasKey(e => new { e.ShowId});
+            entity.ToTable("movies_titles");
 
             entity.Property(e => e.AnimeSeriesInternationalTvShows).HasColumnName("Anime Series International TV Shows");
             entity.Property(e => e.BritishTvShowsDocuseriesInternationalTvShows).HasColumnName("British TV Shows Docuseries International TV Shows");
