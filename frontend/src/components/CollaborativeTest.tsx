@@ -126,6 +126,7 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
       .finally(() => setLoadingMovies(false));
   }, [collabRec]);
 
+
   // Show a loading state if collaborative recommendations haven't been loaded yet.
   if (!collabRec) {
     return <div>Loading collaborative recommendations…</div>;
@@ -134,8 +135,7 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
   return (
     <div>
       <h2>Your Recommendations</h2>
-      <p>User {collabRec.userId} - delete later</p>
-      <p>-- We think you'll love some of these shows --</p>
+      {/* <p>-- We think you'll love some of these shows --</p> */}
       {loadingMovies && <p>Loading movie details…</p>}
       {/* Render a separate MovieCarousel per genre */}
       {Object.entries(moviesByGenre).map(([genre, movies]) => (
