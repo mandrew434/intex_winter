@@ -115,6 +115,7 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
       .finally(() => setLoadingMovies(false));
   }, [collabRec]);
 
+
   // Helper function to convert a raw genre key into normal English
   const prettyGenreName = (genre: string): string => {
     // 1. Insert space before each uppercase letter
@@ -135,6 +136,7 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
   return (
     <div>
       <h2>Your Recommendations</h2>
+      {/* <p>-- We think you'll love some of these shows --</p> */}
       {loadingMovies && <p>Loading movie details…</p>}
       {Object.entries(moviesByGenre).map(([genre, movies]) => (
         <div key={genre}>

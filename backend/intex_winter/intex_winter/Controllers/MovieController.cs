@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 [ApiController]
 [Route("api/[controller]")]
-//[Authorize]
+
 public class MovieController : ControllerBase
 {
     private readonly MoviesContext _context;

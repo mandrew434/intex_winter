@@ -28,7 +28,7 @@ const MovieCarousel: React.FC<MovieCarouselProps> = ({ title, movies }) => {
     const observerOptions = {
       root: containerRef.current,
       rootMargin: '0px',
-      threshold: 1.0, // Trigger only when the entire sentinel element is visible.
+      threshold: .75, // Trigger only when 75% of the sentinel element is visible.
     };
 
     const observer = new IntersectionObserver((entries) => {
