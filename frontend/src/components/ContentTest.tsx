@@ -4,8 +4,8 @@ import { ContentRec } from '../types/ContentRec';
 import { Movie } from '../types/Movie';
 import MovieCarousel from './MovieCarousel';
 
-const REC_API_BASE = 'https://localhost:5000/api/ContentRec';
-const MOVIE_DETAILS = 'https://localhost:5000/api/Movie/moviedetails';
+const REC_API_BASE = 'https://intex-winter-backend-2-b0cjguhaejd7hxap.westus2-01.azurewebsites.net/api/ContentRec';
+const MOVIE_DETAILS = 'https://intex-winter-backend-2-b0cjguhaejd7hxap.westus2-01.azurewebsites.net/api/Movie/moviedetails';
 
 const ContentTest: React.FC = () => {
   const [showId, setShowId] = useState('');

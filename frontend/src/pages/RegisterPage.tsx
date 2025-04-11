@@ -39,7 +39,7 @@ function Register() {
       // clear error message
       setError('');
       // post data to the /register api
-      fetch('https://localhost:5000/register', {
+      fetch('https://intex-winter-backend-2-b0cjguhaejd7hxap.westus2-01.azurewebsites.net/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

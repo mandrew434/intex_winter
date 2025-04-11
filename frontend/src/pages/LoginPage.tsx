@@ -37,8 +37,8 @@ function LoginPage() {
     }
 
     const loginUrl = rememberme
-      ? 'https://localhost:5000/login?useCookies=true'
-      : 'https://localhost:5000/login?useSessionCookies=true';
+      ? 'https://intex-winter-backend-2-b0cjguhaejd7hxap.westus2-01.azurewebsites.net/login?useCookies=true'
+      : 'https://intex-winter-backend-2-b0cjguhaejd7hxap.westus2-01.azurewebsites.net/login?useSessionCookies=true';
 
     try {
       const response = await fetch(loginUrl, {

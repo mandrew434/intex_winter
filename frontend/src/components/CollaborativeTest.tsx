@@ -9,9 +9,9 @@ interface CollaborativeTestProps {
 
 const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
   const COLLAB_REC_API_BASE =
-    'https://localhost:5000/api/CollaborativeRecs';
+    'https://intex-winter-backend-2-b0cjguhaejd7hxap.westus2-01.azurewebsites.net/api/CollaborativeRecs';
   const MOVIE_DETAILS_API_BASE =
-    'https://localhost:5000/api/Movie/moviedetails';
+    'https://intex-winter-backend-2-b0cjguhaejd7hxap.westus2-01.azurewebsites.net/api/Movie/moviedetails';
 
   // State for the collaborative recommendations.
   const [collabRec, setCollabRec] = useState<CollaborativeRec | null>(null);
