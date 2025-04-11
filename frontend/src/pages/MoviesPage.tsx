@@ -16,7 +16,7 @@ const MoviesPage: React.FC = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       const response = await fetch(
-        'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/all'
+        'https://localhost:5000/api/movie/all'
       );
       const movieData = await response.json();
       setMovies(movieData);

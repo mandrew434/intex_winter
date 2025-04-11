@@ -9,7 +9,7 @@ const LogoutButton: React.FC = () => {
 
     try {
       const response = await fetch(
-        'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/logout',
+        'https://localhost:5000/logout',
         {
           method: 'POST',
           credentials: 'include', // Ensures cookies are sent.

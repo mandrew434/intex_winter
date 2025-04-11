@@ -9,7 +9,7 @@ const TopRatedCaro = () => {
   useEffect(() => {
     const fetchRecs = async () => {
       try {
-        const res = await fetch('https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/Movie/top-rated', {
+        const res = await fetch('https://localhost:5000/api/Movie/top-rated', {
           method: 'GET',
           credentials: 'include', // if you're using cookie auth
           headers: { 'Content-Type': 'application/json' },

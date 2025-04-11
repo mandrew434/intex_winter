@@ -64,7 +64,7 @@ const MovieDetailsPage: React.FC = () => {
     const fetchMovieDetails = async () => {
       try {
         const response = await fetch(
-          `https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/moviedetails/${showId}`
+          `https://localhost:5000/api/movie/moviedetails/${showId}`
           //`https://localhost:5000/api/movie/moviedetails/${showId}`
         );
         if (!response.ok) {
@@ -172,7 +172,7 @@ const MovieDetailsPage: React.FC = () => {
   //   // Example: Call the backend to record the rating.
   //   try {
   //     const response = await fetch(
-  //       `https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api//api/ratings`, // Ensure this matches your API route.
+  //       `https://localhost:5000/api//api/ratings`, // Ensure this matches your API route.
   //       {
   //         method: 'POST',
   //         headers: {

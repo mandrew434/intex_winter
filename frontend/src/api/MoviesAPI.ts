@@ -6,7 +6,7 @@ export interface FetchMoviesResponse {
   totalNumMovies: number;
 }
 
-const API_URL = 'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie';
+const API_URL = 'https://localhost:5000/api/movie';
 
 /**
  * Fetches all movies.
