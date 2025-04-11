@@ -6,7 +6,7 @@
     "routes": [
     {
     "route": "/*",
-    "rewrite": "/index.html",
+    "serve": "/index.html",
     "statusCode": 200
     }
     ]
