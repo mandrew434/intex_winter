@@ -6,7 +6,6 @@ namespace intex_winter.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
