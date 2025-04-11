@@ -63,6 +63,8 @@ builder.Services.ConfigureApplicationCookie(options =>
     // Optionally, enable sliding expiration so that the user remains logged in if they're active.
     options.SlidingExpiration = true;
 });
+
+
 // CORS
 builder.Services.AddCors(options =>
 {
@@ -84,6 +86,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.Use(async (context, next) =>
+{
+    context.Response.OnStarting(() =>
+    {
+        context.Response.Headers.Remove("Server");
+        return Task.CompletedTask;
+    });
+    await next();
+});
+
+
 // Middleware
 app.UseCors("AllowFrontend");
 app.UseHttpsRedirection();
