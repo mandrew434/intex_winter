@@ -63,7 +63,10 @@ const MovieDetailsPage: React.FC = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(`https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/moviedetails/${showId}`);
+        const response = await fetch(
+          `https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/moviedetails/${showId}`
+          //`https://localhost:5000/api/movie/moviedetails/${showId}`
+        );
         if (!response.ok) {
           throw new Error('Error fetching movie details');
         }
@@ -110,38 +113,38 @@ const MovieDetailsPage: React.FC = () => {
 
   // Build an array of genre keys.
   const genreKeys: (keyof Movie)[] = [
-    "action",
-    "adventure",
-    "animeSeriesInternationalTvShows",
-    "britishTvShowsDocuseriesInternationalTvShows",
-    "children",
-    "comedies",
-    "comediesDramasInternationalMovies",
-    "comediesInternationalMovies",
-    "comediesRomanticMovies",
-    "crimeTvShowsDocuseries",
-    "documentaries",
-    "documentariesInternationalMovies",
-    "docuseries",
-    "dramas",
-    "dramasInternationalMovies",
-    "dramasRomanticMovies",
-    "familyMovies",
-    "fantasy",
-    "horrorMovies",
-    "internationalMoviesThrillers",
-    "internationalTvShowsRomanticTvShowsTvDramas",
-    "kidsTv",
-    "languageTvShows",
-    "musicals",
-    "natureTv",
-    "realityTv",
-    "spirituality",
-    "tvAction",
-    "tvComedies",
-    "tvDramas",
-    "talkShowsTvComedies",
-    "thrillers",
+    'action',
+    'adventure',
+    'animeSeriesInternationalTvShows',
+    'britishTvShowsDocuseriesInternationalTvShows',
+    'children',
+    'comedies',
+    'comediesDramasInternationalMovies',
+    'comediesInternationalMovies',
+    'comediesRomanticMovies',
+    'crimeTvShowsDocuseries',
+    'documentaries',
+    'documentariesInternationalMovies',
+    'docuseries',
+    'dramas',
+    'dramasInternationalMovies',
+    'dramasRomanticMovies',
+    'familyMovies',
+    'fantasy',
+    'horrorMovies',
+    'internationalMoviesThrillers',
+    'internationalTvShowsRomanticTvShowsTvDramas',
+    'kidsTv',
+    'languageTvShows',
+    'musicals',
+    'natureTv',
+    'realityTv',
+    'spirituality',
+    'tvAction',
+    'tvComedies',
+    'tvDramas',
+    'talkShowsTvComedies',
+    'thrillers',
   ];
 
   // Extract the genre names for which the movie has a truthy value.
@@ -153,44 +156,43 @@ const MovieDetailsPage: React.FC = () => {
     navigate(-1);
   };
 
-  // Helper function to convert camelCase or concatenated genre keys 
-// to properly spaced and capitalized strings.
-const prettyGenreName = (genre: string): string => {
-  // Insert a space before each uppercase letter, then trim any leading/trailing space.
-  const spaced = genre.replace(/([A-Z])/g, ' $1').trim();
-  // Capitalize the first letter of every word.
-  return spaced
-    .split(' ')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-};
+  // Helper function to convert camelCase or concatenated genre keys
+  // to properly spaced and capitalized strings.
+  const prettyGenreName = (genre: string): string => {
+    // Insert a space before each uppercase letter, then trim any leading/trailing space.
+    const spaced = genre.replace(/([A-Z])/g, ' $1').trim();
+    // Capitalize the first letter of every word.
+    return spaced
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
 
+  // const handleRatingChange = async (newRating: number) => {
+  //   // Example: Call the backend to record the rating.
+  //   try {
+  //     const response = await fetch(
+  //       `https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api//api/ratings`, // Ensure this matches your API route.
+  //       {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json'
+  //         },
+  //         body: JSON.stringify({
+  //           showId: movie?.showId,  // Assuming movie has a unique identifier.
+  //           rating: newRating
+  //         })
+  //       }
+  //     );
 
-// const handleRatingChange = async (newRating: number) => {
-//   // Example: Call the backend to record the rating.
-//   try {
-//     const response = await fetch(
-//       `https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api//api/ratings`, // Ensure this matches your API route.
-//       {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//           showId: movie?.showId,  // Assuming movie has a unique identifier.
-//           rating: newRating
-//         })
-//       }
-//     );
-
-//     if (!response.ok) {
-//       throw new Error('Failed to submit rating');
-//     }
-//     // Optionally, you can show a message that the rating was saved.
-//   } catch (error: any) {
-//     console.error('Rating submission error:', error);
-//   }
-// };
+  //     if (!response.ok) {
+  //       throw new Error('Failed to submit rating');
+  //     }
+  //     // Optionally, you can show a message that the rating was saved.
+  //   } catch (error: any) {
+  //     console.error('Rating submission error:', error);
+  //   }
+  // };
 
   return (
     <div className="container mt-4">
@@ -203,7 +205,7 @@ const prettyGenreName = (genre: string): string => {
           top: '20px',
           left: '130px',
           padding: '10px 20px',
-          backgroundColor: '#007bff',  // Same blue background as Logout.
+          backgroundColor: '#007bff', // Same blue background as Logout.
           color: '#fff',
           fontWeight: 'bold',
           border: 'none',
@@ -213,10 +215,12 @@ const prettyGenreName = (genre: string): string => {
           transition: 'background-color 0.3s ease',
         }}
         onMouseOver={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#0056b3';
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+            '#0056b3';
         }}
         onMouseOut={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#007bff';
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+            '#007bff';
         }}
       >
         &larr; Back
@@ -227,8 +231,13 @@ const prettyGenreName = (genre: string): string => {
         <div className="col-md-4">
           <img
             src={backgroundImage}
-            alt={`Poster for ${movie.title}`}
+            alt={formattedTitle}
             className="img-fluid"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).onerror = null;
+              (e.currentTarget as HTMLImageElement).src =
+                '/default_movie_poster.png';
+            }}
           />
         </div>
         {/* Movie Details Column */}
@@ -237,8 +246,10 @@ const prettyGenreName = (genre: string): string => {
           <h4>Directed by: {movie.director}</h4>
           {activeGenres.length > 0 && (
             <p>
-              <strong>Genre:</strong>{" "}
-              {activeGenres.map((genre) => prettyGenreName(genre as string)).join(", ")}
+              <strong>Genre:</strong>{' '}
+              {activeGenres
+                .map((genre) => prettyGenreName(genre as string))
+                .join(', ')}
             </p>
           )}
           <p>
@@ -262,14 +273,16 @@ const prettyGenreName = (genre: string): string => {
           <p>
             <strong>Description:</strong> {movie.description}
           </p>
-          <p><strong>Rate {movie.title}</strong> </p>
+          <p>
+            <strong>Rate {movie.title}</strong>{' '}
+          </p>
           <StarRating />
           {/* <div>
             <p>Rate this movie:</p>
             <StarRating initialRating={0} onRatingChange={handleRatingChange} />
           </div> */}
           <br />
-          
+
           <ContentRecCarousel showId={showId || ''} />
         </div>
       </div>
