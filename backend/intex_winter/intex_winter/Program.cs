@@ -32,6 +32,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders();
 
 
+
 // Password customization
 builder.Services.Configure<IdentityOptions>(options =>
 {
