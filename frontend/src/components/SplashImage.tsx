@@ -123,11 +123,6 @@ const SplashImage: React.FC<{ rotationInterval?: number }> = ({ rotationInterval
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [imgLoaded, setImgLoaded] = useState(false);
-
-  useEffect(() => {
-    setImgLoaded(false);
-  }, [currentIndex]);
 
   useEffect(() => {
     if (movies.length > 0) {
