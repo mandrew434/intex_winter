@@ -1,62 +1,60 @@
 import React, { useState, useEffect } from 'react';
-import { Movie } from '../types/Movie';
 
-interface SplashImageProps {
-  movies: Movie[];
-  rotationInterval?: number; // in milliseconds, default = 5000ms (5 seconds)
+interface SplashMovie {
+  title: string;
+  filename: string;
 }
 
-const SplashImage: React.FC<SplashImageProps> = ({
-  movies,
-  rotationInterval = 5000,
-}) => {
-  const [selectedMovies, setSelectedMovies] = useState<Movie[]>([]);
+// Hard-coded array of filenames from your "public/HomeBackground" folder.
+const FILENAMES = [
+  "After.jpg",
+  "Barbarians.jpg",
+  "Barbecue.jpg",
+  "Croupier.jpg",
+  "Cuckoo.jpg",
+  "Curon.jpg",
+  "Goosebumps.jpg",
+  "GORA.jpg",
+  "Holidate.jpg",
+  "Justice.jpg",
+  "Payday.jpg",
+  "Security.jpg",
+];
+
+const SplashImage: React.FC<{ rotationInterval?: number }> = ({ rotationInterval = 5000 }) => {
+  // Convert filenames into an array of SplashMovie objects.
+  const movies: SplashMovie[] = FILENAMES.map((filename) => {
+    // Remove the ".jpg" extension to derive the title.
+    const title = filename.replace(/\.jpg$/i, "");
+    return { title, filename };
+  });
+
+  // State to track the current index.
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // When the movies array changes, shuffle and select 5 movies
+  // Set up the timer to rotate through the movies.
   useEffect(() => {
     if (movies.length > 0) {
-      // Create a shallow copy and shuffle the movies array
-      const moviesCopy = [...movies];
-      for (let i = moviesCopy.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [moviesCopy[i], moviesCopy[j]] = [moviesCopy[j], moviesCopy[i]];
-      }
-      // Select the first five movies (or less if there aren't five)
-      const fiveMovies = moviesCopy.slice(0, Math.min(5, moviesCopy.length));
-      setSelectedMovies(fiveMovies);
-      setCurrentIndex(0);
-    }
-  }, [movies]);
-
-  // Set up the timer to rotate through the selected movies
-  useEffect(() => {
-    if (selectedMovies.length > 0) {
       const timer = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % selectedMovies.length);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % movies.length);
       }, rotationInterval);
       return () => clearInterval(timer);
     }
-  }, [selectedMovies, rotationInterval]);
+  }, [movies, rotationInterval]);
 
-  if (selectedMovies.length === 0) {
-    return null;
-  }
+  if (movies.length === 0) return null;
 
-  const currentMovie = selectedMovies[currentIndex];
-
-  // Use movie.posterUrl if available; otherwise, use a fallback placeholder image.
-  const formattedTitle = currentMovie.title.replace(/:/g, '');
-  // console.log('Formatted Title:', formattedTitle); // Debugging line
-  const backgroundImage = `https://intexstorage2025.blob.core.windows.net/intexcontainer/Movie Posters/${formattedTitle}.jpg`;
+  const currentMovie = movies[currentIndex];
+  // Build the URL to the local image in your public/HomeBackground folder.
+  const backgroundImageUrl = `/HomeBackground/${currentMovie.filename}`;
 
   return (
     <div
       className="splash-image"
       style={{
         width: '100%',
-        height: '400px',
-        background: `url(${backgroundImage}) center/cover no-repeat`,
+        height: '600px', // Set the height as desired.
+        background: `url(${backgroundImageUrl}) center/cover no-repeat`,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -64,7 +62,7 @@ const SplashImage: React.FC<SplashImageProps> = ({
         position: 'relative',
       }}
     >
-      {/* Optionally add an overlay for better text readability */}
+      {/* Optional overlay for better text readability */}
       <div
         style={{
           position: 'absolute',
@@ -75,7 +73,16 @@ const SplashImage: React.FC<SplashImageProps> = ({
           backgroundColor: 'rgba(0, 0, 0, 0.4)',
         }}
       />
-      <div style={{ zIndex: 1, textAlign: 'center', padding: '20px' }}>
+      <div
+        style={{
+          zIndex: 1,
+          textAlign: 'center',
+          padding: '20px',
+          position: 'absolute',
+          bottom: '20px', // Adjust to reposition the title.
+          width: '100%',
+        }}
+      >
         <h1>{currentMovie.title}</h1>
       </div>
     </div>
@@ -83,3 +90,7 @@ const SplashImage: React.FC<SplashImageProps> = ({
 };
 
 export default SplashImage;
+
+
+
+
