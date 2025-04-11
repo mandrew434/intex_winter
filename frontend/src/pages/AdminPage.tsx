@@ -127,9 +127,40 @@ const handleDelete = async (showId: string) => {
     return <div className="container mt-4">Error: {error}</div>;
   }
 
+  // Handler to navigate to the "All Movies" page.
+  const handleBack = () => {
+    navigate('/movies');
+  };
+
   return (
     <AuthorizeView>
     <div className="container mt-4">
+    <button
+        type="button"
+        onClick={handleBack}
+        style={{
+          position: 'fixed',
+          top: '20px',
+          left: '130px',
+          padding: '10px 20px',
+          backgroundColor: '#007bff',  // Same blue background as Logout.
+          color: '#fff',
+          fontWeight: 'bold',
+          border: 'none',
+          borderRadius: '4px',
+          cursor: 'pointer',
+          zIndex: 1000,
+          transition: 'background-color 0.3s ease',
+        }}
+        onMouseOver={(e) => {
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#0056b3';
+        }}
+        onMouseOut={(e) => {
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#007bff';
+        }}
+      >
+        &larr; Back to Home Page
+      </button>
       <h1>Admin Movies</h1>
 
       {/* Add Movie Button */}
