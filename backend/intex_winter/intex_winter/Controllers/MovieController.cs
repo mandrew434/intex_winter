@@ -225,5 +225,18 @@ public class MovieController : ControllerBase
     }
 
 
+    // [HttpPost("ratings")]
+    // public IActionResult AddRating([FromBody] MoviesRating addRating)
+    // {
+    //     // Validate the rating model...
+    //     // Save the rating into the database.
+    //     // For example:
+    //     _context.MoviesRatings.Add(addRating);
+    //     _context.SaveChanges();
+    //     return Ok(addRating);
+    // }
+
+
+
 
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ContentRecCarousel from '../components/ContentRecCarousel';
+import StarRating from '../components/StarRating';
 
 // Define the Movie interface with the required fields, including genres.
 interface Movie {
@@ -165,6 +166,32 @@ const prettyGenreName = (genre: string): string => {
 };
 
 
+// const handleRatingChange = async (newRating: number) => {
+//   // Example: Call the backend to record the rating.
+//   try {
+//     const response = await fetch(
+//       `https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api//api/ratings`, // Ensure this matches your API route.
+//       {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({
+//           showId: movie?.showId,  // Assuming movie has a unique identifier.
+//           rating: newRating
+//         })
+//       }
+//     );
+
+//     if (!response.ok) {
+//       throw new Error('Failed to submit rating');
+//     }
+//     // Optionally, you can show a message that the rating was saved.
+//   } catch (error: any) {
+//     console.error('Rating submission error:', error);
+//   }
+// };
+
   return (
     <div className="container mt-4">
       {/* Back Button */}
@@ -235,7 +262,14 @@ const prettyGenreName = (genre: string): string => {
           <p>
             <strong>Description:</strong> {movie.description}
           </p>
+          <p><strong>Rate {movie.title}</strong> </p>
+          <StarRating />
+          {/* <div>
+            <p>Rate this movie:</p>
+            <StarRating initialRating={0} onRatingChange={handleRatingChange} />
+          </div> */}
           <br />
+          
           <ContentRecCarousel showId={showId || ''} />
         </div>
       </div>
