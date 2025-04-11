@@ -7,10 +7,14 @@ interface CollaborativeTestProps {
   userId: number;
 }
 
+// const SILLY_URL =
+//   'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net';
+
+const SILLY_URL = 'https://localhost:5000';
+
 const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
-  const COLLAB_REC_API_BASE = 'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/CollaborativeRecs';
-  const MOVIE_DETAILS_API_BASE =
-    'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/Movie/moviedetails';
+  const COLLAB_REC_API_BASE = `${SILLY_URL}/api/CollaborativeRecs`;
+  const MOVIE_DETAILS_API_BASE = `${SILLY_URL}/api/Movie/moviedetails`;
 
   // State for the collaborative recommendations.
   const [collabRec, setCollabRec] = useState<CollaborativeRec | null>(null);

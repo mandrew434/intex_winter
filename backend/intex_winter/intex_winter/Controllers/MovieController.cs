@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 public class MovieController : ControllerBase
 {
     private readonly MoviesContext _context;
+    private static readonly Random _rng = new Random();
 
     public MovieController(MoviesContext context)
     {
@@ -225,6 +226,25 @@ public class MovieController : ControllerBase
         return Ok(result);
     }
 
+
+    [HttpGet("user-id/{userEmail}")]
+    public async Task<ActionResult<int>> GetUserIdByEmail(string userEmail)
+    {
+        if (string.IsNullOrWhiteSpace(userEmail))
+            return BadRequest("Query parameter 'userEmail' is required.");
+
+        var user = await _context.MoviesUsers
+                                 .SingleOrDefaultAsync(u => u.Email == userEmail);
+
+        if (user != null)
+        {
+            return Ok(user.UserId);
+        }
+
+        // No user found → generate a random UserId between 1 and 200
+        int randomUserId = _rng.Next(1, 201);  // upper bound is exclusive
+        return Ok(randomUserId);
+    }
 
 
 }
