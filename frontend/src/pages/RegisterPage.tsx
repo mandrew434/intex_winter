@@ -34,12 +34,12 @@ function Register() {
     } else if (password !== confirmPassword) {
       setError('Passwords do not match.');
     } else if (password.length < 12) {
-        setError('Password must be at least 12 characters long.');
+      setError('Password must be at least 12 characters long.');
     } else {
       // clear error message
       setError('');
       // post data to the /register api
-      fetch('https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/register', {
+      fetch('https://localhost:5000/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

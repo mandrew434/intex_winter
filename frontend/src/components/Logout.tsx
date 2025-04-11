@@ -8,14 +8,11 @@ const LogoutButton: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/logout',
-        {
-          method: 'POST',
-          credentials: 'include', // Ensures cookies are sent.
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
+      const response = await fetch('https://localhost:5000/logout', {
+        method: 'POST',
+        credentials: 'include', // Ensures cookies are sent.
+        headers: { 'Content-Type': 'application/json' },
+      });
 
       if (response.ok) {
         navigate('/');
@@ -46,10 +43,12 @@ const LogoutButton: React.FC = () => {
         transition: 'background-color 0.3s ease',
       }}
       onMouseOver={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#0056b3';
+        (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+          '#0056b3';
       }}
       onMouseOut={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#007bff';
+        (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+          '#007bff';
       }}
     >
       Logout

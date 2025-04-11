@@ -15,9 +15,7 @@ const MoviesPage: React.FC = () => {
   // Fetch movies as before.
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await fetch(
-        'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/all'
-      );
+      const response = await fetch('https://localhost:5000/api/movie/all');
       const movieData = await response.json();
       setMovies(movieData);
     };
@@ -28,7 +26,8 @@ const MoviesPage: React.FC = () => {
   // Pick a random user ID from an array on mount.
   useEffect(() => {
     const possibleUserIds = [184, 170, 102, 35, 84, 20, 25, 50, 99]; // Adjust these values as needed.
-    const randomId = possibleUserIds[Math.floor(Math.random() * possibleUserIds.length)];
+    const randomId =
+      possibleUserIds[Math.floor(Math.random() * possibleUserIds.length)];
     setRandomUserId(randomId);
   }, []);
 
@@ -63,10 +62,12 @@ const MoviesPage: React.FC = () => {
           transition: 'background-color 0.3s ease',
         }}
         onMouseOver={(e) =>
-          ((e.currentTarget as HTMLButtonElement).style.backgroundColor = '#0056b3')
+          ((e.currentTarget as HTMLButtonElement).style.backgroundColor =
+            '#0056b3')
         }
         onMouseOut={(e) =>
-          ((e.currentTarget as HTMLButtonElement).style.backgroundColor = '#007bff')
+          ((e.currentTarget as HTMLButtonElement).style.backgroundColor =
+            '#007bff')
         }
       >
         Admin Page
@@ -99,10 +100,12 @@ const MoviesPage: React.FC = () => {
             transition: 'background-color 0.3s ease',
           }}
           onMouseOver={(e) =>
-            ((e.currentTarget as HTMLButtonElement).style.backgroundColor = '#0056b3')
+            ((e.currentTarget as HTMLButtonElement).style.backgroundColor =
+              '#0056b3')
           }
           onMouseOut={(e) =>
-            ((e.currentTarget as HTMLButtonElement).style.backgroundColor = '#007bff')
+            ((e.currentTarget as HTMLButtonElement).style.backgroundColor =
+              '#007bff')
           }
         >
           Check out All Movies
@@ -114,10 +117,10 @@ const MoviesPage: React.FC = () => {
             <br />
             <br />
             <TopRatedCaro />
-            
+
             {/* Render CollaborativeTest using the random user ID, if one was selected */}
             {randomUserId && <CollaborativeTest userId={randomUserId} />}
-            
+
             <MovieCarousel title="Find Your Next Favorite" movies={movies} />
           </div>
         </div>

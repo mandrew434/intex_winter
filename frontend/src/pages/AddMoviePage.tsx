@@ -199,7 +199,7 @@ const GenreSelect: React.FC<{
       }
   
       try {
-        const response = await fetch('https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/Movie/AddMovie', {
+        const response = await fetch('https://localhost:5000/api/Movie/AddMovie', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

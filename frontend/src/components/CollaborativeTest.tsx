@@ -8,15 +8,16 @@ interface CollaborativeTestProps {
 }
 
 const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
-  const COLLAB_REC_API_BASE =
-    'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/CollaborativeRecs';
+  const COLLAB_REC_API_BASE = 'https://localhost:5000/api/CollaborativeRecs';
   const MOVIE_DETAILS_API_BASE =
-    'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/Movie/moviedetails';
+    'https://localhost:5000/api/Movie/moviedetails';
 
   // State for the collaborative recommendations.
   const [collabRec, setCollabRec] = useState<CollaborativeRec | null>(null);
   // Instead of a single movies array, store movies grouped by genre.
-  const [moviesByGenre, setMoviesByGenre] = useState<{ [genre: string]: Movie[] }>({});
+  const [moviesByGenre, setMoviesByGenre] = useState<{
+    [genre: string]: Movie[];
+  }>({});
   // State to track loading for fetching movie details.
   const [loadingMovies, setLoadingMovies] = useState(false);
 
@@ -29,7 +30,10 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
   }, [userId]);
 
   // Helper function to fetch movies in batches.
-  const fetchMoviesInBatches = async (ids: string[], batchSize = 100): Promise<Movie[]> => {
+  const fetchMoviesInBatches = async (
+    ids: string[],
+    batchSize = 100
+  ): Promise<Movie[]> => {
     const movies: Movie[] = [];
     for (let i = 0; i < ids.length; i += batchSize) {
       const batch = ids.slice(i, i + batchSize);
@@ -93,7 +97,8 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
     setLoadingMovies(true);
 
     const fetchPromises = genres.map((genre) => {
-      const recsForGenre = (collabRec[genre as keyof CollaborativeRec] as string[]) || [];
+      const recsForGenre =
+        (collabRec[genre as keyof CollaborativeRec] as string[]) || [];
       if (recsForGenre.length === 0) {
         return Promise.resolve({ genre, movies: [] });
       }
@@ -115,13 +120,15 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
       .finally(() => setLoadingMovies(false));
   }, [collabRec]);
 
-
   // Helper function to convert a raw genre key into normal English
   const prettyGenreName = (genre: string): string => {
     // 1. Insert space before each uppercase letter
     // 2. Merge "T V" => "TV"
     // 3. Capitalize each word
-    const spaced = genre.replace(/([A-Z])/g, ' $1').trim().replace(/\bT V\b/g, 'TV');
+    const spaced = genre
+      .replace(/([A-Z])/g, ' $1')
+      .trim()
+      .replace(/\bT V\b/g, 'TV');
     // 'animeSeriesInternationalTVShows' => 'anime Series International T V Shows' => 'anime Series International TV Shows'
     return spaced
       .split(' ')
@@ -140,7 +147,10 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
       {loadingMovies && <p>Loading movie details…</p>}
       {Object.entries(moviesByGenre).map(([genre, movies]) => (
         <div key={genre}>
-          <MovieCarousel title={`Suggested ${prettyGenreName(genre)}`} movies={movies} />
+          <MovieCarousel
+            title={`Suggested ${prettyGenreName(genre)}`}
+            movies={movies}
+          />
         </div>
       ))}
     </div>

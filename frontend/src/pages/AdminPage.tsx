@@ -14,14 +14,14 @@ const AdminPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [search, setSearch] = useState<string>(""); // Added search state
+  const [search, setSearch] = useState<string>(''); // Added search state
   const pageSize = 10;
   const maxPageButtons = 10; // Maximum page buttons to display.
   const navigate = useNavigate();
 
   // Fetch movies from your API.
   useEffect(() => {
-    fetch('https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/all')
+    fetch('https://localhost:5000/api/movie/all')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch movies');
@@ -65,26 +65,25 @@ const AdminPage: React.FC = () => {
   //   }
   // };
 
-  
-const handleDelete = async (showId: string) => {
-  // Ask for confirmation from the user.
-  const confirmDelete = window.confirm(
-    "Are you sure you want to delete this movie? This action cannot be undone."
-  );
-  
-  if (confirmDelete) {
-    try {
-      await deleteMovie(showId);
-      // Update your state to remove the deleted movie.
-      setMovies((prev) => prev.filter((m) => m.showId !== showId));
-      // Redirect the user back to the admin page.
-      navigate('/admin');
-    } catch (error) {
-      console.error('Error deleting movie:', error);
-      // Optionally add code here to display an error message to the user.
+  const handleDelete = async (showId: string) => {
+    // Ask for confirmation from the user.
+    const confirmDelete = window.confirm(
+      'Are you sure you want to delete this movie? This action cannot be undone.'
+    );
+
+    if (confirmDelete) {
+      try {
+        await deleteMovie(showId);
+        // Update your state to remove the deleted movie.
+        setMovies((prev) => prev.filter((m) => m.showId !== showId));
+        // Redirect the user back to the admin page.
+        navigate('/admin');
+      } catch (error) {
+        console.error('Error deleting movie:', error);
+        // Optionally add code here to display an error message to the user.
+      }
     }
-  }
-};
+  };
 
   // Filter movies based on the search input (filter by title).
   const filteredMovies = movies.filter((movie) =>
@@ -134,116 +133,126 @@ const handleDelete = async (showId: string) => {
 
   return (
     <AuthorizeView>
-    <div className="container mt-4">
-    <button
-        type="button"
-        onClick={handleBack}
-        style={{
-          position: 'fixed',
-          top: '20px',
-          left: '130px',
-          padding: '10px 20px',
-          backgroundColor: '#007bff',  // Same blue background as Logout.
-          color: '#fff',
-          fontWeight: 'bold',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          zIndex: 1000,
-          transition: 'background-color 0.3s ease',
-        }}
-        onMouseOver={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#0056b3';
-        }}
-        onMouseOut={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#007bff';
-        }}
-      >
-        &larr; Back to Home Page
-      </button>
-      <h1>Admin Movies</h1>
+      <div className="container mt-4">
+        <button
+          type="button"
+          onClick={handleBack}
+          style={{
+            position: 'fixed',
+            top: '20px',
+            left: '130px',
+            padding: '10px 20px',
+            backgroundColor: '#007bff', // Same blue background as Logout.
+            color: '#fff',
+            fontWeight: 'bold',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            zIndex: 1000,
+            transition: 'background-color 0.3s ease',
+          }}
+          onMouseOver={(e) => {
+            (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+              '#0056b3';
+          }}
+          onMouseOut={(e) => {
+            (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+              '#007bff';
+          }}
+        >
+          &larr; Back to Home Page
+        </button>
+        <h1>Admin Movies</h1>
 
-      {/* Add Movie Button */}
-      <div className="mb-3">
-        <Link to="/admin/add" className="btn btn-success">
-          Add Movie
-        </Link>
-      </div>
-      
-      {/* Search Bar */}
-      <input
-        type="text"
-        placeholder="Search by title..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        style={{
-          marginBottom: "10px",
-          padding: "5px",
-          width: "100%",
-          maxWidth: "300px",
-          border: "1px solid #ccc",
-          borderRadius: "4px",
-        }}
-      />
+        {/* Add Movie Button */}
+        <div className="mb-3">
+          <Link to="/admin/add" className="btn btn-success">
+            Add Movie
+          </Link>
+        </div>
 
-      {/* Movies Table */}
-      <table className="table table-striped table-bordered">
-        <AdminMoviesTableHeader />
-        <tbody>
-          {currentMovies.length === 0 ? (
-            <tr>
-              <td colSpan={100}>No matching movies found.</td>
-            </tr>
-          ) : (
-            currentMovies.map((movie) => (
-              <AdminMoviesTableRow
-                key={movie.showId}
-                movie={movie}
-                onUpdate={handleUpdate}
-                onDelete={handleDelete}
-              />
-            ))
-          )}
-        </tbody>
-      </table>
+        {/* Search Bar */}
+        <input
+          type="text"
+          placeholder="Search by title..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          style={{
+            marginBottom: '10px',
+            padding: '5px',
+            width: '100%',
+            maxWidth: '300px',
+            border: '1px solid #ccc',
+            borderRadius: '4px',
+          }}
+        />
 
-      {/* Pagination Controls */}
-      <nav>
-        <ul className="pagination">
-          <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-            <button
-              className="page-link"
-              onClick={() => handlePageChange(currentPage - 1)}
-            >
-              Previous
-            </button>
-          </li>
+        {/* Movies Table */}
+        <table className="table table-striped table-bordered">
+          <AdminMoviesTableHeader />
+          <tbody>
+            {currentMovies.length === 0 ? (
+              <tr>
+                <td colSpan={100}>No matching movies found.</td>
+              </tr>
+            ) : (
+              currentMovies.map((movie) => (
+                <AdminMoviesTableRow
+                  key={movie.showId}
+                  movie={movie}
+                  onUpdate={handleUpdate}
+                  onDelete={handleDelete}
+                />
+              ))
+            )}
+          </tbody>
+        </table>
 
-          {pageNumbers.map((page) => (
-            <li key={page} className={`page-item ${currentPage === page ? 'active' : ''}`}>
-              <button className="page-link" onClick={() => handlePageChange(page)}>
-                {page}
+        {/* Pagination Controls */}
+        <nav>
+          <ul className="pagination">
+            <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+              <button
+                className="page-link"
+                onClick={() => handlePageChange(currentPage - 1)}
+              >
+                Previous
               </button>
             </li>
-          ))}
 
-          {endPage < totalPages && (
-            <li className="page-item disabled">
-              <span className="page-link">...</span>
-            </li>
-          )}
+            {pageNumbers.map((page) => (
+              <li
+                key={page}
+                className={`page-item ${currentPage === page ? 'active' : ''}`}
+              >
+                <button
+                  className="page-link"
+                  onClick={() => handlePageChange(page)}
+                >
+                  {page}
+                </button>
+              </li>
+            ))}
 
-          <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-            <button
-              className="page-link"
-              onClick={() => handlePageChange(currentPage + 1)}
+            {endPage < totalPages && (
+              <li className="page-item disabled">
+                <span className="page-link">...</span>
+              </li>
+            )}
+
+            <li
+              className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}
             >
-              Next
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </div>
+              <button
+                className="page-link"
+                onClick={() => handlePageChange(currentPage + 1)}
+              >
+                Next
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </AuthorizeView>
   );
 };
