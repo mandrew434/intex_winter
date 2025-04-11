@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Authorization;
 public class MovieController : ControllerBase
 {
     private readonly MoviesContext _context;
+    private static readonly Random _rng = new Random();
+
 
     public MovieController(MoviesContext context)
     {
@@ -181,48 +183,96 @@ public class MovieController : ControllerBase
 
         // Return the movie details as a JSON response.
         return Ok(movie.Title);
-    }
-
-    [HttpGet("top-rated")]
-    public async Task<IActionResult> GetTopRatedMovies()
-    {
-        // Materialize the top 200 ratings into a list.
-        var top200 = await _context.MoviesRatings
-            .GroupBy(r => r.ShowId)
-            .Select(g => new
+    } 
+    
+[HttpGet("top-rated")]
+public async Task<IActionResult> GetTopRatedMovies()
+{
+    var result = await _context.MoviesRatings
+        .GroupBy(r => r.ShowId)
+        .Select(g => new 
+        {
+            ShowId        = g.Key,
+            AverageRating = g.Average(r => r.Rating)
+        })
+        .OrderByDescending(x => x.AverageRating)
+        .Take(200)
+        .Join(
+            _context.MoviesTitles,
+            rating => rating.ShowId,
+            movie  => movie.ShowId,
+            (rating, movie) => new
             {
-                ShowId = g.Key,
-                AverageRating = g.Average(r => r.Rating)
-            })
-            .OrderByDescending(x => x.AverageRating)
-            .Take(200)
-            .ToListAsync();
+                movie.ShowId,
+                movie.Type,
+                movie.Title,
+                movie.Director,
+                movie.Cast,
+                movie.Country,
+                movie.ReleaseYear,
+                movie.Rating,
+                movie.Duration,
+                movie.Description,
+                movie.Action,
+                movie.Adventure,
+                movie.AnimeSeriesInternationalTvShows,
+                movie.BritishTvShowsDocuseriesInternationalTvShows,
+                movie.Children,
+                movie.Comedies,
+                movie.ComediesDramasInternationalMovies,
+                movie.ComediesInternationalMovies,
+                movie.ComediesRomanticMovies,
+                movie.CrimeTvShowsDocuseries,
+                movie.Documentaries,
+                movie.DocumentariesInternationalMovies,
+                movie.Docuseries,
+                movie.Dramas,
+                movie.DramasInternationalMovies,
+                movie.DramasRomanticMovies,
+                movie.FamilyMovies,
+                movie.Fantasy,
+                movie.HorrorMovies,
+                movie.InternationalMoviesThrillers,
+                movie.InternationalTvShowsRomanticTvShowsTvDramas,
+                movie.KidsTv,
+                movie.LanguageTvShows,
+                movie.Musicals,
+                movie.NatureTv,
+                movie.RealityTv,
+                movie.Spirituality,
+                movie.TvAction,
+                movie.TvComedies,
+                movie.TvDramas,
+                movie.TalkShowsTvComedies,
+                movie.Thrillers,
+                movie.DurationNum,
+                rating.AverageRating
+            }
+        )
+        .ToListAsync();
 
-        // Join the in-memory list with the MoviesTitles table synchronously.
-        var result = top200.Join(
-                _context.MoviesTitles,
-                rating => rating.ShowId,
-                movie => movie.ShowId,
-                (rating, movie) => new
-                {
-                    movie.ShowId,
-                    movie.Type,
-                    movie.Title,
-                    movie.Director,
-                    movie.Cast,
-                    movie.Country,
-                    movie.ReleaseYear,
-                    movie.Rating,    // e.g. "PG‑13", from your Titles table
-                    movie.Duration,
-                    movie.Description,
-                    // ... include all other movie properties as needed
-                    // finally, our computed field:
-                    rating.AverageRating
-                })
-            .ToList();
+    return Ok(result);
+}
 
-        return Ok(result);
+
+[HttpGet("user-id")]
+public async Task<ActionResult<int>> GetUserIdByEmail([FromQuery] string userEmail)
+{
+    if (string.IsNullOrWhiteSpace(userEmail))
+        return BadRequest("Query parameter 'userEmail' is required.");
+
+    var user = await _context.MoviesUsers
+        .SingleOrDefaultAsync(u => u.Email == userEmail);
+
+    if (user != null)
+    {
+        return Ok(user.UserId);
     }
+
+    // No user found → generate a random UserId between 1 and 200
+    int randomUserId = _rng.Next(1, 201);  // upper bound is exclusive
+    return Ok(randomUserId);
+}
 
 
 

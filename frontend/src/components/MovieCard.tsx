@@ -51,8 +51,15 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
       tabIndex={0} // NEW: Allows keyboard navigation (focusable element)
     >
       {/* ***** CHANGED: Display the image using the generated backgroundImage path ***** */}
-      <img src={backgroundImage} alt={formattedTitle} className="img-fluid" />
-
+      <img
+            src={backgroundImage}
+            alt={formattedTitle}
+            className="img-fluid"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).onerror = null;
+              (e.currentTarget as HTMLImageElement).src = '/default_movie_poster.png';
+            }}
+          />
       <p className="mt-2 text-center">{movie.title}</p>
     </div>
   );

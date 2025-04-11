@@ -83,10 +83,12 @@ const LogoutButton: React.FC = () => {
         transition: 'background-color 0.3s ease',
       }}
       onMouseOver={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#0056b3';
+        (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+          '#0056b3';
       }}
       onMouseOut={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#007bff';
+        (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+          '#007bff';
       }}
     >
       Logout

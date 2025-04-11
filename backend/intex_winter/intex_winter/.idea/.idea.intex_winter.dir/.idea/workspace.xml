@@ -8,19 +8,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="806d370e-2d94-44b2-b2b4-6c27a84d8977" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Controllers/ContentRecController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/ContentRec.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.intex_winter.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.intex_winter.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/CollaborativeFilteringController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/ContentFilteringController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/CollaborativeFilter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/RecommendersDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ContentDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/AzureBlobHelper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/MovieController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/MovieController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Identity.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/Identity.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/intex_winter.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/intex_winter.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/api/MoviesAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/api/MoviesAPI.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/components/AdminMoviesTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/components/AdminMoviesTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/components/AuthorizeView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/components/AuthorizeView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/components/CollaborativeTest.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/components/CollaborativeTest.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/components/ContentRecCarousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/components/ContentRecCarousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/components/ContentTest.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/components/ContentTest.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/components/Logout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/components/Logout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/components/MovieCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/components/MovieCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/components/TopRatedCaro.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/components/TopRatedCaro.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/pages/AddMoviePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/pages/AddMoviePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/pages/AdminPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/pages/AdminPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/pages/AllMoviesPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/pages/AllMoviesPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/pages/LoginPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/pages/LoginPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../frontend/src/pages/MovieDetailsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/pages/MovieDetailsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/pages/MoviesPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/pages/MoviesPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/src/pages/RegisterPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/src/pages/RegisterPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../frontend/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../../frontend/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

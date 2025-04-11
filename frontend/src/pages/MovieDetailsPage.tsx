@@ -62,7 +62,9 @@ const MovieDetailsPage: React.FC = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(`https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/moviedetails/${showId}`);
+        const response = await fetch(
+          `https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/moviedetails/${showId}`
+        );
         if (!response.ok) {
           throw new Error('Error fetching movie details');
         }
@@ -109,38 +111,38 @@ const MovieDetailsPage: React.FC = () => {
 
   // Build an array of genre keys.
   const genreKeys: (keyof Movie)[] = [
-    "action",
-    "adventure",
-    "animeSeriesInternationalTvShows",
-    "britishTvShowsDocuseriesInternationalTvShows",
-    "children",
-    "comedies",
-    "comediesDramasInternationalMovies",
-    "comediesInternationalMovies",
-    "comediesRomanticMovies",
-    "crimeTvShowsDocuseries",
-    "documentaries",
-    "documentariesInternationalMovies",
-    "docuseries",
-    "dramas",
-    "dramasInternationalMovies",
-    "dramasRomanticMovies",
-    "familyMovies",
-    "fantasy",
-    "horrorMovies",
-    "internationalMoviesThrillers",
-    "internationalTvShowsRomanticTvShowsTvDramas",
-    "kidsTv",
-    "languageTvShows",
-    "musicals",
-    "natureTv",
-    "realityTv",
-    "spirituality",
-    "tvAction",
-    "tvComedies",
-    "tvDramas",
-    "talkShowsTvComedies",
-    "thrillers",
+    'action',
+    'adventure',
+    'animeSeriesInternationalTvShows',
+    'britishTvShowsDocuseriesInternationalTvShows',
+    'children',
+    'comedies',
+    'comediesDramasInternationalMovies',
+    'comediesInternationalMovies',
+    'comediesRomanticMovies',
+    'crimeTvShowsDocuseries',
+    'documentaries',
+    'documentariesInternationalMovies',
+    'docuseries',
+    'dramas',
+    'dramasInternationalMovies',
+    'dramasRomanticMovies',
+    'familyMovies',
+    'fantasy',
+    'horrorMovies',
+    'internationalMoviesThrillers',
+    'internationalTvShowsRomanticTvShowsTvDramas',
+    'kidsTv',
+    'languageTvShows',
+    'musicals',
+    'natureTv',
+    'realityTv',
+    'spirituality',
+    'tvAction',
+    'tvComedies',
+    'tvDramas',
+    'talkShowsTvComedies',
+    'thrillers',
   ];
 
   // Extract the genre names for which the movie has a truthy value.
@@ -152,18 +154,17 @@ const MovieDetailsPage: React.FC = () => {
     navigate(-1);
   };
 
-  // Helper function to convert camelCase or concatenated genre keys 
-// to properly spaced and capitalized strings.
-const prettyGenreName = (genre: string): string => {
-  // Insert a space before each uppercase letter, then trim any leading/trailing space.
-  const spaced = genre.replace(/([A-Z])/g, ' $1').trim();
-  // Capitalize the first letter of every word.
-  return spaced
-    .split(' ')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-};
-
+  // Helper function to convert camelCase or concatenated genre keys
+  // to properly spaced and capitalized strings.
+  const prettyGenreName = (genre: string): string => {
+    // Insert a space before each uppercase letter, then trim any leading/trailing space.
+    const spaced = genre.replace(/([A-Z])/g, ' $1').trim();
+    // Capitalize the first letter of every word.
+    return spaced
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
 
   return (
     <div className="container mt-4">
@@ -183,6 +184,11 @@ const prettyGenreName = (genre: string): string => {
             src={backgroundImage}
             alt={`Poster for ${movie.title}`}
             className="img-fluid"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).onerror = null;
+              (e.currentTarget as HTMLImageElement).src =
+                '/default_movie_poster.png';
+            }}
           />
         </div>
         {/* Movie Details Column */}
@@ -191,8 +197,10 @@ const prettyGenreName = (genre: string): string => {
           <h4>Directed by: {movie.director}</h4>
           {activeGenres.length > 0 && (
             <p>
-              <strong>Genre:</strong>{" "}
-              {activeGenres.map((genre) => prettyGenreName(genre as string)).join(", ")}
+              <strong>Genre:</strong>{' '}
+              {activeGenres
+                .map((genre) => prettyGenreName(genre as string))
+                .join(', ')}
             </p>
           )}
           <p>

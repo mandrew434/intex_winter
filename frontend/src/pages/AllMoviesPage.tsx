@@ -19,48 +19,75 @@ const AllMoviesPage: React.FC = () => {
     {
       id: 'action-adventure',
       label: 'Action & Adventure',
-      keys: ['action', 'adventure', 'tvAction']
+      keys: ['action', 'adventure', 'tvAction'],
     },
     {
       id: 'comedy',
       label: 'Comedy',
-      keys: ['comedies', 'comediesDramasInternationalMovies', 'comediesInternationalMovies', 'comediesRomanticMovies', 'tvComedies', 'talkShowsTvComedies']
+      keys: [
+        'comedies',
+        'comediesDramasInternationalMovies',
+        'comediesInternationalMovies',
+        'comediesRomanticMovies',
+        'tvComedies',
+        'talkShowsTvComedies',
+      ],
     },
     {
       id: 'drama',
       label: 'Drama',
-      keys: ['dramas', 'dramasInternationalMovies', 'dramasRomanticMovies', 'tvDramas', 'internationalTvShowsRomanticTvShowsTvDramas']
+      keys: [
+        'dramas',
+        'dramasInternationalMovies',
+        'dramasRomanticMovies',
+        'tvDramas',
+        'internationalTvShowsRomanticTvShowsTvDramas',
+      ],
     },
     {
       id: 'documentary',
       label: 'Documentary & Docuseries',
-      keys: ['documentaries', 'documentariesInternationalMovies', 'docuseries', 'britishTvShowsDocuseriesInternationalTvShows', 'crimeTvShowsDocuseries']
+      keys: [
+        'documentaries',
+        'documentariesInternationalMovies',
+        'docuseries',
+        'britishTvShowsDocuseriesInternationalTvShows',
+        'crimeTvShowsDocuseries',
+      ],
     },
     {
       id: 'horror-thriller',
       label: 'Horror & Thriller',
-      keys: ['horrorMovies', 'thrillers', 'internationalMoviesThrillers']
+      keys: ['horrorMovies', 'thrillers', 'internationalMoviesThrillers'],
     },
     {
       id: 'family',
       label: 'Family & Kids',
-      keys: ['children', 'familyMovies', 'kidsTv']
+      keys: ['children', 'familyMovies', 'kidsTv'],
     },
     {
       id: 'fantasy-musical',
       label: 'Fantasy & Musical',
-      keys: ['fantasy', 'musicals']
+      keys: ['fantasy', 'musicals'],
     },
     {
       id: 'international',
       label: 'International & Reality',
-      keys: ['animeSeriesInternationalTvShows', 'languageTvShows', 'natureTv', 'realityTv', 'spirituality']
-    }
+      keys: [
+        'animeSeriesInternationalTvShows',
+        'languageTvShows',
+        'natureTv',
+        'realityTv',
+        'spirituality',
+      ],
+    },
   ];
 
   // Fetch movies from your API.
   useEffect(() => {
-    fetch('https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/all')
+    fetch(
+      'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/all'
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch movies');
@@ -82,7 +109,9 @@ const AllMoviesPage: React.FC = () => {
   // main genre is selected, if for at least one selected group one of the
   // movie’s corresponding keys has a value of 1.
   const filteredMovies = movies.filter((movie) => {
-    const matchesSearch = movie.title.toLowerCase().includes(search.toLowerCase());
+    const matchesSearch = movie.title
+      .toLowerCase()
+      .includes(search.toLowerCase());
     const matchesGenre =
       selectedGenres.length === 0 ||
       selectedGenres.some((groupId) => {
@@ -107,17 +136,17 @@ const AllMoviesPage: React.FC = () => {
     return <div className="container mt-4">Error: {error}</div>;
   }
 
-    // Handler to navigate back to the previous page
-    const handleBack = () => {
-        navigate('/movies');
+  // Handler to navigate back to the previous page
+  const handleBack = () => {
+    navigate('/movies');
     // Optionally, force scroll to top if needed:
     // window.scrollTo(0, 0);
-    };
+  };
 
   return (
-    <AuthorizeView>
-    <div className="container mt-4">
-              {/* Back Button fixed to the top left corner */}
+    /*     <AuthorizeView>
+     */ <div className="container mt-4">
+      {/* Back Button fixed to the top left corner */}
       <button
         className="btn btn-secondary"
         onClick={handleBack}
@@ -138,13 +167,14 @@ const AllMoviesPage: React.FC = () => {
         {/* Right column: Search and Movie List */}
         <div className="col-md-9">
           <div className="mb-3">
-          <SearchBar search={search} setSearch={setSearch} />
+            <SearchBar search={search} setSearch={setSearch} />
           </div>
           <MovieList movies={filteredMovies} />
         </div>
       </div>
     </div>
-    </AuthorizeView>
+    /*     </AuthorizeView>
+     */
   );
 };
 

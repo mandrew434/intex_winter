@@ -9,11 +9,14 @@ const TopRatedCaro = () => {
   useEffect(() => {
     const fetchRecs = async () => {
       try {
-        const res = await fetch('https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/Movie/top-rated', {
-          method: 'GET',
-          credentials: 'include', // if you're using cookie auth
-          headers: { 'Content-Type': 'application/json' },
-        });
+        const res = await fetch(
+          'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/Movie/top-rated',
+          {
+            method: 'GET',
+            credentials: 'include', // if you're using cookie auth
+            headers: { 'Content-Type': 'application/json' },
+          }
+        );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json(); // parse the JSON array
         setMovies(data); // store it in state

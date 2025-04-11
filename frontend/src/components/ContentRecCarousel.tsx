@@ -4,17 +4,19 @@ import { ContentRec } from '../types/ContentRec';
 import { Movie } from '../types/Movie';
 import MovieCarousel from './MovieCarousel';
 
-const REC_API_BASE   = 'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/ContentRec';
-const MOVIE_DETAILS = 'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/Movie/moviedetails';
+const REC_API_BASE =
+  'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/ContentRec';
+const MOVIE_DETAILS =
+  'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/Movie/moviedetails';
 
 interface ContentRecCarouselProps {
   showId: string;
 }
 
 const ContentRecCarousel: React.FC<ContentRecCarouselProps> = ({ showId }) => {
-  const [movies, setMovies]     = useState<Movie[]>([]);
-  const [loading, setLoading]   = useState(false);
-  const [error, setError]       = useState<string | null>(null);
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!showId) return;
@@ -29,7 +31,7 @@ const ContentRecCarousel: React.FC<ContentRecCarouselProps> = ({ showId }) => {
         // 1) fetch rec list
         const recRes = await fetch(
           `${REC_API_BASE}/${encodeURIComponent(showId)}`,
-          { headers: { 'Accept': 'application/json' } }
+          { headers: { Accept: 'application/json' } }
         );
         if (!recRes.ok) {
           throw new Error(`Rec fetch failed (${recRes.status})`);
@@ -41,10 +43,10 @@ const ContentRecCarousel: React.FC<ContentRecCarouselProps> = ({ showId }) => {
         const recIds = Object.values(onlyRecs);
 
         // 3) fetch details for each rec
-        const moviePromises = recIds.map(id =>
+        const moviePromises = recIds.map((id) =>
           fetch(`${MOVIE_DETAILS}/${encodeURIComponent(id)}`, {
-            headers: { 'Accept': 'application/json' }
-          }).then(res => {
+            headers: { Accept: 'application/json' },
+          }).then((res) => {
             if (!res.ok) {
               throw new Error(`Movie ${id} fetch failed (${res.status})`);
             }
@@ -78,15 +80,10 @@ const ContentRecCarousel: React.FC<ContentRecCarouselProps> = ({ showId }) => {
   }, [showId]);
 
   if (loading) return <div>Loading recommendations…</div>;
-  if (error)   return <div style={{ color: 'red' }}>{error}</div>;
+  if (error) return <div style={{ color: 'red' }}>{error}</div>;
   if (movies.length === 0) return <div>No recommendations found.</div>;
 
-  return (
-    <MovieCarousel
-      title={`You might also like:`}
-      movies={movies}
-    />
-  );
+  return <MovieCarousel title={`You might also like:`} movies={movies} />;
 };
 
 export default ContentRecCarousel;

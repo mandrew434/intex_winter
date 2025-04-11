@@ -14,7 +14,9 @@ const AdminMoviesTable: React.FC = () => {
 
   // Fetch movies from the API endpoint.
   useEffect(() => {
-    fetch('https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/all')
+    fetch(
+      'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/all'
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch movies');
@@ -57,7 +59,10 @@ const AdminMoviesTable: React.FC = () => {
 
   // Calculate pagination values.
   const totalPages = Math.ceil(movies.length / pageSize);
-  const currentMovies = movies.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+  const currentMovies = movies.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
 
   // Determine pagination window.
   const half = Math.floor(maxPageButtons / 2);
@@ -97,14 +102,23 @@ const AdminMoviesTable: React.FC = () => {
       <nav>
         <ul className="pagination">
           <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-            <button className="page-link" onClick={() => handlePageChange(currentPage - 1)}>
+            <button
+              className="page-link"
+              onClick={() => handlePageChange(currentPage - 1)}
+            >
               Previous
             </button>
           </li>
 
           {pageNumbers.map((page) => (
-            <li key={page} className={`page-item ${currentPage === page ? 'active' : ''}`}>
-              <button className="page-link" onClick={() => handlePageChange(page)}>
+            <li
+              key={page}
+              className={`page-item ${currentPage === page ? 'active' : ''}`}
+            >
+              <button
+                className="page-link"
+                onClick={() => handlePageChange(page)}
+              >
                 {page}
               </button>
             </li>
@@ -116,8 +130,13 @@ const AdminMoviesTable: React.FC = () => {
             </li>
           )}
 
-          <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-            <button className="page-link" onClick={() => handlePageChange(currentPage + 1)}>
+          <li
+            className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}
+          >
+            <button
+              className="page-link"
+              onClick={() => handlePageChange(currentPage + 1)}
+            >
               Next
             </button>
           </li>

@@ -1,12 +1,13 @@
 // MoviesAPI.ts
-import { Movie } from "../types/Movie";
+import { Movie } from '../types/Movie';
 
 export interface FetchMoviesResponse {
   movies: Movie[];
   totalNumMovies: number;
 }
 
-const API_URL = 'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie';
+const API_URL =
+  'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie';
 
 /**
  * Fetches all movies.
@@ -22,7 +23,7 @@ export const fetchMovies = async (): Promise<FetchMoviesResponse> => {
     const movies: Movie[] = await response.json();
     return { movies, totalNumMovies: movies.length };
   } catch (error) {
-    console.error("Error fetching movies:", error);
+    console.error('Error fetching movies:', error);
     throw error;
   }
 };
@@ -32,13 +33,15 @@ export const fetchMovies = async (): Promise<FetchMoviesResponse> => {
  */
 export const getMovieDetails = async (showId: string): Promise<Movie> => {
   try {
-    const response = await fetch(`${API_URL}/moviedetails/${encodeURIComponent(showId)}`);
+    const response = await fetch(
+      `${API_URL}/moviedetails/${encodeURIComponent(showId)}`
+    );
     if (!response.ok) {
       throw new Error('Failed to fetch movie details');
     }
     return await response.json();
   } catch (error) {
-    console.error("Error fetching movie details:", error);
+    console.error('Error fetching movie details:', error);
     throw error;
   }
 };
@@ -60,7 +63,7 @@ export const addMovie = async (movie: Movie): Promise<Movie> => {
     }
     return await response.json();
   } catch (error) {
-    console.error("Error adding movie:", error);
+    console.error('Error adding movie:', error);
     throw error;
   }
 };
@@ -70,21 +73,27 @@ export const addMovie = async (movie: Movie): Promise<Movie> => {
  * @param showId - The identifier of the movie to update.
  * @param updatedMovie - The movie data to update.
  */
-export const updateMovie = async (showId: string, updatedMovie: Movie): Promise<Movie> => {
+export const updateMovie = async (
+  showId: string,
+  updatedMovie: Movie
+): Promise<Movie> => {
   try {
-    const response = await fetch(`${API_URL}/UpdateMovie/${encodeURIComponent(showId)}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedMovie),
-    });
+    const response = await fetch(
+      `${API_URL}/UpdateMovie/${encodeURIComponent(showId)}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedMovie),
+      }
+    );
     if (!response.ok) {
       throw new Error('Failed to update movie');
     }
     return await response.json();
   } catch (error) {
-    console.error("Error updating movie:", error);
+    console.error('Error updating movie:', error);
     throw error;
   }
 };
@@ -95,15 +104,21 @@ export const updateMovie = async (showId: string, updatedMovie: Movie): Promise<
  */
 export const deleteMovie = async (showId: string): Promise<void> => {
   try {
-    console.log("Deleting movie with showId:", `${API_URL}/DeleteMovie/${encodeURIComponent(showId)}`); // Debugging line
-    const response = await fetch(`${API_URL}/DeleteMovie/${encodeURIComponent(showId)}`, {
-      method: 'DELETE',
-    });
+    console.log(
+      'Deleting movie with showId:',
+      `${API_URL}/DeleteMovie/${encodeURIComponent(showId)}`
+    ); // Debugging line
+    const response = await fetch(
+      `${API_URL}/DeleteMovie/${encodeURIComponent(showId)}`,
+      {
+        method: 'DELETE',
+      }
+    );
     if (!response.ok) {
       throw new Error('Failed to delete movie');
     }
   } catch (error) {
-    console.error("Error deleting movie:", error);
+    console.error('Error deleting movie:', error);
     throw error;
   }
 };

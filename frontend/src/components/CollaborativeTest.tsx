@@ -8,7 +8,8 @@ interface CollaborativeTestProps {
 }
 
 const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
-  const COLLAB_REC_API_BASE = 'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/CollaborativeRecs';
+  const COLLAB_REC_API_BASE =
+    'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/CollaborativeRecs';
   const MOVIE_DETAILS_API_BASE =
     'https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/Movie/moviedetails';
 
@@ -148,4 +149,3 @@ const CollaborativeTest: React.FC<CollaborativeTestProps> = ({ userId }) => {
 };
 
 export default CollaborativeTest;
-

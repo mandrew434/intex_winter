@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useUserIdentity } from '../contexts/UserIdentityContext';
 
 function LoginPage() {
+  const { sessionEmail, setSessionEmail } = useUserIdentity();
   // state variables for email and passwords
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -58,6 +60,8 @@ function LoginPage() {
       if (!response.ok) {
         throw new Error(data?.message || 'Invalid email or password.');
       }
+
+      setSessionEmail(email); // Update the context with the email
 
       navigate('/movies');
     } catch (error: any) {
@@ -136,6 +140,5 @@ function LoginPage() {
     </div>
   );
 }
-
 
 export default LoginPage;
