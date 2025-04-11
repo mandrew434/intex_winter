@@ -1,12 +1,18 @@
 {
+    "navigationFallback": {
+      "rewrite": "/index.html",
+      "exclude": [
+        "/assets/*",
+        "/*.css",
+        "/*.js",
+        "/*.json",
+        "/favicon.ico"
+      ]
+    },
     "mimeTypes": {
       ".js": "application/javascript",
-      ".mjs": "application/javascript"
-    },
-    "routes": [
-    {
-    "route": "/*",
-    "rewrite": "/index.html"
+      ".mjs": "application/javascript",
+      ".css": "text/css"
     }
-    ]
   }
+  
