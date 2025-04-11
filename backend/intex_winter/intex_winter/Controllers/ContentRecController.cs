@@ -7,6 +7,7 @@ namespace intex_winter.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class ContentRecController : ControllerBase
 {
     private readonly ContentDbContext _context;

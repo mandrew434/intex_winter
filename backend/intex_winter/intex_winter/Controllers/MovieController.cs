@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 [ApiController]
 [Route("api/[controller]")]
-//[Authorize]
+
 public class MovieController : ControllerBase
 {
     private readonly MoviesContext _context;
@@ -16,6 +16,7 @@ public class MovieController : ControllerBase
     }
 
     [HttpGet("all")]
+    [Authorize]
     public async Task<IActionResult> GetAllMovies()
     {
         // right now it is just returning 50 to not plug up the server
@@ -25,6 +26,7 @@ public class MovieController : ControllerBase
 
     // GET: api/Movie/details/{showId}
     [HttpGet("moviedetails/{showId}")]
+    [Authorize]
     public async Task<IActionResult> GetMovieDetails(string showId)
     {
         // Validate the provided showId if necessary.
@@ -50,6 +52,7 @@ public class MovieController : ControllerBase
 
 
     [HttpPost("AddMovie")]
+    [Authorize(Roles = "Admin")]
     public IActionResult AddMovie([FromBody] MoviesTitle newMovie)
     {
         
@@ -87,6 +90,7 @@ public class MovieController : ControllerBase
     }
 
     [HttpPut("UpdateMovie/{showId}")]
+    [Authorize(Roles = "Admin")]
     public IActionResult UpdateMovie(string showId, [FromBody] MoviesTitle updatedMovie)
     {
         var existingMovie = _context.MoviesTitles.Find(showId);
@@ -142,6 +146,7 @@ public class MovieController : ControllerBase
     }
 
     [HttpDelete("DeleteMovie/{showId}")]
+    [Authorize(Roles = "Admin")]
     public IActionResult DeleteMovie(string showId)
     {
         var movieToDelete = _context.MoviesTitles.Find(showId);
