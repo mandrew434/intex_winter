@@ -35,22 +35,37 @@ const MoviesPage: React.FC = () => {
     <>
       <AuthorizeView>
         <button
-          className="btn btn-secondary"
+          type="button"
           onClick={handleBack}
           style={{
             position: 'fixed',
             top: '20px',
             right: '20px',
+            padding: '10px 20px',
+            backgroundColor: '#007bff', // Blue background
+            color: '#fff',
+            fontWeight: 'bold',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
             zIndex: 1000,
+            transition: 'background-color 0.3s ease',
+          }}
+          onMouseOver={(e) => {
+            (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#0056b3';
+          }}
+          onMouseOut={(e) => {
+            (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#007bff';
           }}
         >
           Check out All Movies
         </button>
-        <span>
+
+        {/* <span>
           <Logout>
             Logout <AuthorizedUser value="email" />
           </Logout>
-        </span>
+        </span> */}
 
         <div className="movies-page">
           <div className="container">
