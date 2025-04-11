@@ -21,7 +21,7 @@ const AdminPage: React.FC = () => {
 
   // Fetch movies from your API.
   useEffect(() => {
-    fetch('https://intex-winter-backend-had2hmbubbgfczd8.eastus-01.azurewebsites.net/api/movie/all')
+    fetch('https://intex-winter-backend-2-b0cjguhaejd7hxap.westus2-01.azurewebsites.net/api/movie/all')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch movies');
