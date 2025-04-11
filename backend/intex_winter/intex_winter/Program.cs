@@ -87,6 +87,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+// Extra Feature to remove server headers
 app.Use(async (context, next) =>
 {
     context.Response.OnStarting(() =>
