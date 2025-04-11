@@ -210,35 +210,7 @@ const GenreSelect: React.FC<{
         if (!response.ok) {
           throw new Error('Failed to add movie');
         }
-        // const addedMovie: Movie = await response.json();
-        // alert("Movie added successfully!");
-        // // Optionally, reset form fields.
-        // setType('');
-        // setTitle('');
-        // setDirector('');
-        // setCast('');
-        // setCountry('');
-        // setReleaseYear(new Date().getFullYear());
-        // setRating('');
-        // setDuration('');
-        // setDurationMin(0);
-        // setDescription('');
-        // setSelectedGenre('');
-        const addedMovie: Movie = await response.json();
-        alert("Movie added successfully!");
-  
-        // Reset form fields.
-        setType('');
-        setTitle('');
-        setDirector('');
-        setCast('');
-        setCountry('');
-        setReleaseYear(new Date().getFullYear());
-        setRating('');
-        setDuration('');
-        setDurationMin(0);
-        setDescription('');
-        setSelectedGenre('');
+
   
         // Navigate to the admin page.
         navigate('/admin');
