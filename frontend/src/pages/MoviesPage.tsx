@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import MovieCarousel from '../components/MovieCarousel';
 import { Movie } from '../types/Movie';
 import AuthorizeView, { AuthorizedUser } from '../components/AuthorizeView';
-import Logout from '../components/Logout';
+// import Logout from '../components/Logout';
 import SplashImage from '../components/SplashImage';
 import { useNavigate } from 'react-router-dom';
 import CollaborativeTest from '../components/CollaborativeTest';
@@ -69,7 +69,8 @@ const MoviesPage: React.FC = () => {
 
         <div className="movies-page">
           <div className="container">
-            <SplashImage movies={movies} rotationInterval={5000} />
+            {/* <SplashImage movies={movies} rotationInterval={5000} /> */}
+            <SplashImage rotationInterval={5000} />
 
             <TopRatedCaro />
 
